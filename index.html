@@ -4,23 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pramudya Duta | Livestock Supervisor Portfolio</title>
-  <meta name="description" content="Portfolio profesional Pramudya Duta Kusuma Wardana Swaizy - Livestock Supervisor, Animal Science, Feedlot Operation." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="Portofolio profesional Pramudya Duta Kusuma Wardana Swaizy, Livestock Supervisor dengan pengalaman dalam feedlot operation, animal health monitoring, feed quality control, animal welfare, dan biosecurity."
+  />
+  <meta name="theme-color" content="#07111c" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
       --bg: #07111c;
-      --bg-2: #091827;
-      --card: rgba(255,255,255,0.06);
-      --card-2: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
+      --bg-2: #0a1827;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.10);
       --text: #f8fafc;
-      --muted: rgba(248,250,252,0.72);
-      --subtle: rgba(248,250,252,0.48);
+      --muted: rgba(248, 250, 252, 0.74);
+      --subtle: rgba(248, 250, 252, 0.48);
       --accent: #34d399;
       --accent-2: #38bdf8;
-      --shadow: 0 20px 70px rgba(0,0,0,0.30);
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.30);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 18px;
@@ -28,15 +37,21 @@
       --header-h: 78px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 18%, rgba(16,185,129,0.14), transparent 18%),
-        radial-gradient(circle at 85% 14%, rgba(56,189,248,0.13), transparent 20%),
+        radial-gradient(circle at 12% 18%, rgba(16, 185, 129, 0.14), transparent 18%),
+        radial-gradient(circle at 85% 14%, rgba(56, 189, 248, 0.13), transparent 20%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 46%, #050c14 100%);
       overflow-x: hidden;
     }
@@ -47,16 +62,21 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       background-size: 64px 64px;
       opacity: 0.10;
       z-index: -1;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    section { scroll-margin-top: calc(var(--header-h) + 18px); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      scroll-margin-top: calc(var(--header-h) + 18px);
+    }
 
     .container {
       width: min(var(--container), calc(100% - 32px));
@@ -77,7 +97,7 @@
       z-index: 100;
       height: var(--header-h);
       border-bottom: 1px solid var(--border);
-      background: rgba(7,17,28,0.78);
+      background: rgba(7, 17, 28, 0.78);
       backdrop-filter: blur(16px);
     }
 
@@ -102,9 +122,9 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      background: rgba(52,211,153,0.10);
-      border: 1px solid rgba(52,211,153,0.20);
-      box-shadow: 0 0 24px rgba(16,185,129,0.20);
+      background: rgba(52, 211, 153, 0.10);
+      border: 1px solid rgba(52, 211, 153, 0.20);
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.20);
       color: var(--accent);
       font-size: 20px;
       flex-shrink: 0;
@@ -131,10 +151,52 @@
       align-items: center;
       gap: 28px;
       font-size: 14px;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255, 255, 255, 0.72);
     }
 
-    .nav a:hover { color: var(--accent); }
+    .nav a:hover,
+    .mobile-nav a:hover,
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: calc(var(--header-h) - 2px);
+      left: 12px;
+      right: 12px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(7, 17, 28, 0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-nav.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-nav a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.03);
+    }
 
     .hero {
       padding: 56px 0 20px;
@@ -153,8 +215,8 @@
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(52,211,153,0.10);
-      border: 1px solid rgba(52,211,153,0.18);
+      background: rgba(52, 211, 153, 0.10);
+      border: 1px solid rgba(52, 211, 153, 0.18);
       color: #d1fae5;
       font-size: 12px;
       font-weight: 700;
@@ -199,6 +261,7 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       padding: 14px 22px;
       border-radius: 18px;
@@ -207,17 +270,19 @@
       transition: transform .22s ease, background .22s ease, border-color .22s ease;
     }
 
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-primary {
       background: var(--accent);
       color: #062012;
-      box-shadow: 0 12px 28px rgba(16,185,129,0.26);
+      box-shadow: 0 12px 28px rgba(16, 185, 129, 0.26);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: white;
     }
 
@@ -229,9 +294,22 @@
       animation: fadeUp .7s ease .32s both;
     }
 
-    .stat-card { padding: 22px; }
-    .stat-value { font-size: 34px; font-weight: 800; line-height: 1; }
-    .stat-label { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.45; }
+    .stat-card {
+      padding: 22px;
+    }
+
+    .stat-value {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.45;
+    }
 
     .profile-card {
       position: relative;
@@ -254,7 +332,7 @@
       height: 140px;
       left: -24px;
       top: 48px;
-      background: rgba(52,211,153,0.18);
+      background: rgba(52, 211, 153, 0.18);
     }
 
     .profile-card::after {
@@ -262,7 +340,7 @@
       height: 120px;
       right: -10px;
       top: 12px;
-      background: rgba(56,189,248,0.18);
+      background: rgba(56, 189, 248, 0.18);
     }
 
     .profile-inner {
@@ -270,7 +348,7 @@
       padding: 20px;
       border-radius: 24px;
       border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
     }
 
     .profile-top {
@@ -296,16 +374,21 @@
       line-height: 1.1;
     }
 
-    .dots { display: flex; gap: 8px; }
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
     .dots span {
       width: 10px;
       height: 10px;
       border-radius: 999px;
       animation: pulse 1.8s infinite ease-in-out;
     }
+
     .dots span:nth-child(1) { background: var(--accent); }
     .dots span:nth-child(2) { background: var(--accent-2); animation-delay: .2s; }
-    .dots span:nth-child(3) { background: rgba(255,255,255,0.35); animation-delay: .4s; }
+    .dots span:nth-child(3) { background: rgba(255, 255, 255, 0.35); animation-delay: .4s; }
 
     .profile-visual {
       position: relative;
@@ -314,9 +397,9 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background:
-        linear-gradient(to top, rgba(7,17,28,0.92), transparent 45%),
+        linear-gradient(to top, rgba(7, 17, 28, 0.88), transparent 45%),
         url('assets/profile.jpg') center top / cover no-repeat,
-        linear-gradient(135deg, rgba(52,211,153,0.18), rgba(56,189,248,0.12));
+        linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(56, 189, 248, 0.12));
     }
 
     .profile-visual::before {
@@ -325,7 +408,7 @@
       inset: 0;
       display: grid;
       place-items: center;
-      color: rgba(255,255,255,0.20);
+      color: rgba(255, 255, 255, 0.20);
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.20em;
@@ -333,7 +416,9 @@
       z-index: 0;
     }
 
-    .profile-visual.has-image::before { display: none; }
+    .profile-visual.has-image::before {
+      display: none;
+    }
 
     .location {
       position: absolute;
@@ -349,8 +434,8 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      background: rgba(0,0,0,0.28);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(8px);
     }
 
@@ -365,20 +450,35 @@
       padding: 16px;
       border-radius: 18px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       transition: transform .22s ease, border-color .22s ease;
     }
 
     .mini-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(52,211,153,0.24);
+      border-color: rgba(52, 211, 153, 0.24);
     }
 
-    .mini-icon { font-size: 22px; }
-    .mini-label { margin-top: 12px; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.86); }
+    .mini-icon {
+      font-size: 22px;
+    }
 
-    .marquee-section { padding: 10px 0 12px; }
-    .marquee-shell { overflow: hidden; padding: 16px 0; }
+    .mini-label {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .marquee-section {
+      padding: 10px 0 12px;
+    }
+
+    .marquee-shell {
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
     .marquee-track {
       display: flex;
       gap: 16px;
@@ -392,15 +492,17 @@
       gap: 10px;
       padding: 14px 18px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
-      color: rgba(255,255,255,0.78);
+      color: rgba(255, 255, 255, 0.78);
       white-space: nowrap;
       font-size: 14px;
       font-weight: 600;
     }
 
-    .section { padding: 72px 0; }
+    .section {
+      padding: 72px 0;
+    }
 
     .section-grid {
       display: grid;
@@ -409,7 +511,9 @@
       align-items: start;
     }
 
-    .section-head { max-width: 660px; }
+    .section-head {
+      max-width: 660px;
+    }
 
     .section-head h2 {
       margin: 16px 0 0;
@@ -429,7 +533,9 @@
     .edu-card,
     .contact-card,
     .timeline-card,
-    .skill-card { padding: 30px; }
+    .skill-card {
+      padding: 30px;
+    }
 
     .summary-row {
       display: flex;
@@ -444,19 +550,21 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      background: rgba(52,211,153,0.12);
+      background: rgba(52, 211, 153, 0.12);
       color: var(--accent);
       font-size: 20px;
       flex-shrink: 0;
     }
 
-    .summary-title {
+    .summary-title,
+    .edu-title {
       font-size: 28px;
       font-weight: 800;
       line-height: 1.15;
     }
 
-    .summary-text {
+    .summary-text,
+    .edu-text {
       margin-top: 14px;
       font-size: 16px;
       line-height: 1.9;
@@ -472,13 +580,13 @@
 
     .skill-card {
       transition: transform .24s ease, border-color .24s ease, background .24s ease;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .skill-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(52,211,153,0.26);
-      background: rgba(255,255,255,0.07);
+      border-color: rgba(52, 211, 153, 0.26);
+      background: rgba(255, 255, 255, 0.07);
     }
 
     .skill-icon {
@@ -488,8 +596,8 @@
       display: grid;
       place-items: center;
       font-size: 24px;
-      background: linear-gradient(135deg, rgba(52,211,153,0.20), rgba(56,189,248,0.14));
-      box-shadow: 0 0 34px rgba(16,185,129,0.12);
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.20), rgba(56, 189, 248, 0.14));
+      box-shadow: 0 0 34px rgba(16, 185, 129, 0.12);
     }
 
     .skill-card h3 {
@@ -502,7 +610,7 @@
       margin-top: 14px;
       font-size: 14px;
       line-height: 1.9;
-      color: rgba(255,255,255,0.62);
+      color: rgba(255, 255, 255, 0.62);
     }
 
     .timeline {
@@ -517,7 +625,7 @@
       top: 16px;
       bottom: 16px;
       width: 1px;
-      background: linear-gradient(to bottom, rgba(52,211,153,0.46), transparent);
+      background: linear-gradient(to bottom, rgba(52, 211, 153, 0.46), transparent);
     }
 
     .timeline-item {
@@ -535,9 +643,9 @@
       display: grid;
       place-items: center;
       border-radius: 18px;
-      background: rgba(52,211,153,0.12);
-      border: 1px solid rgba(52,211,153,0.20);
-      box-shadow: 0 0 26px rgba(16,185,129,0.18);
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.20);
+      box-shadow: 0 0 26px rgba(16, 185, 129, 0.18);
       font-size: 20px;
     }
 
@@ -566,7 +674,7 @@
       margin-top: 12px;
       font-size: 14px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.58);
+      color: rgba(255, 255, 255, 0.58);
     }
 
     .timeline-points {
@@ -583,7 +691,7 @@
       align-items: flex-start;
       font-size: 14px;
       line-height: 1.9;
-      color: rgba(255,255,255,0.66);
+      color: rgba(255, 255, 255, 0.66);
     }
 
     .timeline-points li::before {
@@ -601,27 +709,16 @@
       gap: 20px;
     }
 
-    .edu-title {
-      font-size: 28px;
-      font-weight: 800;
-      line-height: 1.15;
-    }
-
     .edu-sub {
       margin-top: 10px;
       font-size: 15px;
-      color: rgba(255,255,255,0.58);
+      color: rgba(255, 255, 255, 0.58);
       line-height: 1.8;
     }
 
-    .edu-text {
-      margin-top: 14px;
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--muted);
+    .contact-wrap {
+      padding-bottom: 20px;
     }
-
-    .contact-wrap { padding-bottom: 20px; }
 
     .contact-card {
       position: relative;
@@ -633,8 +730,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(16,185,129,0.14), transparent 25%),
-        radial-gradient(circle at bottom left, rgba(56,189,248,0.14), transparent 25%);
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.14), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.14), transparent 25%);
       pointer-events: none;
     }
 
@@ -646,7 +743,10 @@
       align-items: end;
     }
 
-    .info-list { display: grid; gap: 14px; }
+    .info-list {
+      display: grid;
+      gap: 14px;
+    }
 
     .info-item {
       display: flex;
@@ -655,7 +755,7 @@
       padding: 16px;
       border-radius: 18px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .info-label {
@@ -663,14 +763,15 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.40);
+      color: rgba(255, 255, 255, 0.40);
     }
 
     .info-value {
       margin-top: 6px;
       font-size: 14px;
       font-weight: 700;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255, 255, 255, 0.88);
+      word-break: break-word;
     }
 
     .footer {
@@ -685,7 +786,7 @@
       align-items: center;
       gap: 20px;
       font-size: 14px;
-      color: rgba(255,255,255,0.46);
+      color: rgba(255, 255, 255, 0.46);
     }
 
     .footer-links {
@@ -694,11 +795,15 @@
       gap: 16px;
     }
 
-    .footer-links a:hover { color: var(--accent); }
-
     @keyframes pulse {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.18); opacity: .78; }
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.18);
+        opacity: .78;
+      }
     }
 
     @keyframes marquee {
@@ -707,8 +812,14 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 1100px) {
@@ -719,31 +830,78 @@
         grid-template-columns: 1fr;
       }
 
-      .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 760px) {
-      :root { --header-h: 70px; }
-      .container { width: min(var(--container), calc(100% - 24px)); }
-      .nav { display: none; }
-      .hero { padding-top: 42px; }
+      :root {
+        --header-h: 70px;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 24px));
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
       .skill-grid,
       .mini-grid,
-      .stats { grid-template-columns: 1fr; }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
       .timeline::before,
-      .timeline-badge { display: none; }
-      .timeline-item { padding-left: 0; }
-      .profile-visual { min-height: 420px; }
+      .timeline-badge {
+        display: none;
+      }
+
+      .timeline-item {
+        padding-left: 0;
+      }
+
+      .profile-visual {
+        min-height: 420px;
+      }
+
       .summary-card,
       .edu-card,
       .contact-card,
       .timeline-card,
       .skill-card,
-      .stat-card { padding: 22px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .brand h3 { font-size: 12px; letter-spacing: 0.18em; }
-      .brand p { font-size: 11px; }
+      .stat-card {
+        padding: 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .brand h3 {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+      }
+
+      .brand p {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -757,6 +915,7 @@
           <p>Livestock Supervisor Portfolio</p>
         </div>
       </div>
+
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#expertise">Expertise</a>
@@ -764,6 +923,16 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
   </header>
 
@@ -772,20 +941,37 @@
       <div class="container hero-grid">
         <div>
           <div class="badge">Livestock Operations • Animal Welfare • Biosecurity</div>
+
           <h1>Pramudya Duta Kusuma Wardana Swaizy</h1>
+
           <div class="role">Livestock Supervisor • Animal Science • Feedlot Operation</div>
+
           <p class="lead">
-           Livestock professional dengan pengalaman dalam feedlot operation, health monitoring, feed quality control, animal welfare, dan biosecurity.
+            Profesional di bidang peternakan dengan pengalaman dalam operasional feedlot, pemantauan kesehatan ternak, pengendalian kualitas pakan, animal welfare, dan biosecurity.
           </p>
+
           <div class="cta-row">
             <a class="btn btn-primary" href="#experience">Lihat Pengalaman →</a>
-            <a class="btn btn-secondary" href="#contact">Kontak Saya</a>
+            <a class="btn btn-secondary" href="https://wa.me/628111202401" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </div>
+
           <div class="stats">
-            <div class="glass stat-card"><div class="stat-value">3+</div><div class="stat-label">Years in Feedlot</div></div>
-            <div class="glass stat-card"><div class="stat-value">6,000</div><div class="stat-label">Head Capacity</div></div>
-            <div class="glass stat-card"><div class="stat-value">3.75</div><div class="stat-label">GPA</div></div>
-            <div class="glass stat-card"><div class="stat-value">210</div><div class="stat-label">Research Sample</div></div>
+            <div class="glass stat-card">
+              <div class="stat-value">2+</div>
+              <div class="stat-label">Years in Feedlot</div>
+            </div>
+            <div class="glass stat-card">
+              <div class="stat-value">6,000</div>
+              <div class="stat-label">Head Capacity</div>
+            </div>
+            <div class="glass stat-card">
+              <div class="stat-value">3.75</div>
+              <div class="stat-label">GPA</div>
+            </div>
+            <div class="glass stat-card">
+              <div class="stat-value">210</div>
+              <div class="stat-label">Research Sample</div>
+            </div>
           </div>
         </div>
 
@@ -804,9 +990,18 @@
             </div>
 
             <div class="mini-grid">
-              <div class="mini-card"><div class="mini-icon">🐄</div><div class="mini-label">Cattle Ops</div></div>
-              <div class="mini-card"><div class="mini-icon">🩺</div><div class="mini-label">Animal Health</div></div>
-              <div class="mini-card"><div class="mini-icon">🛡️</div><div class="mini-label">Biosecurity</div></div>
+              <div class="mini-card">
+                <div class="mini-icon">🐄</div>
+                <div class="mini-label">Cattle Ops</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-icon">🩺</div>
+                <div class="mini-label">Animal Health</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-icon">🛡️</div>
+                <div class="mini-label">Biosecurity</div>
+              </div>
             </div>
           </div>
         </div>
@@ -824,6 +1019,7 @@
             <div class="marquee-item">🛡️ Biosecurity</div>
             <div class="marquee-item">📋 SOP Discipline</div>
             <div class="marquee-item">📈 Operational Control</div>
+
             <div class="marquee-item">🐄 Cattle Management</div>
             <div class="marquee-item">❤️ Animal Welfare</div>
             <div class="marquee-item">🩺 Health Monitoring</div>
@@ -831,6 +1027,7 @@
             <div class="marquee-item">🛡️ Biosecurity</div>
             <div class="marquee-item">📋 SOP Discipline</div>
             <div class="marquee-item">📈 Operational Control</div>
+
             <div class="marquee-item">🐄 Cattle Management</div>
             <div class="marquee-item">❤️ Animal Welfare</div>
             <div class="marquee-item">🩺 Health Monitoring</div>
@@ -849,16 +1046,17 @@
           <div class="eyebrow">About</div>
           <h2>Profil profesional dengan pengalaman operasional yang kuat</h2>
           <p>
-            Halaman ini dirancang untuk memperkenalkan latar belakang, kapabilitas, dan nilai profesional Saya secara jelas kepada pembaca dan mitra kerja potensial.
+            Sarjana Peternakan dengan latar belakang profesional di bidang operasional feedlot, pengawasan ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, dan biosecurity.
           </p>
         </div>
+
         <div class="glass summary-card">
           <div class="summary-row">
             <div class="summary-icon">⭐</div>
             <div>
               <div class="summary-title">Professional Summary</div>
               <div class="summary-text">
-                Sarjana Peternakan dengan pengalaman lebih dari 3 tahun dalam operasional feedlot skala besar, supervisi ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, biosecurity, dan koordinasi lapangan. Terbiasa bekerja dengan standar operasional yang ketat, menjaga stabilitas aktivitas harian, serta mendukung tercapainya target produksi dan kesiapan distribusi.
+                Memiliki pengalaman lebih dari 2 tahun dalam operasional feedlot skala besar, termasuk supervisi ternak, koordinasi aktivitas lapangan, pemantauan kondisi kesehatan sapi, serta penerapan standar kerja yang mendukung stabilitas produksi dan kesiapan distribusi. Terbiasa bekerja dengan pendekatan disiplin, terstruktur, dan berorientasi pada kualitas operasional.
               </div>
             </div>
           </div>
@@ -872,17 +1070,46 @@
           <div class="eyebrow">Core Expertise</div>
           <h2>Kompetensi utama dalam operasional feedlot dan pengawasan ternak</h2>
           <p>
-            Setiap area kompetensi berikut mencerminkan pengalaman praktis Saya di lapangan, mulai dari pengawasan operasional harian hingga penerapan standar biosecurity dan animal welfare.
+            Kompetensi inti mencakup pengawasan operasional harian, pemantauan kesehatan ternak, pengendalian kualitas pakan, penerapan biosecurity, animal welfare, dan koordinasi tim lapangan.
           </p>
         </div>
 
         <div class="skill-grid">
-          <div class="glass skill-card"><div class="skill-icon">🐄</div><h3>Feedlot Operation</h3><p>Supervisi operasional harian feedlot, kesiapan ternak, ritme kerja kandang, dan stabilitas aktivitas lapangan.</p></div>
-          <div class="glass skill-card"><div class="skill-icon">🩺</div><h3>Animal Health Monitoring</h3><p>Pemantauan kondisi ternak untuk membantu deteksi dini perubahan kesehatan dan tindak lanjut yang lebih cepat.</p></div>
-          <div class="glass skill-card"><div class="skill-icon">🌱</div><h3>Feed Quality Control</h3><p>Kontrol alokasi pakan, kualitas pakan, dan konsistensi rutinitas produksi untuk menjaga performa unit.</p></div>
-          <div class="glass skill-card"><div class="skill-icon">🛡️</div><h3>Biosecurity & Welfare</h3><p>Penerapan SOP biosecurity, sanitasi kandang, keselamatan kerja, dan animal welfare secara disiplin.</p></div>
-          <div class="glass skill-card"><div class="skill-icon">📋</div><h3>SOP Implementation</h3><p>Eksekusi standar kerja secara rapi dan konsisten untuk menjaga kualitas operasional dan kesiapan distribusi.</p></div>
-          <div class="glass skill-card"><div class="skill-icon">👥</div><h3>Team Coordination</h3><p>Koordinasi aktivitas harian, problem solving lapangan, dan sinkronisasi kebutuhan operasional lintas fungsi.</p></div>
+          <div class="glass skill-card">
+            <div class="skill-icon">🐄</div>
+            <h3>Feedlot Operation</h3>
+            <p>Supervisi operasional harian feedlot, kesiapan ternak, ritme kerja kandang, dan stabilitas aktivitas lapangan.</p>
+          </div>
+
+          <div class="glass skill-card">
+            <div class="skill-icon">🩺</div>
+            <h3>Animal Health Monitoring</h3>
+            <p>Pemantauan kondisi ternak untuk mendukung deteksi dini perubahan kesehatan dan tindak lanjut yang lebih cepat.</p>
+          </div>
+
+          <div class="glass skill-card">
+            <div class="skill-icon">🌱</div>
+            <h3>Feed Quality Control</h3>
+            <p>Kontrol alokasi pakan, kualitas pakan, dan konsistensi rutinitas produksi untuk menjaga performa unit.</p>
+          </div>
+
+          <div class="glass skill-card">
+            <div class="skill-icon">🛡️</div>
+            <h3>Biosecurity & Welfare</h3>
+            <p>Penerapan SOP biosecurity, sanitasi kandang, keselamatan kerja, dan animal welfare secara disiplin.</p>
+          </div>
+
+          <div class="glass skill-card">
+            <div class="skill-icon">📋</div>
+            <h3>SOP Implementation</h3>
+            <p>Eksekusi standar kerja secara rapi dan konsisten untuk menjaga kualitas operasional dan kesiapan distribusi.</p>
+          </div>
+
+          <div class="glass skill-card">
+            <div class="skill-icon">👥</div>
+            <h3>Team Coordination</h3>
+            <p>Koordinasi aktivitas harian, penyelesaian masalah lapangan, dan sinkronisasi kebutuhan operasional lintas fungsi.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -893,7 +1120,7 @@
           <div class="eyebrow">Professional Experience</div>
           <h2>Pengalaman kerja yang menunjukkan kapasitas kepemimpinan dan eksekusi lapangan</h2>
           <p>
-            Riwayat pengalaman ini menegaskan skala tanggung jawab yang Saya pegang, kualitas koordinasi yang Saya jalankan, dan kontribusi Saya dalam menjaga operasional tetap disiplin, efisien, dan terarah.
+            Riwayat pengalaman ini mencerminkan skala tanggung jawab, kualitas koordinasi, serta kontribusi dalam menjaga operasional tetap disiplin, efisien, dan terarah.
           </p>
         </div>
 
@@ -908,7 +1135,7 @@
                   <div class="timeline-meta">PT Sumber Daya Multikarya • Cianjur • ±6.000 ekor sapi</div>
                 </div>
                 <ul class="timeline-points">
-                  <li>Mengawasi operasional harian feedlot skala besar, mencakup alokasi pakan, pemantauan kondisi ternak, kebersihan kandang, dan kedisiplinan kerja lapangan.</li>
+                  <li>Mengawasi operasional harian feedlot skala besar, termasuk alokasi pakan, pemantauan kondisi ternak, kebersihan kandang, dan kedisiplinan kerja lapangan.</li>
                   <li>Memastikan pelaksanaan SOP kualitas pakan, animal welfare, biosecurity, dan rutinitas produksi berjalan konsisten.</li>
                   <li>Berkoordinasi dengan tim operasional untuk menjaga kesiapan ternak, target output, dan kebutuhan distribusi.</li>
                 </ul>
@@ -926,9 +1153,9 @@
                   <div class="timeline-meta">PT Sumber Daya Multikarya • Banten • ±1.500 ekor sapi</div>
                 </div>
                 <ul class="timeline-points">
-                  <li>Menangani supervisi operasional unit feedlot pertama dengan fokus pada kontrol pakan, kebersihan kandang, dan kepatuhan welfare.</li>
+                  <li>Menangani supervisi operasional unit feedlot dengan fokus pada kontrol pakan, kebersihan kandang, dan kepatuhan terhadap welfare.</li>
                   <li>Melakukan pemantauan kesehatan ternak secara terstruktur untuk mendukung deteksi dini gejala penyakit.</li>
-                  <li>Terlibat dalam seluruh siklus kerja feedlot dari feed preparation hingga koordinasi pengiriman.</li>
+                  <li>Terlibat dalam seluruh siklus kerja feedlot, mulai dari feed preparation hingga koordinasi pengiriman.</li>
                 </ul>
               </div>
             </div>
@@ -961,7 +1188,7 @@
           <div class="eyebrow">Education & Research</div>
           <h2>Latar belakang akademik yang mendukung kemampuan teknis di lapangan</h2>
           <p>
-            Pendidikan formal dan pengalaman riset ini memperkuat fondasi pengetahuan Saya dalam bidang peternakan, sekaligus melengkapi pengalaman praktis yang telah dibangun di lingkungan kerja profesional.
+            Pendidikan formal dan pengalaman riset memperkuat fondasi pengetahuan di bidang peternakan, sekaligus melengkapi pengalaman praktis di lingkungan kerja profesional.
           </p>
         </div>
 
@@ -972,7 +1199,9 @@
               <div>
                 <div class="edu-title">Universitas Brawijaya</div>
                 <div class="edu-sub">S1 Peternakan • 2019 — 2023 • IPK 3,75</div>
-                <div class="edu-text">Fokus akademik pada animal science, manajemen peternakan, kesehatan ternak, dan praktik industri penggemukan sapi potong.</div>
+                <div class="edu-text">
+                  Fokus akademik pada animal science, manajemen peternakan, kesehatan ternak, dan praktik industri penggemukan sapi potong.
+                </div>
               </div>
             </div>
           </div>
@@ -981,7 +1210,9 @@
             <div class="eyebrow">Academic Project</div>
             <div class="edu-title" style="margin-top:12px;">Undergraduate Thesis Research</div>
             <div class="edu-sub">Produksi Karkas Brahman Cross Steer dan Heifer</div>
-            <div class="edu-text">Penelitian terhadap 210 ekor sapi Brahman Cross untuk menganalisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost (IOFC).</div>
+            <div class="edu-text">
+              Penelitian terhadap 210 ekor sapi Brahman Cross untuk menganalisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost (IOFC).
+            </div>
           </div>
         </div>
       </div>
@@ -993,45 +1224,99 @@
           <div class="contact-grid">
             <div>
               <div class="eyebrow">Contact</div>
-              <h2 style="margin:16px 0 0; font-size:clamp(32px,4vw,44px); line-height:1.12; letter-spacing:-0.03em;">Open to professional opportunities</h2>
+              <h2 style="margin:16px 0 0; font-size:clamp(32px,4vw,44px); line-height:1.12; letter-spacing:-0.03em;">
+                Open to Professional Opportunities
+              </h2>
               <p style="margin-top:16px; max-width:700px; font-size:16px; line-height:1.9; color:var(--muted);">
-                Saya terbuka untuk peluang profesional, kolaborasi, maupun diskusi terkait operasional feedlot, pengawasan ternak, dan pengembangan karier di industri peternakan.
+                Terbuka untuk peluang profesional, kolaborasi, maupun diskusi terkait operasional feedlot, pengawasan ternak, dan pengembangan karier di industri peternakan.
               </p>
             </div>
 
             <div class="info-list">
-              <div class="info-item"><div class="info-icon">✉️</div><div><div class="info-label">Email</div><div class="info-value">pramudyaduta9@gmail.com</div></div></div>
-              <div class="info-item"><div class="info-icon">📞</div><div><div class="info-label">Phone</div><div class="info-value">+62 811-1202-401</div></div></div>
-              <div class="info-item"><div class="info-icon">🔗</div><div><div class="info-label">LinkedIn</div><div class="info-value">pramudya-duta</div></div></div>
-              <div class="info-item"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-value">Jakarta, Indonesia</div></div></div>
+              <a class="info-item" href="mailto:pramudyaduta9@gmail.com">
+                <div class="info-icon">✉️</div>
+                <div>
+                  <div class="info-label">Email</div>
+                  <div class="info-value">pramudyaduta9@gmail.com</div>
+                </div>
+              </a>
+
+              <a class="info-item" href="tel:+628111202401">
+                <div class="info-icon">📞</div>
+                <div>
+                  <div class="info-label">Phone</div>
+                  <div class="info-value">+62 811-1202-401</div>
+                </div>
+              </a>
+
+              <a class="info-item" href="https://wa.me/628111202401" target="_blank" rel="noopener noreferrer">
+                <div class="info-icon">💬</div>
+                <div>
+                  <div class="info-label">WhatsApp</div>
+                  <div class="info-value">Chat via WhatsApp</div>
+                </div>
+              </a>
+
+              <a class="info-item" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                <div class="info-icon">🔗</div>
+                <div>
+                  <div class="info-label">LinkedIn</div>
+                  <div class="info-value">Tambahkan link profil LinkedIn</div>
+                </div>
+              </a>
+
+              <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div>
+                  <div class="info-label">Location</div>
+                  <div class="info-value">Jakarta, Indonesia</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>© 2026 Pramudya Duta Kusuma Wardana Swaizy</div>
-        <div class="footer-links">
-          <a href="#about">About</a>
-          <a href="#expertise">Expertise</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </footer>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Pramudya Duta Kusuma Wardana Swaizy</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (function () {
-      const visual = document.getElementById('profileVisual');
+      const visual = document.getElementById("profileVisual");
       const testImage = new Image();
+
       testImage.onload = function () {
-        visual.classList.add('has-image');
+        visual.classList.add("has-image");
       };
-      testImage.src = 'assets/profile.jpg';
+
+      testImage.src = "assets/profile.jpg";
+    })();
+
+    (function () {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+
+      menuBtn.addEventListener("click", function () {
+        mobileNav.classList.toggle("open");
+      });
+
+      mobileNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          mobileNav.classList.remove("open");
+        });
+      });
     })();
   </script>
 </body>
