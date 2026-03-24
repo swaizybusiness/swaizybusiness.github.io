@@ -1,470 +1,807 @@
-import { motion } from "framer-motion";
-import {
-  Activity,
-  ArrowRight,
-  BadgeCheck,
-  Beef,
-  Building2,
-  ClipboardList,
-  GraduationCap,
-  HeartPulse,
-  Mail,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  Sprout,
-  Stethoscope,
-  Users,
-} from "lucide-react";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pramudya Duta | Livestock Supervisor Portfolio</title>
+  <meta name="description" content="Portfolio profesional Pramudya Duta Kusuma Wardana Swaizy - Livestock Supervisor, Animal Science, Feedlot Operation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06111b;
+      --bg-soft: rgba(255,255,255,0.05);
+      --bg-card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.1);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.64);
+      --subtle: rgba(255,255,255,0.46);
+      --accent: #34d399;
+      --accent-2: #38bdf8;
+      --shadow: 0 20px 80px rgba(0,0,0,0.28);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --container: 1200px;
+    }
 
-const profileImage = "/mnt/data/user-vFKwuTirxpJfgPkTNwBkoRZ0/9cc7fee124a64985afe0fab89cfc3838/mnt/data/pas_photo_render.png";
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(16,185,129,0.16), transparent 18%),
+        radial-gradient(circle at 85% 14%, rgba(59,130,246,0.14), transparent 22%),
+        radial-gradient(circle at 78% 78%, rgba(16,185,129,0.1), transparent 22%),
+        linear-gradient(180deg, #06111b 0%, #081522 42%, #050b12 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      delay,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-const expertise = [
-  {
-    icon: Beef,
-    title: "Feedlot Operation",
-    text: "Supervisi operasional harian feedlot, kesiapan ternak, ritme kerja kandang, dan stabilitas aktivitas lapangan.",
-  },
-  {
-    icon: Stethoscope,
-    title: "Animal Health Monitoring",
-    text: "Pemantauan kondisi ternak untuk membantu deteksi dini perubahan kesehatan dan tindak lanjut yang lebih cepat.",
-  },
-  {
-    icon: Sprout,
-    title: "Feed Quality Control",
-    text: "Kontrol alokasi pakan, kualitas pakan, dan konsistensi rutinitas produksi untuk menjaga performa unit.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Biosecurity & Welfare",
-    text: "Penerapan SOP biosecurity, sanitasi kandang, keselamatan kerja, dan animal welfare secara disiplin.",
-  },
-  {
-    icon: ClipboardList,
-    title: "SOP Implementation",
-    text: "Eksekusi standar kerja secara rapi dan konsisten untuk menjaga kualitas operasional dan kesiapan distribusi.",
-  },
-  {
-    icon: Users,
-    title: "Team Coordination",
-    text: "Koordinasi aktivitas harian, problem solving lapangan, dan sinkronisasi kebutuhan operasional lintas fungsi.",
-  },
-];
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-const timeline = [
-  {
-    period: "Jul 2024 — Sekarang",
-    role: "Supervisor — Pasir Tengah Feedlot",
-    meta: "PT Sumber Daya Multikarya • Cianjur • ±6.000 ekor sapi",
-    points: [
-      "Mengawasi operasional harian feedlot skala besar, mencakup alokasi pakan, pemantauan kondisi ternak, kebersihan kandang, dan kedisiplinan kerja lapangan.",
-      "Memastikan pelaksanaan SOP kualitas pakan, animal welfare, biosecurity, dan rutinitas produksi berjalan konsisten.",
-      "Berkoordinasi dengan tim operasional untuk menjaga kesiapan ternak, target output, dan kebutuhan distribusi.",
-    ],
-  },
-  {
-    period: "Nov 2023 — Jul 2024",
-    role: "Supervisor — Rangkasbitung Feedlot",
-    meta: "PT Sumber Daya Multikarya • Banten • ±1.500 ekor sapi",
-    points: [
-      "Menangani supervisi operasional unit feedlot pertama dengan fokus pada kontrol pakan, kebersihan kandang, dan kepatuhan welfare.",
-      "Melakukan pemantauan kesehatan ternak secara terstruktur untuk mendukung deteksi dini gejala penyakit.",
-      "Terlibat dalam seluruh siklus kerja feedlot dari feed preparation hingga koordinasi pengiriman.",
-    ],
-  },
-  {
-    period: "Mar 2021 — Sep 2023",
-    role: "Operational Manager",
-    meta: "PT Duta Raya Properindo • Bekasi",
-    points: [
-      "Mengelola kelancaran operasional proyek dan memastikan aktivitas berjalan sesuai target, mutu, timeline, dan kebutuhan perusahaan.",
-      "Memimpin koordinasi aktivitas harian, alokasi sumber daya, dan pengawasan proses untuk meningkatkan efektivitas pelaksanaan.",
-      "Mengembangkan kekuatan pada leadership, komunikasi lintas fungsi, dan penyelesaian masalah yang relevan untuk peran supervisi lapangan.",
-    ],
-  },
-];
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-const marqueeItems = [
-  { icon: Beef, label: "Cattle Management" },
-  { icon: HeartPulse, label: "Animal Welfare" },
-  { icon: Stethoscope, label: "Health Monitoring" },
-  { icon: Sprout, label: "Feed Quality" },
-  { icon: ShieldCheck, label: "Biosecurity" },
-  { icon: ClipboardList, label: "SOP Discipline" },
-  { icon: Activity, label: "Operational Control" },
-];
+    .glass {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+    }
 
-const stats = [
-  { value: "2+", label: "Years in Feedlot" },
-  { value: "6,000", label: "Head Capacity" },
-  { value: "3.75", label: "GPA" },
-  { value: "210", label: "Research Sample" },
-];
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(6,17,27,0.72);
+      backdrop-filter: blur(18px);
+    }
 
-function GlassCard({ children, className = "" }) {
-  return (
-    <div
-      className={`rounded-[28px] border border-white/10 bg-white/[0.05] shadow-[0_20px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-function SectionHeader({ eyebrow, title, text }) {
-  return (
-    <div className="max-w-2xl">
-      <div className="text-xs font-semibold uppercase tracking-[0.34em] text-emerald-300/90">{eyebrow}</div>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">{title}</h2>
-      {text ? <p className="mt-4 text-base leading-8 text-white/60">{text}</p> : null}
-    </div>
-  );
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-export default function PramLivestockPortfolioFinal() {
-  return (
-    <div className="min-h-screen overflow-x-hidden bg-[#06111b] text-white">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_12%_18%,rgba(16,185,129,0.16),transparent_18%),radial-gradient(circle_at_85%_14%,rgba(59,130,246,0.14),transparent_22%),radial-gradient(circle_at_78%_78%,rgba(16,185,129,0.1),transparent_22%),linear-gradient(180deg,#06111b_0%,#081522_42%,#050b12_100%)]" />
-      <div className="fixed inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)] [background-size:72px_72px]" />
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(52,211,153,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(52,211,153,0.2);
+      box-shadow: 0 0 24px rgba(16,185,129,0.22);
+      font-size: 22px;
+    }
 
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#06111b]/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-400/10 text-emerald-300 shadow-[0_0_24px_rgba(16,185,129,0.22)]">
-              <Beef className="h-5 w-5" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.28em] text-white">Pramudya Duta</div>
-              <div className="text-xs text-white/45">Livestock Supervisor Portfolio</div>
-            </div>
-          </div>
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
 
-          <nav className="hidden items-center gap-8 text-sm text-white/65 md:flex">
-            {[
-              ["About", "about"],
-              ["Expertise", "expertise"],
-              ["Experience", "experience"],
-              ["Education", "education"],
-              ["Contact", "contact"],
-            ].map(([label, id]) => (
-              <a key={id} href={`#${id}`} className="transition hover:text-emerald-300">
-                {label}
-              </a>
-            ))}
-          </nav>
+    .brand-subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .nav a:hover { color: var(--accent); }
+
+    .hero {
+      padding: 72px 0 28px;
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.2);
+      color: #d1fae5;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 0;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-role {
+      margin-top: 18px;
+      font-size: 20px;
+      font-weight: 600;
+      color: rgba(52,211,153,0.95);
+    }
+
+    .hero-text {
+      margin-top: 22px;
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #062012;
+      box-shadow: 0 15px 35px rgba(16,185,129,0.32);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: white;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .stats {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat-card { padding: 22px; }
+    .stat-value { font-size: 32px; font-weight: 700; }
+    .stat-label { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.55); }
+
+    .hero-card {
+      position: relative;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(50px);
+      opacity: 0.8;
+    }
+
+    .hero-card::before {
+      width: 130px; height: 130px; left: -24px; top: 42px;
+      background: rgba(52,211,153,0.22);
+    }
+
+    .hero-card::after {
+      width: 110px; height: 110px; right: -10px; top: 10px;
+      background: rgba(56,189,248,0.2);
+    }
+
+    .hero-card-inner {
+      position: relative;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card-title { margin-top: 8px; font-size: 30px; font-weight: 700; }
+
+    .dots { display: flex; gap: 8px; }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+    .dot:nth-child(1) { background: var(--accent); }
+    .dot:nth-child(2) { background: var(--accent-2); animation-delay: 0.2s; }
+    .dot:nth-child(3) { background: rgba(255,255,255,0.4); animation-delay: 0.4s; }
+
+    .image-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.8);
+    }
+
+    .image-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,17,27,0.88), transparent 44%);
+      pointer-events: none;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .location-badge {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.26);
+      backdrop-filter: blur(10px);
+    }
+
+    .mini-cards {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mini-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      transition: 0.25s ease;
+    }
+
+    .mini-card:hover { transform: translateY(-4px); }
+    .mini-icon { font-size: 22px; color: var(--accent); }
+    .mini-label { margin-top: 12px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.86); }
+
+    .marquee-wrap { padding: 18px 0 10px; }
+    .marquee-box { overflow: hidden; padding: 16px 0; }
+    .marquee {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scroll-left 26s linear infinite;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      font-size: 14px;
+      color: rgba(255,255,255,0.76);
+      white-space: nowrap;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-grid-2 {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .section-header {
+      max-width: 680px;
+    }
+
+    .section-header .eyebrow { letter-spacing: 0.34em; }
+    .section-header h2 {
+      margin: 16px 0 0;
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .summary-card,
+    .education-card,
+    .contact-card { padding: 32px; }
+
+    .summary-row { display: flex; align-items: flex-start; gap: 16px; }
+    .summary-icon,
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(52,211,153,0.12);
+      color: var(--accent);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .summary-title,
+    .education-title { font-size: 28px; font-weight: 700; }
+    .summary-text,
+    .education-text { margin-top: 14px; font-size: 16px; line-height: 1.9; color: var(--muted); }
+
+    .cards-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .expertise-card { padding: 28px; transition: 0.3s ease; }
+    .expertise-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(52,211,153,0.3);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .expertise-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(52,211,153,0.2), rgba(56,189,248,0.15));
+      color: var(--accent);
+      font-size: 24px;
+      box-shadow: 0 0 40px rgba(16,185,129,0.15);
+    }
+
+    .expertise-card h3 {
+      margin: 22px 0 0;
+      font-size: 22px;
+    }
+
+    .expertise-card p {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.58);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+      padding-left: 0;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(52,211,153,0.5), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 56px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-bullet {
+      position: absolute;
+      left: 0;
+      top: 28px;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      border: 1px solid rgba(52,211,153,0.2);
+      background: rgba(52,211,153,0.12);
+      color: var(--accent);
+      font-size: 22px;
+      box-shadow: 0 0 28px rgba(16,185,129,0.18);
+    }
+
+    .timeline-card { padding: 30px; }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 0.35fr 1fr;
+      gap: 28px;
+    }
+
+    .period {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .role {
+      margin-top: 14px;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .meta {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.56);
+    }
+
+    .point-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .point-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.66);
+    }
+
+    .point-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 11px;
+      border-radius: 999px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .education-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .education-subtitle {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.8;
+    }
+
+    .contact-box {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+    }
+
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(16,185,129,0.14), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(59,130,246,0.14), transparent 25%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .info-list { display: grid; gap: 14px; }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .info-label {
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .info-value {
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .footer {
+      padding: 28px 0 64px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: rgba(255,255,255,0.42);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.75; }
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-33.333%); }
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .section-grid-2,
+      .contact-grid,
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 780px) {
+      .nav { display: none; }
+      .hero { padding-top: 48px; }
+      .cards-grid,
+      .mini-cards,
+      .stats { grid-template-columns: 1fr; }
+      .timeline-item { padding-left: 0; }
+      .timeline::before, .timeline-bullet { display: none; }
+      .summary-card,
+      .education-card,
+      .contact-card,
+      .timeline-card,
+      .expertise-card,
+      .stat-card { padding: 22px; }
+      .profile-photo { height: 420px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .container { width: min(var(--container), calc(100% - 24px)); }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-badge">🐄</div>
+        <div>
+          <div class="brand-title">Pramudya Duta</div>
+          <div class="brand-subtitle">Livestock Supervisor Portfolio</div>
         </div>
-      </header>
-
-      <main>
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-14 pt-16 lg:grid-cols-[1.06fr_0.94fr] lg:px-10 lg:pb-20 lg:pt-24">
-          <div>
-            <motion.div initial="hidden" animate="show" custom={0.05} variants={fadeUp} className="inline-flex items-center gap-3 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
-              <BadgeCheck className="h-4 w-4" />
-              Final Website Version
-            </motion.div>
-
-            <motion.h1 initial="hidden" animate="show" custom={0.14} variants={fadeUp} className="mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-white md:text-6xl xl:text-7xl">
-              Pramudya Duta Kusuma Wardana Swaizy
-            </motion.h1>
-
-            <motion.p initial="hidden" animate="show" custom={0.22} variants={fadeUp} className="mt-5 max-w-2xl text-xl font-medium text-emerald-300/95">
-              Livestock Supervisor • Animal Science • Feedlot Operation
-            </motion.p>
-
-            <motion.p initial="hidden" animate="show" custom={0.3} variants={fadeUp} className="mt-6 max-w-2xl text-lg leading-8 text-white/66">
-              Professional CV website dengan tampilan lebih rapi, premium, dan kuat secara visual — dirancang untuk menonjolkan kapasitas Anda dalam feedlot operation, health monitoring, feed quality control, animal welfare, dan biosecurity.
-            </motion.p>
-
-            <motion.div initial="hidden" animate="show" custom={0.38} variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
-              <a href="#experience" className="group inline-flex items-center gap-2 rounded-2xl bg-emerald-400 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_15px_35px_rgba(16,185,129,0.32)] transition hover:-translate-y-0.5">
-                Lihat Pengalaman
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </a>
-              <a href="#contact" className="rounded-2xl border border-white/12 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">
-                Kontak Saya
-              </a>
-            </motion.div>
-
-            <motion.div initial="hidden" animate="show" custom={0.46} variants={fadeUp} className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {stats.map((item) => (
-                <GlassCard key={item.label} className="p-5 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/30">
-                  <div className="text-3xl font-semibold text-white">{item.value}</div>
-                  <div className="mt-2 text-sm text-white/55">{item.label}</div>
-                </GlassCard>
-              ))}
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            <div className="absolute -left-8 top-10 h-32 w-32 rounded-full bg-emerald-400/20 blur-3xl" />
-            <div className="absolute -right-4 top-4 h-28 w-28 rounded-full bg-sky-400/20 blur-3xl" />
-
-            <GlassCard className="relative overflow-hidden p-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/6 via-white/[0.04] to-transparent" />
-              <div className="relative rounded-[24px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
-                    <div className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-300">Executive Preview</div>
-                    <div className="mt-2 text-2xl font-semibold">Professional Profile</div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-sky-400 animate-pulse" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/40 animate-pulse" />
-                  </div>
-                </div>
-
-                <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-slate-900/80">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06111b] via-transparent to-transparent" />
-                  <img src={profileImage} alt="Pramudya formal portrait" className="h-[540px] w-full object-cover object-top" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/25 px-4 py-2 text-xs uppercase tracking-[0.26em] text-white/80 backdrop-blur-md">
-                      <MapPin className="h-3.5 w-3.5 text-emerald-300" />
-                      Jakarta, Indonesia
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                  {[
-                    { icon: Beef, label: "Cattle Ops" },
-                    { icon: Stethoscope, label: "Health" },
-                    { icon: ShieldCheck, label: "Biosecurity" },
-                  ].map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <motion.div key={item.label} whileHover={{ y: -4 }} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                        <Icon className="h-5 w-5 text-emerald-300" />
-                        <div className="mt-3 text-sm font-medium text-white/86">{item.label}</div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-            </GlassCard>
-          </motion.div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-4 lg:px-10">
-          <GlassCard className="overflow-hidden py-4">
-            <motion.div
-              animate={{ x: [0, -960] }}
-              transition={{ repeat: Infinity, duration: 26, ease: "linear" }}
-              className="flex min-w-max items-center gap-4 px-4"
-            >
-              {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div key={`${item.label}-${index}`} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-white/75">
-                    <Icon className="h-4 w-4 text-emerald-300" />
-                    <span>{item.label}</span>
-                  </div>
-                );
-              })}
-            </motion.div>
-          </GlassCard>
-        </section>
-
-        <section id="about" className="mx-auto grid max-w-7xl gap-6 px-6 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.65 }}>
-            <SectionHeader
-              eyebrow="About"
-              title="CV website yang tampil lebih kuat, dewasa, dan terpercaya"
-              text="Versi final ini saya rapikan agar visualnya lebih konsisten, copywriting-nya lebih profesional, dan seluruh section lebih enak dibaca untuk recruiter maupun hiring manager."
-            />
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, delay: 0.08 }}>
-            <GlassCard className="p-8 md:p-10">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-300">
-                  <BadgeCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-white">Professional Summary</h3>
-                  <p className="mt-4 text-base leading-8 text-white/66">
-                    Sarjana Peternakan dengan pengalaman lebih dari 2 tahun dalam operasional feedlot skala besar, supervisi ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, biosecurity, dan koordinasi lapangan. Memiliki pendekatan kerja yang disiplin, responsif terhadap kondisi lapangan, dan kuat pada eksekusi SOP serta kolaborasi antar fungsi.
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-          </motion.div>
-        </section>
-
-        <section id="expertise" className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.65 }}>
-            <SectionHeader
-              eyebrow="Expertise"
-              title="Ikon pekerjaan dan animasi dibuat lebih rapi"
-              text="Bagian ini saya poles agar lebih premium: kartu lebih konsisten, glow lebih halus, dan identitas profesi Anda langsung terbaca begitu website dibuka."
-            />
-          </motion.div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {expertise.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -8, scale: 1.01 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <GlassCard className="group h-full p-7 transition duration-300 hover:border-emerald-300/30 hover:bg-white/[0.07]">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-300/20 to-sky-300/15 text-emerald-300 shadow-[0_0_40px_rgba(16,185,129,0.15)] transition group-hover:shadow-[0_0_45px_rgba(16,185,129,0.28)]">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mt-6 text-xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-white/58">{item.text}</p>
-                  </GlassCard>
-                </motion.div>
-              );
-            })}
-          </div>
-        </section>
-
-        <section id="experience" className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.65 }}>
-            <SectionHeader
-              eyebrow="Experience"
-              title="Pengalaman kerja ditata ulang agar lebih elegan"
-              text="Saya rapikan struktur timeline, jarak antar elemen, dan hirarki teks agar recruiter lebih cepat menangkap skala pengalaman dan tanggung jawab Anda."
-            />
-          </motion.div>
-
-          <div className="relative mt-10 space-y-5 before:absolute before:left-[23px] before:top-4 before:h-[calc(100%-32px)] before:w-px before:bg-gradient-to-b before:from-emerald-300/50 before:to-transparent">
-            {timeline.map((item, index) => (
-              <motion.div key={item.role} initial={{ opacity: 0, x: 14 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.22 }} transition={{ duration: 0.55, delay: index * 0.06 }} className="relative pl-14">
-                <div className="absolute left-0 top-7 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-400/12 text-emerald-300 shadow-[0_0_28px_rgba(16,185,129,0.18)]">
-                  <Building2 className="h-5 w-5" />
-                </div>
-                <GlassCard className="p-7 md:p-8">
-                  <div className="grid gap-6 lg:grid-cols-[0.35fr_1fr]">
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-300">{item.period}</div>
-                      <h3 className="mt-3 text-2xl font-semibold text-white">{item.role}</h3>
-                      <p className="mt-2 text-sm leading-7 text-white/56">{item.meta}</p>
-                    </div>
-                    <ul className="space-y-3">
-                      {item.points.map((point) => (
-                        <li key={point} className="flex gap-3 text-sm leading-7 text-white/66">
-                          <span className="mt-[10px] h-2 w-2 shrink-0 rounded-full bg-emerald-300" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section id="education" className="mx-auto grid max-w-7xl gap-6 px-6 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.65 }}>
-            <SectionHeader
-              eyebrow="Education"
-              title="Pendidikan dan riset ditampilkan lebih clean"
-              text="Bagian akademik sekarang dibuat lebih sederhana dan matang agar tetap kuat secara isi tanpa membuat halaman terasa penuh."
-            />
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.68, delay: 0.05 }} className="grid gap-5">
-            <GlassCard className="p-8">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-300">
-                  <GraduationCap className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-white">Universitas Brawijaya</h3>
-                  <p className="mt-2 text-white/58">S1 Peternakan • 2019 — 2023 • IPK 3,75</p>
-                  <p className="mt-4 text-sm leading-7 text-white/66">
-                    Fokus akademik pada animal science, manajemen peternakan, kesehatan ternak, dan praktik industri penggemukan sapi potong.
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-
-            <GlassCard className="p-8">
-              <div className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-300">Academic Project</div>
-              <h3 className="mt-3 text-2xl font-semibold text-white">Undergraduate Thesis Research</h3>
-              <p className="mt-2 text-white/58">Produksi Karkas Brahman Cross Steer dan Heifer</p>
-              <p className="mt-4 text-sm leading-7 text-white/66">
-                Penelitian terhadap 210 ekor sapi Brahman Cross untuk menganalisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost (IOFC). Bagian ini memberi sentuhan akademik yang kuat pada website tanpa mengganggu alur visual utama.
-              </p>
-            </GlassCard>
-          </motion.div>
-        </section>
-
-        <section id="contact" className="mx-auto max-w-7xl px-6 pb-10 pt-14 lg:px-10 lg:pb-14 lg:pt-20">
-          <GlassCard className="relative overflow-hidden p-8 md:p-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.14),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_25%)]" />
-            <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">Contact</div>
-                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Siap dipakai sebagai website CV final</h2>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-white/64">
-                  Struktur, copywriting, warna, dan animasi sudah saya rapikan menjadi versi final yang lebih profesional. Dari sini, website bisa langsung dijadikan dasar build production dengan tombol WhatsApp, download CV, dan domain pribadi.
-                </p>
-              </div>
-
-              <div className="grid gap-4">
-                {[
-                  { icon: Mail, title: "Email", value: "pramudyaduta9@gmail.com" },
-                  { icon: Phone, title: "Phone", value: "+62 811-1202-401" },
-                  { icon: MapPin, title: "Location", value: "Jakarta, Indonesia" },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.title} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-300">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <div className="text-xs uppercase tracking-[0.25em] text-white/38">{item.title}</div>
-                        <div className="mt-1 text-sm font-medium text-white/86">{item.value}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </GlassCard>
-        </section>
-
-        <footer className="mx-auto max-w-7xl px-6 pb-16 pt-6 lg:px-10">
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/42 md:flex-row md:items-center md:justify-between">
-            <div>© 2026 Pramudya Duta Kusuma Wardana Swaizy</div>
-            <div className="flex flex-wrap gap-4 text-white/50">
-              <a href="#about" className="hover:text-emerald-300">About</a>
-              <a href="#experience" className="hover:text-emerald-300">Experience</a>
-              <a href="#education" className="hover:text-emerald-300">Education</a>
-              <a href="#contact" className="hover:text-emerald-300">Contact</a>
-            </div>
-          </div>
-        </footer>
-      </main>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  );
-}
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="pill reveal visible">✅ Final Website Version</div>
+        <h1 class="reveal visible delay-1">Pramudya Duta Kusuma Wardana Swaizy</h1>
+        <div class="hero-role reveal visible delay-2">Livestock Supervisor • Animal Science • Feedlot Operation</div>
+        <p class="hero-text reveal visible delay-3">
+          Professional CV website dengan tampilan lebih rapi, premium, dan kuat secara visual — dirancang untuk menonjolkan kapasitas Anda dalam feedlot operation, health monitoring, feed quality control, animal welfare, dan biosecurity.
+        </p>
+
+        <div class="button-row reveal visible delay-4">
+          <a class="btn btn-primary" href="#experience">Lihat Pengalaman →</a>
+          <a class="btn btn-secondary" href="#contact">Kontak Saya</a>
+        </div>
+
+        <div class="stats reveal visible delay-4">
+          <div class="glass stat-card"><div class="stat-value">2+</div><div class="stat-label">Years in Feedlot</div></div>
+          <div class="glass stat-card"><div class="stat-value">6,000</div><div class="stat-label">Head Capacity</div></div>
+          <div class="glass stat-card"><div class="stat-value">3.75</div><div class="stat-label">GPA</div></div>
+          <div class="glass stat-card"><div class="stat-value">210</div><div class="stat-label">Research Sample</div></div>
+        </div>
+      </div>
+
+      <div class="glass hero-card reveal">
+        <div class="hero-card-inner">
+          <div class="card-top">
+            <div>
+              <div class="eyebrow">Executive Preview</div>
+              <div class="card-title">Professional Profile</div>
+            </div>
+            <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+
+          <div class="image-shell">
+            <!-- Ganti src di bawah ini dengan foto Anda di repo GitHub, misalnya assets/profile.jpg -->
+            <img class="profile-photo" src="assets/profile.jpg" alt="Pramudya formal portrait" />
+            <div class="location-badge">📍 Jakarta, Indonesia</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini-card"><div class="mini-icon">🐄</div><div class="mini-label">Cattle Ops</div></div>
+            <div class="mini-card"><div class="mini-icon">🩺</div><div class="mini-label">Animal Health</div></div>
+            <div class="mini-card"><div class="mini-icon">🛡️</div><div class="mini-label">Biosecurity</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container marquee-wrap">
+      <div class="glass marquee-box reveal">
+        <div class="marquee">
+          <div class="marquee-item">🐄 Cattle Management</div>
+          <div class="marquee-item">❤️ Animal Welfare</div>
+          <div class="marquee-item">🩺 Health Monitoring</div>
+          <div class="marquee-item">🌱 Feed Quality</div>
+          <div class="marquee-item">🛡️ Biosecurity</div>
+          <div class="marquee-item">📋 SOP Discipline</div>
+          <div class="marquee-item">📈 Operational Control</div>
+          <div class="marquee-item">🐄 Cattle Management</div>
+          <div class="marquee-item">❤️ Animal Welfare</div>
+          <div class="marquee-item">🩺 Health Monitoring</div>
+          <div class="marquee-item">🌱 Feed Quality</div>
+          <div class="marquee-item">🛡️ Biosecurity</div>
+          <div class="marquee-item">📋 SOP Discipline</div>
+          <div class="marquee-item">📈 Operational Control</div>
+          <div class="marquee-item">🐄 Cattle Management</div>
+          <div class="marquee-item">❤️ Animal Welfare</div>
+          <div class="marquee-item">🩺 Health Monitoring</div>
+          <div class="marquee-item">🌱 Feed Quality</div>
+          <div class="marquee-item">🛡️ Biosecurity</div>
+          <div class="marquee-item">📋 SOP Discipline</div>
+          <div class="marquee-item">📈 Operational Control</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container section-grid-2">
+        <div class="section-header reveal">
+          <div class="eyebrow">About</div>
+          <h2>CV website yang tampil lebih kuat, dewasa, dan terpercaya</h2>
+          <p>
+            Versi final ini dirapikan agar visualnya lebih konsisten, copywriting-nya lebih profesional, dan seluruh section lebih enak dibaca untuk recruiter maupun hiring manager.
+          </p>
+        </div>
+        <div class="glass summary-card reveal delay-1">
+          <div class="summary-row">
+            <div class="summary-icon">⭐</div>
+            <div>
+              <div class="summary-title">Professional Summary</div>
+              <div class="summary-text">
+                Sarjana Peternakan dengan pengalaman lebih dari 2 tahun dalam operasional feedlot skala besar, supervisi ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, biosecurity, dan koordinasi lapangan. Memiliki pendekatan kerja yang disiplin, responsif terhadap kondisi lapangan, dan kuat pada eksekusi SOP serta kolaborasi antar fungsi.
+              </div>
+            </div>
+          </div>
