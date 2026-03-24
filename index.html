@@ -10,20 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #06111b;
-      --bg-soft: rgba(255,255,255,0.05);
-      --bg-card: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.1);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.64);
-      --subtle: rgba(255,255,255,0.46);
+      --bg: #07111c;
+      --bg-2: #091827;
+      --card: rgba(255,255,255,0.06);
+      --card-2: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: #f8fafc;
+      --muted: rgba(248,250,252,0.72);
+      --subtle: rgba(248,250,252,0.48);
       --accent: #34d399;
       --accent-2: #38bdf8;
-      --shadow: 0 20px 80px rgba(0,0,0,0.28);
+      --shadow: 0 20px 70px rgba(0,0,0,0.30);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 18px;
-      --container: 1200px;
+      --container: 1180px;
+      --header-h: 78px;
     }
 
     * { box-sizing: border-box; }
@@ -33,11 +35,9 @@
       font-family: 'Inter', sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 18%, rgba(16,185,129,0.16), transparent 18%),
-        radial-gradient(circle at 85% 14%, rgba(59,130,246,0.14), transparent 22%),
-        radial-gradient(circle at 78% 78%, rgba(16,185,129,0.1), transparent 22%),
-        linear-gradient(180deg, #06111b 0%, #081522 42%, #050b12 100%);
-      min-height: 100vh;
+        radial-gradient(circle at 12% 18%, rgba(16,185,129,0.14), transparent 18%),
+        radial-gradient(circle at 85% 14%, rgba(56,189,248,0.13), transparent 20%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 46%, #050c14 100%);
       overflow-x: hidden;
     }
 
@@ -45,17 +45,18 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 72px 72px;
-      opacity: 0.08;
       pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.10;
       z-index: -1;
     }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
+    section { scroll-margin-top: calc(var(--header-h) + 18px); }
 
     .container {
       width: min(var(--container), calc(100% - 32px));
@@ -63,24 +64,25 @@
     }
 
     .glass {
-      background: var(--bg-card);
+      background: var(--card);
       border: 1px solid var(--border);
-      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
       border-radius: var(--radius-xl);
     }
 
     .header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
+      height: var(--header-h);
       border-bottom: 1px solid var(--border);
-      background: rgba(6,17,27,0.72);
-      backdrop-filter: blur(18px);
+      background: rgba(7,17,28,0.78);
+      backdrop-filter: blur(16px);
     }
 
     .header-inner {
-      min-height: 76px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -91,32 +93,37 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }
 
-    .brand-badge {
-      width: 44px;
-      height: 44px;
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      border-radius: 16px;
-      background: rgba(52,211,153,0.1);
+      background: rgba(52,211,153,0.10);
+      border: 1px solid rgba(52,211,153,0.20);
+      box-shadow: 0 0 24px rgba(16,185,129,0.20);
       color: var(--accent);
-      border: 1px solid rgba(52,211,153,0.2);
-      box-shadow: 0 0 24px rgba(16,185,129,0.22);
-      font-size: 22px;
+      font-size: 20px;
+      flex-shrink: 0;
     }
 
-    .brand-title {
-      font-size: 14px;
-      font-weight: 700;
+    .brand h3 {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.1;
       letter-spacing: 0.28em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .brand-subtitle {
-      margin-top: 4px;
+    .brand p {
+      margin: 4px 0 0;
       font-size: 12px;
       color: var(--subtle);
+      white-space: nowrap;
     }
 
     .nav {
@@ -124,125 +131,141 @@
       align-items: center;
       gap: 28px;
       font-size: 14px;
-      color: rgba(255,255,255,0.68);
+      color: rgba(255,255,255,0.70);
     }
 
     .nav a:hover { color: var(--accent); }
 
     .hero {
-      padding: 72px 0 28px;
+      padding: 56px 0 20px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 36px;
       align-items: center;
     }
 
-    .pill {
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.2);
+      background: rgba(52,211,153,0.10);
+      border: 1px solid rgba(52,211,153,0.18);
       color: #d1fae5;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
+      animation: fadeUp .6s ease both;
     }
 
     h1 {
-      margin: 22px 0 0;
-      font-size: clamp(44px, 6vw, 76px);
+      margin: 20px 0 0;
+      font-size: clamp(44px, 6vw, 72px);
       line-height: 1.02;
       letter-spacing: -0.04em;
+      animation: fadeUp .7s ease .08s both;
     }
 
-    .hero-role {
+    .role {
       margin-top: 18px;
-      font-size: 20px;
-      font-weight: 600;
-      color: rgba(52,211,153,0.95);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      animation: fadeUp .7s ease .14s both;
     }
 
-    .hero-text {
-      margin-top: 22px;
-      max-width: 720px;
+    .lead {
+      margin-top: 18px;
+      max-width: 680px;
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--muted);
+      animation: fadeUp .7s ease .20s both;
     }
 
-    .button-row {
+    .cta-row {
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 34px;
+      animation: fadeUp .7s ease .26s both;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 24px;
+      padding: 14px 22px;
       border-radius: 18px;
       font-size: 14px;
       font-weight: 700;
-      transition: 0.25s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #062012;
-      box-shadow: 0 15px 35px rgba(16,185,129,0.32);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: white;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
     }
 
     .btn:hover { transform: translateY(-2px); }
 
+    .btn-primary {
+      background: var(--accent);
+      color: #062012;
+      box-shadow: 0 12px 28px rgba(16,185,129,0.26);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+    }
+
     .stats {
-      margin-top: 40px;
+      margin-top: 34px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
+      animation: fadeUp .7s ease .32s both;
     }
 
     .stat-card { padding: 22px; }
-    .stat-value { font-size: 32px; font-weight: 700; }
-    .stat-label { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.55); }
+    .stat-value { font-size: 34px; font-weight: 800; line-height: 1; }
+    .stat-label { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.45; }
 
-    .hero-card {
+    .profile-card {
       position: relative;
       padding: 16px;
       overflow: hidden;
+      animation: fadeUp .75s ease .18s both;
     }
 
-    .hero-card::before,
-    .hero-card::after {
+    .profile-card::before,
+    .profile-card::after {
       content: "";
       position: absolute;
       border-radius: 999px;
-      filter: blur(50px);
-      opacity: 0.8;
+      filter: blur(52px);
+      pointer-events: none;
     }
 
-    .hero-card::before {
-      width: 130px; height: 130px; left: -24px; top: 42px;
-      background: rgba(52,211,153,0.22);
+    .profile-card::before {
+      width: 140px;
+      height: 140px;
+      left: -24px;
+      top: 48px;
+      background: rgba(52,211,153,0.18);
     }
 
-    .hero-card::after {
-      width: 110px; height: 110px; right: -10px; top: 10px;
-      background: rgba(56,189,248,0.2);
+    .profile-card::after {
+      width: 120px;
+      height: 120px;
+      right: -10px;
+      top: 12px;
+      background: rgba(56,189,248,0.18);
     }
 
-    .hero-card-inner {
+    .profile-inner {
       position: relative;
       padding: 20px;
       border-radius: 24px;
@@ -250,10 +273,10 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
     }
 
-    .card-top {
+    .profile-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
       margin-bottom: 18px;
     }
@@ -266,43 +289,53 @@
       color: var(--accent);
     }
 
-    .card-title { margin-top: 8px; font-size: 30px; font-weight: 700; }
+    .profile-title {
+      margin-top: 8px;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
 
     .dots { display: flex; gap: 8px; }
-    .dot {
+    .dots span {
       width: 10px;
       height: 10px;
       border-radius: 999px;
       animation: pulse 1.8s infinite ease-in-out;
     }
-    .dot:nth-child(1) { background: var(--accent); }
-    .dot:nth-child(2) { background: var(--accent-2); animation-delay: 0.2s; }
-    .dot:nth-child(3) { background: rgba(255,255,255,0.4); animation-delay: 0.4s; }
+    .dots span:nth-child(1) { background: var(--accent); }
+    .dots span:nth-child(2) { background: var(--accent-2); animation-delay: .2s; }
+    .dots span:nth-child(3) { background: rgba(255,255,255,0.35); animation-delay: .4s; }
 
-    .image-shell {
+    .profile-visual {
       position: relative;
-      overflow: hidden;
+      min-height: 530px;
       border-radius: 24px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      background: rgba(15,23,42,0.8);
+      background:
+        linear-gradient(to top, rgba(7,17,28,0.92), transparent 45%),
+        url('assets/profile.jpg') center top / cover no-repeat,
+        linear-gradient(135deg, rgba(52,211,153,0.18), rgba(56,189,248,0.12));
     }
 
-    .image-shell::after {
-      content: "";
+    .profile-visual::before {
+      content: "PHOTO / PROFILE";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(6,17,27,0.88), transparent 44%);
-      pointer-events: none;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.20);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      z-index: 0;
     }
 
-    .profile-photo {
-      width: 100%;
-      height: 540px;
-      object-fit: cover;
-      object-position: top center;
-    }
+    .profile-visual.has-image::before { display: none; }
 
-    .location-badge {
+    .location {
       position: absolute;
       left: 20px;
       bottom: 20px;
@@ -313,17 +346,18 @@
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 12px;
-      letter-spacing: 0.24em;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      background: rgba(0,0,0,0.28);
       border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.26);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
     }
 
-    .mini-cards {
+    .mini-grid {
       margin-top: 16px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
@@ -332,59 +366,59 @@
       border-radius: 18px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.05);
-      transition: 0.25s ease;
+      transition: transform .22s ease, border-color .22s ease;
     }
 
-    .mini-card:hover { transform: translateY(-4px); }
-    .mini-icon { font-size: 22px; color: var(--accent); }
-    .mini-label { margin-top: 12px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.86); }
+    .mini-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52,211,153,0.24);
+    }
 
-    .marquee-wrap { padding: 18px 0 10px; }
-    .marquee-box { overflow: hidden; padding: 16px 0; }
-    .marquee {
+    .mini-icon { font-size: 22px; }
+    .mini-label { margin-top: 12px; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.86); }
+
+    .marquee-section { padding: 10px 0 12px; }
+    .marquee-shell { overflow: hidden; padding: 16px 0; }
+    .marquee-track {
       display: flex;
       gap: 16px;
       width: max-content;
-      animation: scroll-left 26s linear infinite;
+      animation: marquee 24s linear infinite;
     }
 
     .marquee-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 14px 18px;
       border-radius: 18px;
-      border: 1px solid var(--border);
       background: rgba(255,255,255,0.05);
-      font-size: 14px;
-      color: rgba(255,255,255,0.76);
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.78);
       white-space: nowrap;
+      font-size: 14px;
+      font-weight: 600;
     }
 
-    .section {
-      padding: 72px 0;
-    }
+    .section { padding: 72px 0; }
 
-    .section-grid-2 {
+    .section-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 24px;
       align-items: start;
     }
 
-    .section-header {
-      max-width: 680px;
-    }
+    .section-head { max-width: 660px; }
 
-    .section-header .eyebrow { letter-spacing: 0.34em; }
-    .section-header h2 {
+    .section-head h2 {
       margin: 16px 0 0;
-      font-size: clamp(32px, 4vw, 46px);
+      font-size: clamp(32px, 4vw, 44px);
       line-height: 1.12;
       letter-spacing: -0.03em;
     }
 
-    .section-header p {
+    .section-head p {
       margin-top: 16px;
       font-size: 16px;
       line-height: 1.9;
@@ -392,10 +426,17 @@
     }
 
     .summary-card,
-    .education-card,
-    .contact-card { padding: 32px; }
+    .edu-card,
+    .contact-card,
+    .timeline-card,
+    .skill-card { padding: 30px; }
 
-    .summary-row { display: flex; align-items: flex-start; gap: 16px; }
+    .summary-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
     .summary-icon,
     .info-icon {
       width: 48px;
@@ -409,53 +450,64 @@
       flex-shrink: 0;
     }
 
-    .summary-title,
-    .education-title { font-size: 28px; font-weight: 700; }
-    .summary-text,
-    .education-text { margin-top: 14px; font-size: 16px; line-height: 1.9; color: var(--muted); }
+    .summary-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
 
-    .cards-grid {
+    .summary-text {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .skill-grid {
       margin-top: 40px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
-    .expertise-card { padding: 28px; transition: 0.3s ease; }
-    .expertise-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(52,211,153,0.3);
+    .skill-card {
+      transition: transform .24s ease, border-color .24s ease, background .24s ease;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(52,211,153,0.26);
       background: rgba(255,255,255,0.07);
     }
 
-    .expertise-icon {
+    .skill-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, rgba(52,211,153,0.2), rgba(56,189,248,0.15));
-      color: var(--accent);
       font-size: 24px;
-      box-shadow: 0 0 40px rgba(16,185,129,0.15);
+      background: linear-gradient(135deg, rgba(52,211,153,0.20), rgba(56,189,248,0.14));
+      box-shadow: 0 0 34px rgba(16,185,129,0.12);
     }
 
-    .expertise-card h3 {
+    .skill-card h3 {
       margin: 22px 0 0;
       font-size: 22px;
+      line-height: 1.2;
     }
 
-    .expertise-card p {
+    .skill-card p {
       margin-top: 14px;
       font-size: 14px;
       line-height: 1.9;
-      color: rgba(255,255,255,0.58);
+      color: rgba(255,255,255,0.62);
     }
 
     .timeline {
       position: relative;
       margin-top: 40px;
-      padding-left: 0;
     }
 
     .timeline::before {
@@ -465,16 +517,16 @@
       top: 16px;
       bottom: 16px;
       width: 1px;
-      background: linear-gradient(to bottom, rgba(52,211,153,0.5), transparent);
+      background: linear-gradient(to bottom, rgba(52,211,153,0.46), transparent);
     }
 
     .timeline-item {
       position: relative;
-      padding-left: 56px;
+      padding-left: 58px;
       margin-bottom: 20px;
     }
 
-    .timeline-bullet {
+    .timeline-badge {
       position: absolute;
       left: 0;
       top: 28px;
@@ -483,19 +535,16 @@
       display: grid;
       place-items: center;
       border-radius: 18px;
-      border: 1px solid rgba(52,211,153,0.2);
       background: rgba(52,211,153,0.12);
-      color: var(--accent);
-      font-size: 22px;
-      box-shadow: 0 0 28px rgba(16,185,129,0.18);
+      border: 1px solid rgba(52,211,153,0.20);
+      box-shadow: 0 0 26px rgba(16,185,129,0.18);
+      font-size: 20px;
     }
-
-    .timeline-card { padding: 30px; }
 
     .timeline-grid {
       display: grid;
       grid-template-columns: 0.35fr 1fr;
-      gap: 28px;
+      gap: 26px;
     }
 
     .period {
@@ -506,21 +555,21 @@
       color: var(--accent);
     }
 
-    .role {
+    .timeline-title {
       margin-top: 14px;
       font-size: 30px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.15;
     }
 
-    .meta {
+    .timeline-meta {
       margin-top: 12px;
       font-size: 14px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.56);
+      color: rgba(255,255,255,0.58);
     }
 
-    .point-list {
+    .timeline-points {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -528,16 +577,16 @@
       gap: 12px;
     }
 
-    .point-list li {
+    .timeline-points li {
       display: flex;
-      align-items: flex-start;
       gap: 12px;
+      align-items: flex-start;
       font-size: 14px;
       line-height: 1.9;
       color: rgba(255,255,255,0.66);
     }
 
-    .point-list li::before {
+    .timeline-points li::before {
       content: "";
       width: 8px;
       height: 8px;
@@ -547,30 +596,45 @@
       flex-shrink: 0;
     }
 
-    .education-grid {
+    .edu-grid {
       display: grid;
       gap: 20px;
     }
 
-    .education-subtitle {
+    .edu-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .edu-sub {
       margin-top: 10px;
+      font-size: 15px;
       color: rgba(255,255,255,0.58);
       line-height: 1.8;
     }
 
-    .contact-box {
-      position: relative;
-      overflow: hidden;
-      padding: 34px;
+    .edu-text {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--muted);
     }
 
-    .contact-box::before {
+    .contact-wrap { padding-bottom: 20px; }
+
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
         radial-gradient(circle at top right, rgba(16,185,129,0.14), transparent 25%),
-        radial-gradient(circle at bottom left, rgba(59,130,246,0.14), transparent 25%);
+        radial-gradient(circle at bottom left, rgba(56,189,248,0.14), transparent 25%);
       pointer-events: none;
     }
 
@@ -596,97 +660,90 @@
 
     .info-label {
       font-size: 12px;
-      letter-spacing: 0.24em;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.40);
     }
 
     .info-value {
       margin-top: 6px;
       font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.86);
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
     }
 
     .footer {
-      padding: 28px 0 64px;
+      padding: 26px 0 58px;
     }
 
     .footer-inner {
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
       font-size: 14px;
-      color: rgba(255,255,255,0.42);
+      color: rgba(255,255,255,0.46);
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      color: rgba(255,255,255,0.5);
     }
 
     .footer-links a:hover { color: var(--accent); }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 0.08s; }
-    .delay-2 { transition-delay: 0.16s; }
-    .delay-3 { transition-delay: 0.24s; }
-    .delay-4 { transition-delay: 0.32s; }
-
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.75; }
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.18); opacity: .78; }
     }
 
-    @keyframes scroll-left {
+    @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-33.333%); }
     }
 
-    @media (max-width: 1080px) {
-      .hero,
-      .section-grid-2,
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .section-grid,
       .contact-grid,
       .timeline-grid {
         grid-template-columns: 1fr;
       }
 
-      .cards-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats { grid-template-columns: repeat(2, 1fr); }
+      .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 760px) {
+      :root { --header-h: 70px; }
+      .container { width: min(var(--container), calc(100% - 24px)); }
       .nav { display: none; }
-      .hero { padding-top: 48px; }
-      .cards-grid,
-      .mini-cards,
+      .hero { padding-top: 42px; }
+      .skill-grid,
+      .mini-grid,
       .stats { grid-template-columns: 1fr; }
+      .timeline::before,
+      .timeline-badge { display: none; }
       .timeline-item { padding-left: 0; }
-      .timeline::before, .timeline-bullet { display: none; }
+      .profile-visual { min-height: 420px; }
       .summary-card,
-      .education-card,
+      .edu-card,
       .contact-card,
       .timeline-card,
-      .expertise-card,
+      .skill-card,
       .stat-card { padding: 22px; }
-      .profile-photo { height: 420px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
-      .container { width: min(var(--container), calc(100% - 24px)); }
+      .brand h3 { font-size: 12px; letter-spacing: 0.18em; }
+      .brand p { font-size: 11px; }
     }
   </style>
 </head>
@@ -694,10 +751,10 @@
   <header class="header">
     <div class="container header-inner">
       <div class="brand">
-        <div class="brand-badge">🐄</div>
+        <div class="brand-icon">🐄</div>
         <div>
-          <div class="brand-title">Pramudya Duta</div>
-          <div class="brand-subtitle">Livestock Supervisor Portfolio</div>
+          <h3>Pramudya Duta</h3>
+          <p>Livestock Supervisor Portfolio</p>
         </div>
       </div>
       <nav class="nav">
@@ -711,97 +768,97 @@
   </header>
 
   <main>
-    <section class="container hero">
-      <div>
-        <div class="pill reveal visible">✅ Final Website Version</div>
-        <h1 class="reveal visible delay-1">Pramudya Duta Kusuma Wardana Swaizy</h1>
-        <div class="hero-role reveal visible delay-2">Livestock Supervisor • Animal Science • Feedlot Operation</div>
-        <p class="hero-text reveal visible delay-3">
-          Professional CV website dengan tampilan lebih rapi, premium, dan kuat secara visual — dirancang untuk menonjolkan kapasitas Anda dalam feedlot operation, health monitoring, feed quality control, animal welfare, dan biosecurity.
-        </p>
-
-        <div class="button-row reveal visible delay-4">
-          <a class="btn btn-primary" href="#experience">Lihat Pengalaman →</a>
-          <a class="btn btn-secondary" href="#contact">Kontak Saya</a>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Livestock Operations • Animal Welfare • Biosecurity</div>
+          <h1>Pramudya Duta Kusuma Wardana Swaizy</h1>
+          <div class="role">Livestock Supervisor • Animal Science • Feedlot Operation</div>
+          <p class="lead">
+            Portofolio profesional yang dirancang untuk menampilkan pengalaman dan kompetensi Anda dalam feedlot operation, animal health monitoring, feed quality control, animal welfare, dan biosecurity secara lebih kredibel, rapi, dan meyakinkan.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#experience">Lihat Pengalaman →</a>
+            <a class="btn btn-secondary" href="#contact">Kontak Saya</a>
+          </div>
+          <div class="stats">
+            <div class="glass stat-card"><div class="stat-value">2+</div><div class="stat-label">Years in Feedlot</div></div>
+            <div class="glass stat-card"><div class="stat-value">6,000</div><div class="stat-label">Head Capacity</div></div>
+            <div class="glass stat-card"><div class="stat-value">3.75</div><div class="stat-label">GPA</div></div>
+            <div class="glass stat-card"><div class="stat-value">210</div><div class="stat-label">Research Sample</div></div>
+          </div>
         </div>
 
-        <div class="stats reveal visible delay-4">
-          <div class="glass stat-card"><div class="stat-value">2+</div><div class="stat-label">Years in Feedlot</div></div>
-          <div class="glass stat-card"><div class="stat-value">6,000</div><div class="stat-label">Head Capacity</div></div>
-          <div class="glass stat-card"><div class="stat-value">3.75</div><div class="stat-label">GPA</div></div>
-          <div class="glass stat-card"><div class="stat-value">210</div><div class="stat-label">Research Sample</div></div>
-        </div>
-      </div>
-
-      <div class="glass hero-card reveal">
-        <div class="hero-card-inner">
-          <div class="card-top">
-            <div>
-              <div class="eyebrow">Executive Preview</div>
-              <div class="card-title">Professional Profile</div>
+        <div class="glass profile-card">
+          <div class="profile-inner">
+            <div class="profile-top">
+              <div>
+                <div class="eyebrow">Executive Preview</div>
+                <div class="profile-title">Professional Profile</div>
+              </div>
+              <div class="dots"><span></span><span></span><span></span></div>
             </div>
-            <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-          </div>
 
-          <div class="image-shell">
-            <!-- Ganti src di bawah ini dengan foto Anda di repo GitHub, misalnya assets/profile.jpg -->
-            <img class="profile-photo" src="assets/profile.jpg" alt="Pramudya formal portrait" />
-            <div class="location-badge">📍 Jakarta, Indonesia</div>
-          </div>
+            <div class="profile-visual" id="profileVisual">
+              <div class="location">📍 Jakarta, Indonesia</div>
+            </div>
 
-          <div class="mini-cards">
-            <div class="mini-card"><div class="mini-icon">🐄</div><div class="mini-label">Cattle Ops</div></div>
-            <div class="mini-card"><div class="mini-icon">🩺</div><div class="mini-label">Animal Health</div></div>
-            <div class="mini-card"><div class="mini-icon">🛡️</div><div class="mini-label">Biosecurity</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><div class="mini-icon">🐄</div><div class="mini-label">Cattle Ops</div></div>
+              <div class="mini-card"><div class="mini-icon">🩺</div><div class="mini-label">Animal Health</div></div>
+              <div class="mini-card"><div class="mini-icon">🛡️</div><div class="mini-label">Biosecurity</div></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container marquee-wrap">
-      <div class="glass marquee-box reveal">
-        <div class="marquee">
-          <div class="marquee-item">🐄 Cattle Management</div>
-          <div class="marquee-item">❤️ Animal Welfare</div>
-          <div class="marquee-item">🩺 Health Monitoring</div>
-          <div class="marquee-item">🌱 Feed Quality</div>
-          <div class="marquee-item">🛡️ Biosecurity</div>
-          <div class="marquee-item">📋 SOP Discipline</div>
-          <div class="marquee-item">📈 Operational Control</div>
-          <div class="marquee-item">🐄 Cattle Management</div>
-          <div class="marquee-item">❤️ Animal Welfare</div>
-          <div class="marquee-item">🩺 Health Monitoring</div>
-          <div class="marquee-item">🌱 Feed Quality</div>
-          <div class="marquee-item">🛡️ Biosecurity</div>
-          <div class="marquee-item">📋 SOP Discipline</div>
-          <div class="marquee-item">📈 Operational Control</div>
-          <div class="marquee-item">🐄 Cattle Management</div>
-          <div class="marquee-item">❤️ Animal Welfare</div>
-          <div class="marquee-item">🩺 Health Monitoring</div>
-          <div class="marquee-item">🌱 Feed Quality</div>
-          <div class="marquee-item">🛡️ Biosecurity</div>
-          <div class="marquee-item">📋 SOP Discipline</div>
-          <div class="marquee-item">📈 Operational Control</div>
+    <section class="marquee-section">
+      <div class="container">
+        <div class="glass marquee-shell">
+          <div class="marquee-track">
+            <div class="marquee-item">🐄 Cattle Management</div>
+            <div class="marquee-item">❤️ Animal Welfare</div>
+            <div class="marquee-item">🩺 Health Monitoring</div>
+            <div class="marquee-item">🌱 Feed Quality</div>
+            <div class="marquee-item">🛡️ Biosecurity</div>
+            <div class="marquee-item">📋 SOP Discipline</div>
+            <div class="marquee-item">📈 Operational Control</div>
+            <div class="marquee-item">🐄 Cattle Management</div>
+            <div class="marquee-item">❤️ Animal Welfare</div>
+            <div class="marquee-item">🩺 Health Monitoring</div>
+            <div class="marquee-item">🌱 Feed Quality</div>
+            <div class="marquee-item">🛡️ Biosecurity</div>
+            <div class="marquee-item">📋 SOP Discipline</div>
+            <div class="marquee-item">📈 Operational Control</div>
+            <div class="marquee-item">🐄 Cattle Management</div>
+            <div class="marquee-item">❤️ Animal Welfare</div>
+            <div class="marquee-item">🩺 Health Monitoring</div>
+            <div class="marquee-item">🌱 Feed Quality</div>
+            <div class="marquee-item">🛡️ Biosecurity</div>
+            <div class="marquee-item">📋 SOP Discipline</div>
+            <div class="marquee-item">📈 Operational Control</div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <div class="container section-grid-2">
-        <div class="section-header reveal">
+      <div class="container section-grid">
+        <div class="section-head">
           <div class="eyebrow">About</div>
-          <h2>CV website yang tampil lebih kuat, dewasa, dan terpercaya</h2>
+          <h2>Profil profesional dengan pengalaman operasional yang kuat</h2>
           <p>
-            Versi final ini dirapikan agar visualnya lebih konsisten, copywriting-nya lebih profesional, dan seluruh section lebih enak dibaca untuk recruiter maupun hiring manager.
+            Halaman ini dirancang untuk memperkenalkan latar belakang, kapabilitas, dan nilai profesional Anda secara jelas kepada recruiter, hiring manager, dan mitra kerja potensial.
           </p>
         </div>
-        <div class="glass summary-card reveal delay-1">
+        <div class="glass summary-card">
           <div class="summary-row">
             <div class="summary-icon">⭐</div>
             <div>
               <div class="summary-title">Professional Summary</div>
               <div class="summary-text">
-                Sarjana Peternakan dengan pengalaman lebih dari 2 tahun dalam operasional feedlot skala besar, supervisi ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, biosecurity, dan koordinasi lapangan. Memiliki pendekatan kerja yang disiplin, responsif terhadap kondisi lapangan, dan kuat pada eksekusi SOP serta kolaborasi antar fungsi.
+                Sarjana Peternakan dengan pengalaman lebih dari 2 tahun dalam operasional feedlot skala besar, supervisi ternak, pemantauan kesehatan sapi, pengendalian kualitas pakan, animal welfare, biosecurity, dan koordinasi lapangan. Terbiasa bekerja dengan standar operasional yang ketat, menjaga stabilitas aktivitas harian, serta mendukung tercapainya target produksi dan kesiapan distribusi.
               </div>
             </div>
           </div>
@@ -811,46 +868,46 @@
 
     <section id="expertise" class="section">
       <div class="container">
-        <div class="section-header reveal">
-          <div class="eyebrow">Expertise</div>
-          <h2>Ikon pekerjaan dan animasi dibuat lebih rapi</h2>
+        <div class="section-head">
+          <div class="eyebrow">Core Expertise</div>
+          <h2>Kompetensi utama dalam operasional feedlot dan pengawasan ternak</h2>
           <p>
-            Bagian ini dipoles agar lebih premium: kartu lebih konsisten, glow lebih halus, dan identitas profesi Anda langsung terbaca begitu website dibuka.
+            Setiap area kompetensi berikut mencerminkan pengalaman praktis Anda di lapangan, mulai dari pengawasan operasional harian hingga penerapan standar biosecurity dan animal welfare.
           </p>
         </div>
 
-        <div class="cards-grid">
-          <div class="glass expertise-card reveal"><div class="expertise-icon">🐄</div><h3>Feedlot Operation</h3><p>Supervisi operasional harian feedlot, kesiapan ternak, ritme kerja kandang, dan stabilitas aktivitas lapangan.</p></div>
-          <div class="glass expertise-card reveal delay-1"><div class="expertise-icon">🩺</div><h3>Animal Health Monitoring</h3><p>Pemantauan kondisi ternak untuk membantu deteksi dini perubahan kesehatan dan tindak lanjut yang lebih cepat.</p></div>
-          <div class="glass expertise-card reveal delay-2"><div class="expertise-icon">🌱</div><h3>Feed Quality Control</h3><p>Kontrol alokasi pakan, kualitas pakan, dan konsistensi rutinitas produksi untuk menjaga performa unit.</p></div>
-          <div class="glass expertise-card reveal"><div class="expertise-icon">🛡️</div><h3>Biosecurity & Welfare</h3><p>Penerapan SOP biosecurity, sanitasi kandang, keselamatan kerja, dan animal welfare secara disiplin.</p></div>
-          <div class="glass expertise-card reveal delay-1"><div class="expertise-icon">📋</div><h3>SOP Implementation</h3><p>Eksekusi standar kerja secara rapi dan konsisten untuk menjaga kualitas operasional dan kesiapan distribusi.</p></div>
-          <div class="glass expertise-card reveal delay-2"><div class="expertise-icon">👥</div><h3>Team Coordination</h3><p>Koordinasi aktivitas harian, problem solving lapangan, dan sinkronisasi kebutuhan operasional lintas fungsi.</p></div>
+        <div class="skill-grid">
+          <div class="glass skill-card"><div class="skill-icon">🐄</div><h3>Feedlot Operation</h3><p>Supervisi operasional harian feedlot, kesiapan ternak, ritme kerja kandang, dan stabilitas aktivitas lapangan.</p></div>
+          <div class="glass skill-card"><div class="skill-icon">🩺</div><h3>Animal Health Monitoring</h3><p>Pemantauan kondisi ternak untuk membantu deteksi dini perubahan kesehatan dan tindak lanjut yang lebih cepat.</p></div>
+          <div class="glass skill-card"><div class="skill-icon">🌱</div><h3>Feed Quality Control</h3><p>Kontrol alokasi pakan, kualitas pakan, dan konsistensi rutinitas produksi untuk menjaga performa unit.</p></div>
+          <div class="glass skill-card"><div class="skill-icon">🛡️</div><h3>Biosecurity & Welfare</h3><p>Penerapan SOP biosecurity, sanitasi kandang, keselamatan kerja, dan animal welfare secara disiplin.</p></div>
+          <div class="glass skill-card"><div class="skill-icon">📋</div><h3>SOP Implementation</h3><p>Eksekusi standar kerja secara rapi dan konsisten untuk menjaga kualitas operasional dan kesiapan distribusi.</p></div>
+          <div class="glass skill-card"><div class="skill-icon">👥</div><h3>Team Coordination</h3><p>Koordinasi aktivitas harian, problem solving lapangan, dan sinkronisasi kebutuhan operasional lintas fungsi.</p></div>
         </div>
       </div>
     </section>
 
     <section id="experience" class="section">
       <div class="container">
-        <div class="section-header reveal">
-          <div class="eyebrow">Experience</div>
-          <h2>Pengalaman kerja ditata ulang agar lebih elegan</h2>
+        <div class="section-head">
+          <div class="eyebrow">Professional Experience</div>
+          <h2>Pengalaman kerja yang menunjukkan kapasitas kepemimpinan dan eksekusi lapangan</h2>
           <p>
-            Struktur timeline dirapikan agar recruiter lebih cepat menangkap skala pengalaman dan tanggung jawab Anda.
+            Riwayat pengalaman ini menegaskan skala tanggung jawab yang Anda pegang, kualitas koordinasi yang Anda jalankan, dan kontribusi Anda dalam menjaga operasional tetap disiplin, efisien, dan terarah.
           </p>
         </div>
 
         <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-bullet">🏢</div>
+          <div class="timeline-item">
+            <div class="timeline-badge">🏢</div>
             <div class="glass timeline-card">
               <div class="timeline-grid">
                 <div>
                   <div class="period">Jul 2024 — Sekarang</div>
-                  <div class="role">Supervisor — Pasir Tengah Feedlot</div>
-                  <div class="meta">PT Sumber Daya Multikarya • Cianjur • ±6.000 ekor sapi</div>
+                  <div class="timeline-title">Supervisor — Pasir Tengah Feedlot</div>
+                  <div class="timeline-meta">PT Sumber Daya Multikarya • Cianjur • ±6.000 ekor sapi</div>
                 </div>
-                <ul class="point-list">
+                <ul class="timeline-points">
                   <li>Mengawasi operasional harian feedlot skala besar, mencakup alokasi pakan, pemantauan kondisi ternak, kebersihan kandang, dan kedisiplinan kerja lapangan.</li>
                   <li>Memastikan pelaksanaan SOP kualitas pakan, animal welfare, biosecurity, dan rutinitas produksi berjalan konsisten.</li>
                   <li>Berkoordinasi dengan tim operasional untuk menjaga kesiapan ternak, target output, dan kebutuhan distribusi.</li>
@@ -859,16 +916,16 @@
             </div>
           </div>
 
-          <div class="timeline-item reveal delay-1">
-            <div class="timeline-bullet">🏢</div>
+          <div class="timeline-item">
+            <div class="timeline-badge">🏢</div>
             <div class="glass timeline-card">
               <div class="timeline-grid">
                 <div>
                   <div class="period">Nov 2023 — Jul 2024</div>
-                  <div class="role">Supervisor — Rangkasbitung Feedlot</div>
-                  <div class="meta">PT Sumber Daya Multikarya • Banten • ±1.500 ekor sapi</div>
+                  <div class="timeline-title">Supervisor — Rangkasbitung Feedlot</div>
+                  <div class="timeline-meta">PT Sumber Daya Multikarya • Banten • ±1.500 ekor sapi</div>
                 </div>
-                <ul class="point-list">
+                <ul class="timeline-points">
                   <li>Menangani supervisi operasional unit feedlot pertama dengan fokus pada kontrol pakan, kebersihan kandang, dan kepatuhan welfare.</li>
                   <li>Melakukan pemantauan kesehatan ternak secara terstruktur untuk mendukung deteksi dini gejala penyakit.</li>
                   <li>Terlibat dalam seluruh siklus kerja feedlot dari feed preparation hingga koordinasi pengiriman.</li>
@@ -877,16 +934,16 @@
             </div>
           </div>
 
-          <div class="timeline-item reveal delay-2">
-            <div class="timeline-bullet">🏢</div>
+          <div class="timeline-item">
+            <div class="timeline-badge">🏢</div>
             <div class="glass timeline-card">
               <div class="timeline-grid">
                 <div>
                   <div class="period">Mar 2021 — Sep 2023</div>
-                  <div class="role">Operational Manager</div>
-                  <div class="meta">PT Duta Raya Properindo • Bekasi</div>
+                  <div class="timeline-title">Operational Manager</div>
+                  <div class="timeline-meta">PT Duta Raya Properindo • Bekasi</div>
                 </div>
-                <ul class="point-list">
+                <ul class="timeline-points">
                   <li>Mengelola kelancaran operasional proyek dan memastikan aktivitas berjalan sesuai target, mutu, timeline, dan kebutuhan perusahaan.</li>
                   <li>Memimpin koordinasi aktivitas harian, alokasi sumber daya, dan pengawasan proses untuk meningkatkan efektivitas pelaksanaan.</li>
                   <li>Mengembangkan kekuatan pada leadership, komunikasi lintas fungsi, dan penyelesaian masalah yang relevan untuk peran supervisi lapangan.</li>
@@ -899,62 +956,54 @@
     </section>
 
     <section id="education" class="section">
-      <div class="container section-grid-2">
-        <div class="section-header reveal">
-          <div class="eyebrow">Education</div>
-          <h2>Pendidikan dan riset ditampilkan lebih clean</h2>
+      <div class="container section-grid">
+        <div class="section-head">
+          <div class="eyebrow">Education & Research</div>
+          <h2>Latar belakang akademik yang mendukung kemampuan teknis di lapangan</h2>
           <p>
-            Bagian akademik dibuat lebih sederhana dan matang agar tetap kuat secara isi tanpa membuat halaman terasa penuh.
+            Pendidikan formal dan pengalaman riset ini memperkuat fondasi pengetahuan Anda dalam bidang peternakan, sekaligus melengkapi pengalaman praktis yang telah dibangun di lingkungan kerja profesional.
           </p>
         </div>
 
-        <div class="education-grid">
-          <div class="glass education-card reveal delay-1">
+        <div class="edu-grid">
+          <div class="glass edu-card">
             <div class="summary-row">
               <div class="summary-icon">🎓</div>
               <div>
-                <div class="education-title">Universitas Brawijaya</div>
-                <div class="education-subtitle">S1 Peternakan • 2019 — 2023 • IPK 3,75</div>
-                <div class="education-text">Fokus akademik pada animal science, manajemen peternakan, kesehatan ternak, dan praktik industri penggemukan sapi potong.</div>
+                <div class="edu-title">Universitas Brawijaya</div>
+                <div class="edu-sub">S1 Peternakan • 2019 — 2023 • IPK 3,75</div>
+                <div class="edu-text">Fokus akademik pada animal science, manajemen peternakan, kesehatan ternak, dan praktik industri penggemukan sapi potong.</div>
               </div>
             </div>
           </div>
 
-          <div class="glass education-card reveal delay-2">
+          <div class="glass edu-card">
             <div class="eyebrow">Academic Project</div>
-            <div class="education-title" style="margin-top: 12px;">Undergraduate Thesis Research</div>
-            <div class="education-subtitle">Produksi Karkas Brahman Cross Steer dan Heifer</div>
-            <div class="education-text">Penelitian terhadap 210 ekor sapi Brahman Cross untuk menganalisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost (IOFC).</div>
+            <div class="edu-title" style="margin-top:12px;">Undergraduate Thesis Research</div>
+            <div class="edu-sub">Produksi Karkas Brahman Cross Steer dan Heifer</div>
+            <div class="edu-text">Penelitian terhadap 210 ekor sapi Brahman Cross untuk menganalisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost (IOFC).</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section" style="padding-bottom: 16px;">
+    <section id="contact" class="section contact-wrap">
       <div class="container">
-        <div class="glass contact-box reveal">
+        <div class="glass contact-card">
           <div class="contact-grid">
             <div>
               <div class="eyebrow">Contact</div>
-              <h2 style="margin: 16px 0 0; font-size: clamp(32px, 4vw, 46px); line-height: 1.12; letter-spacing: -0.03em;">Siap dipakai sebagai website CV final</h2>
-              <p style="margin-top: 16px; max-width: 720px; font-size: 16px; line-height: 1.9; color: var(--muted);">
-                Struktur, copywriting, warna, dan animasi sudah dirapikan menjadi versi final yang lebih profesional. Dari sini, website bisa langsung dijadikan dasar build production dengan tombol WhatsApp, download CV, dan domain pribadi.
+              <h2 style="margin:16px 0 0; font-size:clamp(32px,4vw,44px); line-height:1.12; letter-spacing:-0.03em;">Open to professional opportunities</h2>
+              <p style="margin-top:16px; max-width:700px; font-size:16px; line-height:1.9; color:var(--muted);">
+                Saya terbuka untuk peluang profesional, kolaborasi, maupun diskusi terkait operasional feedlot, pengawasan ternak, dan pengembangan karier di industri peternakan.
               </p>
             </div>
 
             <div class="info-list">
-              <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div><div class="info-label">Email</div><div class="info-value">pramudyaduta9@gmail.com</div></div>
-              </div>
-              <div class="info-item">
-                <div class="info-icon">📞</div>
-                <div><div class="info-label">Phone</div><div class="info-value">+62 811-1202-401</div></div>
-              </div>
-              <div class="info-item">
-                <div class="info-icon">📍</div>
-                <div><div class="info-label">Location</div><div class="info-value">Jakarta, Indonesia</div></div>
-              </div>
+              <div class="info-item"><div class="info-icon">✉️</div><div><div class="info-label">Email</div><div class="info-value">pramudyaduta9@gmail.com</div></div></div>
+              <div class="info-item"><div class="info-icon">📞</div><div><div class="info-label">Phone</div><div class="info-value">+62 811-1202-401</div></div></div>
+              <div class="info-item"><div class="info-icon">🔗</div><div><div class="info-label">LinkedIn</div><div class="info-value">pramudya-duta</div></div></div>
+              <div class="info-item"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-value">Jakarta, Indonesia</div></div></div>
             </div>
           </div>
         </div>
@@ -966,6 +1015,7 @@
         <div>© 2026 Pramudya Duta Kusuma Wardana Swaizy</div>
         <div class="footer-links">
           <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
@@ -975,15 +1025,14 @@
   </main>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.18 });
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    (function () {
+      const visual = document.getElementById('profileVisual');
+      const testImage = new Image();
+      testImage.onload = function () {
+        visual.classList.add('has-image');
+      };
+      testImage.src = 'assets/profile.jpg';
+    })();
   </script>
 </body>
 </html>
