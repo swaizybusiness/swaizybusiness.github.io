@@ -6,6 +6,7 @@
   <title>Pramudya Duta | Feedlot Operations Professional</title>
   <meta name="description" content="Profil profesional Pramudya Duta Kusuma Wardana Swaizy, Feedlot Supervisor dengan pengalaman dalam operasional feedlot, pengawasan lapangan, kualitas pakan, animal welfare, dan biosecurity." />
   <meta name="theme-color" content="#07111c" />
+  <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Pramudya Duta | Feedlot Operations Professional" />
   <meta property="og:description" content="Profil profesional Feedlot Supervisor dengan fokus pada disiplin operasional, kualitas pelaksanaan, animal welfare, dan biosecurity." />
@@ -16,6 +17,7 @@
   <meta name="twitter:description" content="Profil profesional Feedlot Supervisor dengan fokus pada disiplin operasional, kualitas pelaksanaan, animal welfare, dan biosecurity." />
   <meta name="twitter:image" content="https://swaizybusiness.github.io/assets/photoprofile1.jpg" />
   <link rel="canonical" href="https://swaizybusiness.github.io/" />
+  <link rel="preload" as="image" href="assets/photoprofile1.jpg" fetchpriority="high" />
   <meta name="color-scheme" content="dark" />
   <script type="application/ld+json">
     {
@@ -1193,9 +1195,137 @@
       .lightbox { padding: 14px; }
       .lightbox-caption { font-size: 13px; }
     }
+
+/* =========================
+   Production polish layer
+   ========================= */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 999;
+  transform: translateY(-160%);
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #1a1408;
+  font-weight: 800;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.nav a,
+.footer-links a,
+.mobile-nav a {
+  transition: color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.nav a.active {
+  color: var(--accent);
+}
+
+.nav a.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .55s ease, transform .55s ease;
+}
+
+.asset-missing {
+  display: grid !important;
+  place-items: center;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px dashed rgba(200,169,104,0.35);
+  background: rgba(200,169,104,0.08);
+  color: rgba(255,255,255,0.78);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.profile-slide img,
+.doc-media img,
+.doc-media video {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+.btn:active,
+.slider-btn:active,
+.filter-btn:active,
+.lang-btn:active,
+.menu-btn:active {
+  transform: translateY(0) scale(.98);
+}
+
+.lightbox.open .lightbox-inner {
+  animation: lightboxPop .18s ease both;
+}
+
+@keyframes lightboxPop {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (hover: hover) {
+  .contact-item:hover,
+  .principle-item:hover,
+  .capability-card:hover,
+  .stat-card:hover {
+    border-color: rgba(200,169,104,0.24);
+    background: rgba(255,255,255,0.07);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(36px, 12vw, 48px); }
+  .hero-role { font-size: 18px; }
+  .hero-lead { font-size: 15px; line-height: 1.8; }
+  .btn { width: 100%; }
+  .status-chip { white-space: normal; }
+  .panel-top { flex-direction: column; }
+  .profile-slider { min-height: 340px; }
+  .profile-slide img { height: 340px; }
+}
+
+@media print {
+  body { background: #fff; color: #111827; }
+  .header,
+  .hero-actions,
+  .docs-toolbar,
+  .lightbox,
+  .footer { display: none !important; }
+  .glass,
+  .stat-card,
+  .timeline-card,
+  .expertise-card,
+  .education-card,
+  .contact-card,
+  .cv-card {
+    box-shadow: none !important;
+    border: 1px solid #d1d5db !important;
+    background: #fff !important;
+  }
+}
+
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#summary">Lewati ke konten utama</a>
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Pramudya Duta Home">
@@ -1226,7 +1356,7 @@
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">☰</button>
       </div>
     </div>
 
@@ -1279,14 +1409,14 @@
 
             <div class="profile-slider" id="profileSlider">
               <div class="profile-slide active">
-                <img src="assets/photoprofile1.jpg" alt="Pramudya Duta profile photo 1" />
+                <img src="assets/photoprofile1.jpg" alt="Pramudya Duta profile photo 1" fetchpriority="high" decoding="async" />
               </div>
               <div class="profile-slide">
                 <img src="assets/photoprofile2.jpg" alt="Pramudya Duta profile photo 2" loading="lazy" decoding="async" />
               </div>
 
-              <button class="slider-btn prev" id="profilePrev" aria-label="Previous profile photo">‹</button>
-              <button class="slider-btn next" id="profileNext" aria-label="Next profile photo">›</button>
+              <button class="slider-btn prev" id="profilePrev" type="button" aria-label="Previous profile photo">‹</button>
+              <button class="slider-btn next" id="profileNext" type="button" aria-label="Next profile photo">›</button>
               <div class="slider-dots" id="profileDots"></div>
               <div class="panel-location" data-i18n="locationText">Jakarta, Indonesia</div>
             </div>
@@ -1727,9 +1857,9 @@
     </section>
   </main>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Documentation image preview">
     <div class="lightbox-inner">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">✕</button>
       <img class="lightbox-image" id="lightboxImage" src="" alt="Expanded documentation image" />
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
@@ -1737,7 +1867,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 Pramudya Duta Kusuma Wardana Swaizy</div>
+      <div>© <span id="siteYear">2026</span> Pramudya Duta Kusuma Wardana Swaizy</div>
       <div class="footer-links">
         <a href="#summary" data-i18n="navSummary">Profil</a>
         <a href="#expertise" data-i18n="navExpertise">Keahlian</a>
@@ -1750,7 +1880,10 @@
   </footer>
 
   <script>
-    const translations = {
+(() => {
+  'use strict';
+
+  const translations = {
       id: {
         pageTitle: "Pramudya Duta | Feedlot Operations Professional",
         metaDescription: "Profil profesional Pramudya Duta Kusuma Wardana Swaizy, Feedlot Supervisor dengan pengalaman dalam operasional feedlot, pengawasan lapangan, kualitas pakan, animal welfare, dan biosecurity.",
@@ -2051,123 +2184,157 @@
       }
     };
 
-    const translatableNodes = document.querySelectorAll('[data-i18n]');
-    const htmlElement = document.documentElement;
-    const titleNode = document.querySelector('title');
-    const metaDescriptionNode = document.querySelector('meta[name="description"]');
-    const ogTitleNode = document.querySelector('meta[property="og:title"]');
-    const ogDescriptionNode = document.querySelector('meta[property="og:description"]');
-    const twitterTitleNode = document.querySelector('meta[name="twitter:title"]');
-    const twitterDescriptionNode = document.querySelector('meta[name="twitter:description"]');
+  const qs = (selector, scope = document) => scope.querySelector(selector);
+  const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let currentLang = 'id';
+  const translatableNodes = qsa('[data-i18n]');
+  const htmlElement = document.documentElement;
+  const titleNode = qs('title');
+  const metaDescriptionNode = qs('meta[name="description"]');
+  const ogTitleNode = qs('meta[property="og:title"]');
+  const ogDescriptionNode = qs('meta[property="og:description"]');
+  const twitterTitleNode = qs('meta[name="twitter:title"]');
+  const twitterDescriptionNode = qs('meta[name="twitter:description"]');
+  const menuBtn = qs('#menuBtn');
+  const mobileNav = qs('#mobileNav');
+  const siteYear = qs('#siteYear');
 
-    function applyLanguage(lang) {
-      currentLang = lang;
-      const dict = translations[lang] || translations.id;
+  let currentLang = localStorage.getItem('preferredLanguage') || 'id';
 
-      translatableNodes.forEach(node => {
-        const key = node.dataset.i18n;
-        if (dict[key] !== undefined) node.textContent = dict[key];
-      });
+  function setText(node, value) {
+    if (node && value !== undefined) node.textContent = value;
+  }
 
-      titleNode.textContent = dict.pageTitle;
-      metaDescriptionNode.setAttribute('content', dict.metaDescription);
-      ogTitleNode.setAttribute('content', dict.pageTitle);
-      ogDescriptionNode.setAttribute('content', dict.ogDescription);
-      twitterTitleNode.setAttribute('content', dict.pageTitle);
-      twitterDescriptionNode.setAttribute('content', dict.ogDescription);
-      htmlElement.setAttribute('lang', lang);
+  function setContent(node, value) {
+    if (node && value !== undefined) node.setAttribute('content', value);
+  }
 
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-    }
+  function applyLanguage(lang) {
+    const normalizedLang = translations[lang] ? lang : 'id';
+    currentLang = normalizedLang;
+    localStorage.setItem('preferredLanguage', normalizedLang);
+    const dict = translations[normalizedLang];
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    translatableNodes.forEach(node => {
+      const key = node.dataset.i18n;
+      if (dict[key] !== undefined) node.textContent = dict[key];
     });
 
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
+    setText(titleNode, dict.pageTitle);
+    setContent(metaDescriptionNode, dict.metaDescription);
+    setContent(ogTitleNode, dict.pageTitle);
+    setContent(ogDescriptionNode, dict.ogDescription);
+    setContent(twitterTitleNode, dict.pageTitle);
+    setContent(twitterDescriptionNode, dict.ogDescription);
+    htmlElement.setAttribute('lang', normalizedLang);
 
-    function closeMenu() {
-      mobileNav.classList.remove('open');
-      document.body.classList.remove('menu-open');
-      menuBtn.textContent = '☰';
-    }
+    qsa('.lang-btn').forEach(btn => {
+      const active = btn.dataset.lang === normalizedLang;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
 
+  function closeMenu() {
+    if (!mobileNav || !menuBtn) return;
+    mobileNav.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    menuBtn.textContent = '☰';
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function setupMenu() {
+    if (!mobileNav || !menuBtn) return;
     menuBtn.addEventListener('click', () => {
       const open = mobileNav.classList.toggle('open');
       document.body.classList.toggle('menu-open', open);
       menuBtn.textContent = open ? '✕' : '☰';
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+    qsa('a', mobileNav).forEach(link => link.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760) closeMenu();
     });
+  }
 
-    function setupSlider({containerId, prevId, nextId, dotsId}) {
-      const container = document.getElementById(containerId);
-      const slides = Array.from(container.querySelectorAll('.profile-slide'));
-      const prevBtn = document.getElementById(prevId);
-      const nextBtn = document.getElementById(nextId);
-      const dotsWrap = document.getElementById(dotsId);
-      let index = 0;
-      let timer;
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setupSlider({containerId, prevId, nextId, dotsId}) {
+    const container = qs(`#${containerId}`);
+    if (!container) return;
+    const slides = qsa('.profile-slide', container);
+    const prevBtn = qs(`#${prevId}`);
+    const nextBtn = qs(`#${nextId}`);
+    const dotsWrap = qs(`#${dotsId}`);
+    if (!slides.length || !prevBtn || !nextBtn || !dotsWrap) return;
 
-      function render() {
-        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-        dotsWrap.querySelectorAll('button').forEach((dot, i) => dot.classList.toggle('active', i === index));
-      }
+    let index = 0;
+    let timer = null;
 
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        dot.addEventListener('click', () => {
-          index = i;
-          render();
-          restart();
-        });
-        dotsWrap.appendChild(dot);
+    function render() {
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
       });
-
-      function next(step = 1) {
-        index = (index + step + slides.length) % slides.length;
-        render();
-      }
-
-      function restart() {
-        clearInterval(timer);
-        if (prefersReducedMotion) return;
-        timer = setInterval(() => next(1), 5200);
-      }
-
-      prevBtn.addEventListener('click', () => { next(-1); restart(); });
-      nextBtn.addEventListener('click', () => { next(1); restart(); });
-
-      render();
-      restart();
+      qsa('button', dotsWrap).forEach((dot, i) => {
+        const active = i === index;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
     }
 
-    setupSlider({
-      containerId: 'profileSlider',
-      prevId: 'profilePrev',
-      nextId: 'profileNext',
-      dotsId: 'profileDots'
+    function move(step = 1) {
+      index = (index + step + slides.length) % slides.length;
+      render();
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    function start() {
+      stop();
+      if (prefersReducedMotion || slides.length < 2) return;
+      timer = setInterval(() => move(1), 5600);
+    }
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to profile photo ${i + 1}`);
+      dot.addEventListener('click', () => {
+        index = i;
+        render();
+        start();
+      });
+      dotsWrap.appendChild(dot);
     });
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const docCards = document.querySelectorAll('.doc-card');
+    prevBtn.addEventListener('click', () => { move(-1); start(); });
+    nextBtn.addEventListener('click', () => { move(1); start(); });
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+    container.addEventListener('focusin', stop);
+    container.addEventListener('focusout', start);
+
+    render();
+    start();
+  }
+
+  function setupFilters() {
+    const filterButtons = qsa('.filter-btn');
+    const docCards = qsa('.doc-card');
+    if (!filterButtons.length || !docCards.length) return;
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
         filterButtons.forEach(btn => {
-          btn.classList.toggle('active', btn === button);
-          btn.setAttribute('aria-pressed', btn === button ? 'true' : 'false');
+          const active = btn === button;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         docCards.forEach(card => {
           const show = filter === 'all' || card.dataset.category === filter;
@@ -2175,20 +2342,27 @@
         });
       });
     });
+  }
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const lightboxClose = document.getElementById('lightboxClose');
+  function setupLightbox() {
+    const lightbox = qs('#lightbox');
+    const lightboxImage = qs('#lightboxImage');
+    const lightboxCaption = qs('#lightboxCaption');
+    const lightboxClose = qs('#lightboxClose');
+    if (!lightbox || !lightboxImage || !lightboxCaption || !lightboxClose) return;
+
+    let lastFocused = null;
 
     function openLightbox(src, captionKey, alt) {
       const dict = translations[currentLang] || translations.id;
+      lastFocused = document.activeElement;
       lightboxImage.src = src;
       lightboxImage.alt = alt || 'Expanded documentation image';
       lightboxCaption.textContent = dict[captionKey] || '';
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('menu-open');
+      lightboxClose.focus();
     }
 
     function closeLightbox() {
@@ -2196,23 +2370,99 @@
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImage.src = '';
       document.body.classList.remove('menu-open');
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     }
 
-    document.querySelectorAll('.doc-media.is-image img').forEach(img => {
-      img.addEventListener('click', () => {
-        openLightbox(img.src, img.dataset.lightboxCaptionId, img.alt);
+    qsa('.doc-media.is-image img').forEach(img => {
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.dataset.lightboxCaptionId, img.alt));
+      img.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(img.currentSrc || img.src, img.dataset.lightboxCaptionId, img.alt);
+        }
       });
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (event) => {
+    lightbox.addEventListener('click', event => {
       if (event.target === lightbox) closeLightbox();
     });
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
+  }
 
-    applyLanguage('id');
+  function setupVideoBehavior() {
+    const videos = qsa('video');
+    videos.forEach(video => {
+      video.addEventListener('play', () => {
+        videos.forEach(other => {
+          if (other !== video) other.pause();
+        });
+      });
+    });
+  }
+
+  function setupAssetFallbacks() {
+    qsa('img').forEach(img => {
+      img.addEventListener('error', () => {
+        const fallback = document.createElement('div');
+        fallback.className = 'asset-missing';
+        fallback.textContent = `Asset belum ditemukan: ${img.getAttribute('src') || 'image'}`;
+        img.replaceWith(fallback);
+      }, { once: true });
+    });
+  }
+
+  function setupScrollSpy() {
+    const sections = qsa('main section[id]');
+    const links = qsa('.nav a');
+    if (!sections.length || !links.length || !('IntersectionObserver' in window)) return;
+    const byId = new Map(links.map(link => [link.getAttribute('href')?.replace('#', ''), link]));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach(link => link.classList.remove('active'));
+        const activeLink = byId.get(entry.target.id);
+        if (activeLink) activeLink.classList.add('active');
+      });
+    }, { rootMargin: '-42% 0px -48% 0px', threshold: 0.01 });
+    sections.forEach(section => observer.observe(section));
+  }
+
+  function setupReveal() {
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+    const targets = qsa('.stat-card, .summary-card, .principles-card, .expertise-card, .doc-card, .timeline-card, .education-card, .contact-card, .cv-card');
+    targets.forEach(target => target.classList.add('reveal-ready'));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('reveal-in');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(target => observer.observe(target));
+  }
+
+  function init() {
+    if (siteYear) siteYear.textContent = String(new Date().getFullYear());
+    qsa('.lang-btn').forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
+    setupMenu();
+    setupSlider({ containerId: 'profileSlider', prevId: 'profilePrev', nextId: 'profileNext', dotsId: 'profileDots' });
+    setupFilters();
+    setupLightbox();
+    setupVideoBehavior();
+    setupAssetFallbacks();
+    setupScrollSpy();
+    setupReveal();
+    applyLanguage(currentLang);
+  }
+
+  init();
+})();
+
   </script>
 </body>
 </html>
