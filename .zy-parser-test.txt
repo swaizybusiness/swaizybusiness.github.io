@@ -1,0 +1,2 @@
+quote "test" and <a href="x">link</a>
+line two
