@@ -29,11 +29,6 @@ Feedlot Operations Supervisor with direct exposure to large-scale cattle operati
 Pasir Tengah Feedlot, Cianjur  
 ±6,000-head operational exposure
 
-## Selected Systems
-
-- **Industrial Cattle Ration Intelligence System** — concept demo for industrial cattle ration formulation, safety, QA, operations, governance, and actual-vs-target review.
-- **SCOS OMEGA** — structured operating framework for decision support, audit, documentation, governance, review, and version-controlled operational artifacts.
-
 ## Portfolio Philosophy
 
 This website is designed as a professional proof system: not only a visual CV, but a structured presentation of field capacity, operational discipline, documentation, and professional direction in the livestock and feedlot industry.
