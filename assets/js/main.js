@@ -5,6 +5,7 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const langKey = 'pd-lang';
   const workStart = new Date(2023, 10, 1);
+  const linkedInUrl = 'https://www.linkedin.com/in/pramudya-duta-profile';
 
   const getCompletedYears = () => {
     const now = new Date();
@@ -55,19 +56,44 @@
     style.id = 'contact-clean-layout';
     style.textContent = `
       #contact{padding-top:72px!important;padding-bottom:72px!important;}
-      #contact .contact-band{max-width:900px!important;margin-inline:auto!important;padding:34px!important;border-radius:32px!important;}
+      #contact .contact-band{max-width:1000px!important;margin-inline:auto!important;padding:34px!important;border-radius:32px!important;}
       #contact .contact-grid{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;align-items:start!important;}
       #contact .contact-title{max-width:780px!important;font-size:clamp(34px,4.5vw,58px)!important;line-height:1.01!important;}
       #contact .contact-lead{max-width:700px!important;margin-top:16px!important;line-height:1.68!important;}
       #contact .hero-actions{margin-top:22px!important;}
-      #contact .contact-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;align-content:start!important;}
+      #contact .contact-list{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;align-content:start!important;}
       #contact .contact-item{min-height:0!important;height:auto!important;padding:16px 18px!important;border-radius:18px!important;background:rgba(255,255,255,.045)!important;}
       #contact .contact-label{font-size:10px!important;letter-spacing:.14em!important;}
       #contact .contact-value{margin-top:6px!important;font-size:14px!important;line-height:1.38!important;}
       #contact .professional-brief-card,#contact .profile-status-badge{display:none!important;}
+      @media(max-width:960px){#contact .contact-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
       @media(max-width:760px){#contact{padding-top:54px!important;padding-bottom:54px!important;}#contact .contact-band{padding:22px!important;border-radius:24px!important;}#contact .contact-list{grid-template-columns:1fr!important;}#contact .contact-title{font-size:30px!important;}}
     `;
     document.head.appendChild(style);
+  };
+
+  const addLinkedInLinks = () => {
+    const contactList = $('.contact-list');
+    if (contactList && !$('.contact-item.linkedin-contact', contactList)) {
+      const item = document.createElement('a');
+      item.className = 'contact-item linkedin-contact';
+      item.href = linkedInUrl;
+      item.target = '_blank';
+      item.rel = 'noopener noreferrer';
+      item.innerHTML = '<div><div class="contact-label">LinkedIn</div><div class="contact-value">Pramudya Duta Profile</div></div>';
+      contactList.appendChild(item);
+    }
+
+    const footerLinks = $('.footer-links');
+    if (footerLinks && !$('.footer-linkedin', footerLinks)) {
+      const link = document.createElement('a');
+      link.className = 'footer-linkedin';
+      link.href = linkedInUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'LinkedIn';
+      footerLinks.appendChild(link);
+    }
   };
 
   const updateDynamicExperience = (lang) => { const years = getCompletedYears(); const value = $$('.quick-value[data-count]').find((el) => el.dataset.suffix === '+'); if (value) { value.dataset.count = String(years); value.textContent = `${years}+`; } const label = $$('[data-i18n="metric2"]')[0]; const note = $$('[data-i18n="metricNote2"]')[0]; if (label) label.textContent = lang === 'en' ? 'Years of feedlot field execution experience since joining PT Sumber Daya Multikarya in November 2023.' : 'Tahun pengalaman eksekusi lapangan feedlot sejak bergabung dengan PT Sumber Daya Multikarya pada November 2023.'; if (note) note.textContent = lang === 'en' ? 'Auto-updated experience' : 'Pengalaman otomatis'; };
@@ -76,7 +102,7 @@
 
   const applyEvidenceStorytelling = (lang) => { const storySet = evidenceStories[lang] || evidenceStories.id; $$('.doc-card').forEach((card, index) => { const overlay = $('.doc-overlay', card); if (!overlay || !storySet[index]) return; $('.evidence-story', overlay)?.remove(); const [labelA, textA, labelB, textB] = storySet[index]; const story = document.createElement('div'); story.className = 'evidence-story'; story.innerHTML = `<div><strong>${labelA}</strong><span>${textA}</span></div><div><strong>${labelB}</strong><span>${textB}</span></div>`; story.style.cssText = 'display:grid;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,231,173,.16);font-size:11px;line-height:1.42;color:rgba(255,249,236,.74);'; $$('strong', story).forEach((strong) => strong.style.cssText = 'display:block;margin-bottom:3px;color:#ffe7ad;font-size:9px;letter-spacing:.12em;text-transform:uppercase;'); $$('span', story).forEach((span) => span.style.cssText = 'display:block;'); overlay.appendChild(story); }); };
 
-  const setupLanguage = () => { $$('[data-i18n]').forEach((el) => { if (!originalText.has(el.dataset.i18n)) originalText.set(el.dataset.i18n, el.textContent); }); const apply = (lang) => { document.documentElement.lang = lang; $$('[data-i18n]').forEach((el) => { const key = el.dataset.i18n; if (lang === 'en' && english[key]) el.textContent = english[key]; else el.textContent = idRefined[key] || originalText.get(key) || el.textContent; }); $$('.lang-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang)); updateDynamicExperience(lang); updateDeckCopy(lang); applyEvidenceStorytelling(lang); removeContactExtras(); localStorage.setItem(langKey, lang); }; $$('.lang-btn').forEach((button) => button.addEventListener('click', () => apply(button.dataset.lang || 'id'))); apply(localStorage.getItem(langKey) || 'id'); };
+  const setupLanguage = () => { $$('[data-i18n]').forEach((el) => { if (!originalText.has(el.dataset.i18n)) originalText.set(el.dataset.i18n, el.textContent); }); const apply = (lang) => { document.documentElement.lang = lang; $$('[data-i18n]').forEach((el) => { const key = el.dataset.i18n; if (lang === 'en' && english[key]) el.textContent = english[key]; else el.textContent = idRefined[key] || originalText.get(key) || el.textContent; }); $$('.lang-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang)); updateDynamicExperience(lang); updateDeckCopy(lang); applyEvidenceStorytelling(lang); removeContactExtras(); addLinkedInLinks(); localStorage.setItem(langKey, lang); }; $$('.lang-btn').forEach((button) => button.addEventListener('click', () => apply(button.dataset.lang || 'id'))); apply(localStorage.getItem(langKey) || 'id'); };
 
   const setupMenu = () => { const btn = $('#menuBtn'); const nav = $('#mobileNav'); if (!btn || !nav) return; btn.addEventListener('click', () => { const open = nav.classList.toggle('open'); document.body.classList.toggle('menu-open', open); btn.setAttribute('aria-expanded', String(open)); }); $$('a', nav).forEach((link) => link.addEventListener('click', () => { nav.classList.remove('open'); document.body.classList.remove('menu-open'); btn.setAttribute('aria-expanded', 'false'); })); };
 
@@ -92,7 +118,7 @@
 
   const setupNavState = () => { const links = $$('.nav a[href^="#"]'); const sections = links.map((link) => $(link.getAttribute('href'))).filter(Boolean); if (!links.length || !sections.length || !('IntersectionObserver' in window)) return; const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (!entry.isIntersecting) return; links.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)); }); }, { rootMargin: '-35% 0px -55% 0px' }); sections.forEach((section) => observer.observe(section)); };
 
-  const init = () => { removeAwkwardLayer(); removeContactExtras(); addContactCleanLayout(); setupLanguage(); setupMenu(); setupReveal(); setupCounters(); setupSlider(); setupEvidence(); setupLightbox(); setupNavState(); const year = $('#siteYear'); if (year) year.textContent = String(new Date().getFullYear()); };
+  const init = () => { removeAwkwardLayer(); removeContactExtras(); addContactCleanLayout(); addLinkedInLinks(); setupLanguage(); setupMenu(); setupReveal(); setupCounters(); setupSlider(); setupEvidence(); setupLightbox(); setupNavState(); const year = $('#siteYear'); if (year) year.textContent = String(new Date().getFullYear()); };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
