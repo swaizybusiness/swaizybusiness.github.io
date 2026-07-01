@@ -27,7 +27,7 @@ Feedlot Operations Supervisor with direct exposure to large-scale cattle operati
 
 **Feedlot Supervisor** — PT Sumber Daya Multikarya  
 Pasir Tengah Feedlot, Cianjur  
-±6,000-head operational exposure
+±6,000-head peak population exposure
 
 ## Portfolio Philosophy
 
