@@ -186,6 +186,29 @@
     ]
   };
 
+  const professionalBrief = {
+    id: {
+      title: 'Professional Brief',
+      intro: 'Ringkasan singkat untuk viewer profesional sebelum menghubungi.',
+      items: [
+        ['Role Fit', 'Feedlot Operations · Livestock Supervision · Field Execution'],
+        ['Core Strength', 'Operational rhythm, cattle readiness, welfare, biosecurity, and team coordination.'],
+        ['Best For', 'Recruitment discussion, livestock operations opportunity, and feedlot supervision role.'],
+        ['Profile Status', 'Public professional profile · Updated 2026']
+      ]
+    },
+    en: {
+      title: 'Professional Brief',
+      intro: 'A concise reference for professional viewers before reaching out.',
+      items: [
+        ['Role Fit', 'Feedlot Operations · Livestock Supervision · Field Execution'],
+        ['Core Strength', 'Operational rhythm, cattle readiness, welfare, biosecurity, and team coordination.'],
+        ['Best For', 'Recruitment discussion, livestock operations opportunity, and feedlot supervision role.'],
+        ['Profile Status', 'Public professional profile · Updated 2026']
+      ]
+    }
+  };
+
   const originalText = new Map();
 
   const removeAwkwardLayer = () => {
@@ -202,6 +225,46 @@
     badge.textContent = 'Public professional profile · Updated 2026';
     badge.style.cssText = 'display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 13px;border:1px solid rgba(255,231,173,.18);border-radius:999px;background:rgba(255,255,255,.045);color:rgba(255,249,236,.78);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;';
     target.appendChild(badge);
+  };
+
+  const addProfessionalBrief = () => {
+    if ($('.professional-brief-card')) return;
+    const contactIntro = $('.contact-grid > div:first-child') || $('.contact-band');
+    if (!contactIntro) return;
+
+    const card = document.createElement('aside');
+    card.className = 'professional-brief-card';
+    card.style.cssText = 'position:relative;margin:22px 0 4px;padding:18px;border:1px solid rgba(255,231,173,.18);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.028));box-shadow:inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;';
+    const actions = $('.hero-actions', contactIntro);
+    if (actions) contactIntro.insertBefore(card, actions);
+    else contactIntro.appendChild(card);
+  };
+
+  const updateProfessionalBrief = (lang) => {
+    const card = $('.professional-brief-card');
+    if (!card) return;
+    const content = professionalBrief[lang] || professionalBrief.id;
+    card.innerHTML = `
+      <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 0% 0%,rgba(255,231,173,.16),transparent 32%),linear-gradient(115deg,transparent,rgba(255,255,255,.045),transparent 62%);"></div>
+      <div style="position:relative;z-index:1;">
+        <div style="color:#ffe7ad;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;">${content.title}</div>
+        <div style="margin-top:7px;color:rgba(255,249,236,.72);font-size:12.5px;line-height:1.55;">${content.intro}</div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px;" class="professional-brief-grid">
+          ${content.items.map(([label, value]) => `
+            <div style="padding:12px;border:1px solid rgba(255,231,173,.13);border-radius:16px;background:rgba(0,0,0,.16);">
+              <div style="color:rgba(255,249,236,.48);font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;">${label}</div>
+              <div style="margin-top:6px;color:rgba(255,249,236,.88);font-size:12px;font-weight:800;line-height:1.45;">${value}</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    const styleId = 'professional-brief-responsive-style';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = '@media(max-width:760px){.professional-brief-grid{grid-template-columns:1fr!important}.professional-brief-card{border-radius:20px!important}}';
+      document.head.appendChild(style);
+    }
   };
 
   const updateDeckCopy = (lang) => {
@@ -254,6 +317,7 @@
       });
       $$('.lang-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang));
       updateDeckCopy(lang);
+      updateProfessionalBrief(lang);
       applyEvidenceStorytelling(lang);
       localStorage.setItem(langKey, lang);
     };
@@ -400,6 +464,7 @@
   const init = () => {
     removeAwkwardLayer();
     addProfileStatus();
+    addProfessionalBrief();
     setupLanguage();
     setupMenu();
     setupReveal();
