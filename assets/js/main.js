@@ -6,7 +6,7 @@
       skip: 'Lewati ke konten utama', navProfile: 'Profil', navExpertise: 'Keahlian', navExperience: 'Pengalaman', navEvidence: 'Evidence', navContact: 'Hubungi',
       availability: 'Terbuka untuk peluang profesional yang relevan', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
       heroIntro: 'Memimpin dari lapangan—menyatukan ketepatan operasional, kesiapan ternak, welfare, biosecurity, dan koordinasi tim menjadi eksekusi yang konsisten.',
-      downloadCv: 'Unduh CV', seeFieldwork: 'Lihat pekerjaan lapangan', proofYears: 'Tahun eksekusi lapangan', proofExposure: 'Paparan populasi puncak*', proofGpa: 'IPK Animal Science', portraitCaption: 'On-site leadership',
+      downloadCv: 'Unduh CV', seeFieldwork: 'Lihat pekerjaan lapangan', proofYears: 'Tahun bersama PT SDM', proofExposure: 'Paparan populasi puncak*', proofGpa: 'IPK Animal Science', portraitCaption: 'On-site leadership',
       accuracyNote: 'Angka ±6.000 ekor merujuk pada paparan terhadap populasi puncak feedlot, bukan klaim populasi normal harian.',
       sectionProfile: 'Profil', profileEyebrow: 'Operator praktis dengan fondasi ilmiah', profileTitle: 'Kepemimpinan yang hadir di lapangan, bukan hanya di laporan.',
       profileLead: 'Saya percaya operasi yang kuat dibangun dari detail yang dilakukan benar—setiap hari.',
@@ -21,6 +21,8 @@
       expertise4Title: 'Animal Welfare', expertise4Body: 'Mengutamakan low-stress handling, perlakuan humanis, kebersihan, dan alur ternak yang aman.',
       expertise5Title: 'Biosecurity', expertise5Body: 'Menjaga movement control, kebersihan area, pencegahan risiko penyakit, dan integritas lingkungan kerja.',
       expertise6Title: 'Koordinasi Tim', expertise6Body: 'Memastikan handover, pembagian kerja, eskalasi, dan akuntabilitas berjalan jelas antar-shift.',
+      matrixDiscipline: 'Disiplin', matrixFocus: 'Fokus operasional', matrixOutcome: 'Hasil utama',
+      outcome1: 'Stabilitas unit', outcome2: 'Konsistensi konsumsi', outcome3: 'Deteksi dini', outcome4: 'Low-stress handling', outcome5: 'Kontrol risiko', outcome6: 'Kejelasan eksekusi',
       flow1: 'Observasi', flow2: 'Prioritaskan', flow3: 'Koordinasikan', flow4: 'Eksekusi', flow5: 'Perbaiki',
       sectionExperience: 'Pengalaman', experienceEyebrow: 'Kemajuan yang dibangun melalui tanggung jawab langsung', experienceTitle: 'Dari fondasi akademik menuju kepemimpinan operasional.',
       experienceAside: 'Perjalanan karier yang berkembang melalui keterlibatan langsung, penguasaan ritme unit, dan tanggung jawab yang terus bertambah.', careerStart: 'Awal exposure feedlot', currentLevel: 'Supervisor · posisi saat ini', currentTag: 'SAAT INI',
@@ -45,7 +47,7 @@
       skip: 'Skip to main content', navProfile: 'Profile', navExpertise: 'Expertise', navExperience: 'Experience', navEvidence: 'Evidence', navContact: 'Contact',
       availability: 'Open to relevant professional opportunities', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
       heroIntro: 'Leading from the field—bringing operational precision, cattle readiness, welfare, biosecurity, and team coordination into one consistent standard of execution.',
-      downloadCv: 'Download CV', seeFieldwork: 'Explore fieldwork', proofYears: 'Years of field execution', proofExposure: 'Peak population exposure*', proofGpa: 'Animal Science GPA', portraitCaption: 'On-site leadership',
+      downloadCv: 'Download CV', seeFieldwork: 'Explore fieldwork', proofYears: 'Years with PT SDM', proofExposure: 'Peak population exposure*', proofGpa: 'Animal Science GPA', portraitCaption: 'On-site leadership',
       accuracyNote: 'The ±6,000 head figure refers to exposure to the feedlot’s peak population, not a claim of its normal daily population.',
       sectionProfile: 'Profile', profileEyebrow: 'A practical operator with a scientific foundation', profileTitle: 'Leadership that shows up in the field—not only in reports.',
       profileLead: 'I believe strong operations are built from details done right—every day.',
@@ -60,6 +62,8 @@
       expertise4Title: 'Animal Welfare', expertise4Body: 'Prioritizing low-stress handling, humane treatment, hygiene, and safe cattle movement.',
       expertise5Title: 'Biosecurity', expertise5Body: 'Maintaining movement control, area cleanliness, disease-risk prevention, and operational environment integrity.',
       expertise6Title: 'Team Coordination', expertise6Body: 'Keeping handovers, work allocation, escalation, and accountability clear across shifts.',
+      matrixDiscipline: 'Discipline', matrixFocus: 'Operating focus', matrixOutcome: 'Primary outcome',
+      outcome1: 'Unit stability', outcome2: 'Consistent intake', outcome3: 'Early detection', outcome4: 'Low-stress handling', outcome5: 'Risk control', outcome6: 'Execution clarity',
       flow1: 'Observe', flow2: 'Prioritize', flow3: 'Coordinate', flow4: 'Execute', flow5: 'Improve',
       sectionExperience: 'Experience', experienceEyebrow: 'Progress built through direct responsibility', experienceTitle: 'From academic foundation to operational leadership.',
       experienceAside: 'A career journey shaped by direct involvement, command of the unit rhythm, and steadily increasing responsibility.', careerStart: 'First feedlot exposure', currentLevel: 'Supervisor · current role', currentTag: 'CURRENT',
@@ -107,6 +111,17 @@
   function setupLanguage() {
     selectAll('[data-language]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
     applyLanguage(state.language);
+  }
+
+  function setupExperienceTenure() {
+    const node = select('#experienceYears');
+    if (!node) return;
+    const startYear = Number(node.dataset.startYear);
+    const startMonth = Number(node.dataset.startMonth);
+    const now = new Date();
+    const elapsedMonths = ((now.getFullYear() - startYear) * 12) + (now.getMonth() - startMonth);
+    const completedYears = Math.max(0, Math.floor(elapsedMonths / 12));
+    node.textContent = `${completedYears}+`;
   }
 
   function setupMenu() {
@@ -245,6 +260,7 @@
 
   function init() {
     select('#year').textContent = new Date().getFullYear();
+    setupExperienceTenure();
     setupLanguage();
     setupMenu();
     setupScrollUI();
