@@ -1,124 +1,259 @@
 (() => {
   'use strict';
 
-  const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-  const langKey = 'pd-lang';
-  const workStart = new Date(2023, 10, 1);
-  const linkedInUrl = 'https://www.linkedin.com/in/pramudya-duta-profile';
-
-  const getCompletedYears = () => {
-    const now = new Date();
-    let years = now.getFullYear() - workStart.getFullYear();
-    if (now.getMonth() < workStart.getMonth()) years -= 1;
-    return Math.max(years, 0);
-  };
-
-  const idRefined = {
-    heroLead: 'Pramudya Duta Kusuma Wardana Swaizy adalah Feedlot Operations Supervisor dengan fokus pada stabilitas operasional, kesiapan ternak, feeding rhythm, monitoring kesehatan, animal welfare, biosecurity, dokumentasi lapangan, dan koordinasi tim lintas aktivitas.',
-    snapshotTitle: 'Ringkasan cepat untuk memahami kapasitas profesional secara jelas.',
-    snapshotLead: 'Bagian ini membantu recruiter, kolega, dan pembaca publik menangkap skala exposure, fondasi akademik, dan fokus kerja utama secara ringkas.',
-    aboutTitle: 'Profil profesional yang menampilkan kapasitas kerja, kontribusi operasional, dan disiplin lapangan.',
-    aboutLead: 'Profil ini merangkum cara kerja, tanggung jawab, dan evidence yang mendukung kapasitas profesional di lingkungan feedlot.',
-    summaryText: 'Feedlot Operations Supervisor dengan pengalaman dalam pengawasan unit, monitoring kondisi ternak, kontrol kualitas pakan, animal welfare, biosecurity, dan koordinasi tim lapangan. Terbiasa menjaga ritme kerja harian, disiplin SOP, serta konsistensi eksekusi untuk mendukung stabilitas unit dan kesiapan ternak.',
-    scopeTitle: 'Ruang kerja inti dalam operasional feedlot modern.',
-    scopeLead: 'Ruang kerja berikut menjelaskan kontribusi utama dalam menjaga ritme operasional, kontrol risiko, welfare, biosecurity, readiness, dan koordinasi tim.',
-    evidenceTitle: 'Field evidence yang menunjukkan konteks kerja nyata.',
-    evidenceLead: 'Dokumentasi diposisikan sebagai bukti profesional: memperlihatkan keterlibatan lapangan, kondisi operasional, handling, grading, animal care, dan fondasi akademik yang relevan.',
-    experienceTitle: 'Pengalaman operasional berdasarkan skala, peran, dan kontribusi.',
-    experienceLead: 'Bagian ini membantu viewer memahami perjalanan kerja melalui lokasi, tanggung jawab, skala exposure, dan kontribusi operasional.',
-    contactTitle: 'Terbuka untuk peluang profesional dan diskusi operasional feedlot.',
-    contactLead: 'Untuk rekrutmen, peluang profesional, atau diskusi relevan terkait feedlot operations, livestock supervision, animal welfare, biosecurity, dan pengembangan karier di industri peternakan.'
-  };
-
-  const english = {
-    skip: 'Skip to main content', brandSubtitle: 'Feedlot Supervisor', navHome: 'Home', navSnapshot: 'Summary', navAbout: 'Profile', navScope: 'Scope', navEvidence: 'Evidence', navExperience: 'Experience', navContact: 'Contact', professionalInquiry: 'Professional Inquiry', heroKicker: 'Public professional portfolio', status: 'Open for professional opportunities', heroTitle1: 'Feedlot Operations', heroTitle2: 'Supervisor',
-    heroLead: 'Pramudya Duta Kusuma Wardana Swaizy is a Feedlot Operations Supervisor focused on operational stability, cattle readiness, feeding rhythm, health monitoring, animal welfare, biosecurity, field documentation, and team coordination across daily activities.',
-    readerNote: 'Accuracy note: the ±6,000-head figure refers to exposure to peak/highest feedlot population, not a claim of normal daily population.', downloadCv: 'Download CV', viewEvidence: 'View Field Evidence', contactCta: 'Professional Inquiry', value1: 'Execution Discipline', value2: 'Peak Population Exposure', value3: 'Animal Welfare', value4: 'Biosecurity', portraitTitle: 'Pramudya Duta', portraitText: 'Feedlot Operations Supervisor focused on unit stability, cattle readiness, SOP consistency, welfare, biosecurity, and reliable field execution.', micro1Label: 'Peak Exposure', micro1Value: '±6,000 Head', micro2Label: 'Core Role', micro2Value: 'Feedlot Supervisor',
-    snapshotKicker: 'Quick reader summary', snapshotTitle: 'A quick summary to understand professional capacity clearly.', snapshotLead: 'This section helps recruiters, colleagues, and public readers quickly understand exposure scale, academic foundation, and core work focus.', metric1: 'Exposure to peak feedlot population of approximately 6,000 head.', metricNote1: 'Peak exposure', metric2: 'Years of feedlot field execution experience since joining PT Sumber Daya Multikarya in November 2023.', metricNote2: 'Auto-updated experience', metric3: 'Animal Science academic foundation, GPA 3.75.', metricNote3: 'Academic base', metric4: 'Brahman Cross carcass performance research samples.', metricNote4: 'Research base',
-    aboutKicker: 'Professional Profile', aboutTitle: 'A professional profile showing work capacity, operational contribution, and field discipline.', aboutLead: 'This profile summarizes working style, responsibilities, and evidence supporting professional capacity in a feedlot environment.', summaryTitle: 'Professional Summary', summaryText: 'Feedlot Operations Supervisor experienced in unit supervision, cattle condition monitoring, feed quality control, animal welfare, biosecurity, and field team coordination. Accustomed to maintaining daily work rhythm, SOP discipline, and execution consistency to support unit stability and cattle readiness.', summaryPoint1: 'Prioritizes clean, measurable, and accountable field execution.', summaryPoint2: 'Supported by Animal Science foundations to understand cattle performance, feed quality, and beef production context.', summaryPoint3: 'Oriented toward clear communication, quick response, and continuous operational improvement.',
-    scopeKicker: 'Operating Scope', scopeTitle: 'Core work areas in modern feedlot operations.', scopeLead: 'The areas below show key contributions in maintaining operating rhythm, risk control, welfare, biosecurity, readiness, and team coordination.', scope1Title: 'Daily Operations', scope1Text: 'Maintaining daily work rhythm, cattle readiness, field priorities, and SOP consistency.', scope2Title: 'Feeding & Feed Quality', scope2Text: 'Supporting delivery discipline, allocation awareness, feed quality observation, and daily nutrition execution consistency.', scope3Title: 'Cattle Monitoring', scope3Text: 'Observing behavior, health indicators, cattle condition, and structured field follow-up.', scope4Title: 'Animal Welfare', scope4Text: 'Promoting low-stress handling, humane treatment, hygiene, and cattle-flow awareness in daily routines.', scope5Title: 'Biosecurity', scope5Text: 'Maintaining area hygiene, movement control, disease-risk prevention, and operational environmental integrity.', scope6Title: 'Team Coordination', scope6Text: 'Strengthening shift communication, work synchronization, field escalation, and team accountability.',
-    path1Title: 'Observe', path1Text: 'Cattle & area condition', path2Title: 'Prioritize', path2Text: 'Risk and unit needs', path3Title: 'Coordinate', path3Text: 'Team, shift, escalation', path4Title: 'Execute', path4Text: 'Daily work rhythm', path5Title: 'Improve', path5Text: 'Correction and stabilization',
-    evidenceKicker: 'Field Evidence', evidenceTitle: 'Field evidence that shows real working context.', evidenceLead: 'Documentation is positioned as professional proof: showing field involvement, operational conditions, handling, grading, animal care, and relevant academic foundation.', filterAll: 'All', filterField: 'Field', filterHandling: 'Handling', filterAcademic: 'Academic', filterVideo: 'Video', badgeField: 'Field', badgeHandling: 'Handling', badgeAcademic: 'Academic', doc1Title: 'Barn Documentation', doc1Text: 'Operational environment and feedlot facility context showing exposure to unit routines.', doc2Title: 'Direct Field Involvement', doc2Text: 'Direct involvement in cattle supervision, handling awareness, and work discipline.', doc3Title: 'Grading Activity', doc3Text: 'Cattle classification and condition assessment supporting readiness control.', doc4Title: 'Night Grading', doc4Text: 'Night activity showing readiness, coordination, and handling discipline.', doc5Title: 'Academic Foundation', doc5Text: 'Animal Science foundation from Universitas Brawijaya supporting livestock management.', doc6Title: 'Market-Ready Cattle', doc6Text: 'Cattle condition and readiness context as part of feedlot operations.', doc7Title: 'Unloading Process', doc7Text: 'Receiving flow and handling discipline during livestock arrival.', doc8Title: 'Market-Ready Video', doc8Text: 'Representation of distribution readiness and cattle management outcomes.', doc9Title: 'Calf Bathing', doc9Text: 'Care and handling with attention to hygiene, welfare, and low-stress treatment.',
-    experienceKicker: 'Operational Experience', experienceTitle: 'Operational experience by scale, role, and contribution.', experienceLead: 'This section helps viewers understand career progression through location, responsibility, exposure scale, and operational contribution.', exp1Period: 'Jul 2024 — Present · Current Role', exp1Title: 'Pasir Tengah Feedlot', exp1Sub: 'Supervisor · PT Sumber Daya Multikarya · Cianjur · peak population ±6,000 head', exp1Text: 'Supports daily operational stability in a feedlot environment with exposure to a peak population of approximately 6,000 head through feeding routine oversight, cattle condition monitoring, team coordination, animal welfare discipline, biosecurity awareness, and field execution consistency.', exp2Period: 'Nov 2023 — Jul 2024', exp2Title: 'Rangkasbitung Feedlot', exp2Sub: 'Supervisor · PT Sumber Daya Multikarya · Banten · ±1,500 head', exp2Text: 'Supervised daily feedlot activities, including feeding routine, cattle monitoring, data recording, sanitation, facility control, livestock handling, and SOP implementation.', exp3Period: 'Jun 2022 — Jul 2022', exp3Title: 'Student Intern — Rangkasbitung Feedlot', exp3Sub: 'PT Sumber Daya Multikarya · Rangkasbitung, Banten', exp3Text: 'Participated in feedlot routines, feed distribution, cattle health observation, sanitation, livestock handling, and field operational discipline.',
-    educationKicker: 'Education & Research', educationTitle: 'Technical foundation from Animal Science and beef cattle research.', edu1Title: 'Universitas Brawijaya', edu1Sub: 'Bachelor of Animal Science · 2019 — 2023 · GPA 3.75', edu1Text: 'Academic focus on animal science, livestock management, animal health, beef cattle production, and feedlot management fundamentals.', edu2Title: 'Undergraduate Thesis Research', edu2Sub: 'Brahman Cross Steer and Heifer Carcass Production', edu2Text: 'Research involving 210 Brahman Cross cattle samples to analyze daily weight gain, slaughter weight, carcass weight, carcass percentage, and Income Over Feed Cost.', edu3Title: 'Relevant Internship', edu3Sub: 'PT Sumber Daya Multikarya · Rangkasbitung, Banten', edu3Text: 'Participated in feedlot routines, feed distribution, cattle monitoring, sanitation, livestock handling, and operational discipline.', contactKicker: 'Contact', contactTitle: 'Open for professional opportunities and feedlot operations discussions.', contactLead: 'For recruitment, professional opportunities, or relevant discussions related to feedlot operations, livestock supervision, animal welfare, biosecurity, and career development in the livestock industry.', cvId: 'Download CV — Bahasa Indonesia', cvEn: 'Download CV — English', waValue: 'Professional inquiry via WhatsApp', locationLabel: 'Location', mobileContact: 'Inquiry'
-  };
-
-  const evidenceStories = { id: [['Field Context','Konteks fasilitas feedlot dan lingkungan kerja operasional.','Professional Relevance','Menunjukkan exposure terhadap kebersihan area, movement awareness, dan kesiapan unit.'],['Field Context','Keterlibatan langsung dalam aktivitas pengawasan lapangan.','Professional Relevance','Memperkuat bukti field presence, handling awareness, dan disiplin kerja.'],['Field Context','Aktivitas grading untuk membaca kondisi dan klasifikasi ternak.','Professional Relevance','Relevan untuk readiness control, assessment ternak, dan keputusan operasional.'],['Field Context','Aktivitas grading pada kondisi operasional malam.','Professional Relevance','Menunjukkan kesiapan kerja, koordinasi, dan disiplin handling dalam kondisi nyata.'],['Field Context','Dokumentasi fondasi akademik Animal Science.','Professional Relevance','Menghubungkan latar akademik dengan pemahaman teknis livestock management.'],['Field Context','Kondisi ternak dalam konteks kesiapan distribusi.','Professional Relevance','Mendukung narasi cattle readiness dan hasil pengelolaan feedlot.'],['Field Context','Proses penerimaan ternak dalam alur operasional feedlot.','Professional Relevance','Menunjukkan awareness terhadap receiving flow, handling, dan kontrol risiko.'],['Field Context','Video cattle readiness dan kondisi ternak siap distribusi.','Professional Relevance','Memperkuat bukti hasil kerja lapangan dan kesiapan unit.'],['Field Context','Care dan handling pada ternak muda.','Professional Relevance','Menunjukkan perhatian pada hygiene, welfare, dan low-stress treatment.']], en: [['Field Context','Feedlot facility context and operational working environment.','Professional Relevance','Shows exposure to area hygiene, movement awareness, and unit readiness.'],['Field Context','Direct involvement in field supervision activities.','Professional Relevance','Strengthens evidence of field presence, handling awareness, and work discipline.'],['Field Context','Grading activity to assess cattle condition and classification.','Professional Relevance','Relevant to readiness control, cattle assessment, and operational decisions.'],['Field Context','Night grading activity under real operating conditions.','Professional Relevance','Shows work readiness, coordination, and handling discipline in real field conditions.'],['Field Context','Documentation of Animal Science academic foundation.','Professional Relevance','Connects academic background with technical understanding of livestock management.'],['Field Context','Cattle condition in distribution-readiness context.','Professional Relevance','Supports the cattle readiness narrative and feedlot management outcomes.'],['Field Context','Livestock receiving process in feedlot operations flow.','Professional Relevance','Shows awareness of receiving flow, handling, and risk control.'],['Field Context','Video evidence of cattle readiness and market-ready condition.','Professional Relevance','Strengthens proof of field work outcomes and unit readiness.'],['Field Context','Care and handling for young cattle.','Professional Relevance','Shows attention to hygiene, welfare, and low-stress treatment.']] };
-
-  const originalText = new Map();
-  const removeAwkwardLayer = () => $$('.future-signature-section, .signature-section').forEach((section) => section.remove());
-  const removeContactExtras = () => $$('.professional-brief-card, .profile-status-badge').forEach((el) => el.remove());
-
-  const addContactCleanLayout = () => {
-    if ($('#contact-clean-layout')) return;
-    const style = document.createElement('style');
-    style.id = 'contact-clean-layout';
-    style.textContent = `
-      #contact{padding-top:72px!important;padding-bottom:72px!important;}
-      #contact .contact-band{max-width:1000px!important;margin-inline:auto!important;padding:34px!important;border-radius:32px!important;}
-      #contact .contact-grid{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;align-items:start!important;}
-      #contact .contact-title{max-width:780px!important;font-size:clamp(34px,4.5vw,58px)!important;line-height:1.01!important;}
-      #contact .contact-lead{max-width:700px!important;margin-top:16px!important;line-height:1.68!important;}
-      #contact .hero-actions{margin-top:22px!important;}
-      #contact .contact-list{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;align-content:start!important;}
-      #contact .contact-item{min-height:0!important;height:auto!important;padding:16px 18px!important;border-radius:18px!important;background:rgba(255,255,255,.045)!important;}
-      #contact .contact-label{font-size:10px!important;letter-spacing:.14em!important;}
-      #contact .contact-value{margin-top:6px!important;font-size:14px!important;line-height:1.38!important;}
-      #contact .professional-brief-card,#contact .profile-status-badge{display:none!important;}
-      @media(max-width:960px){#contact .contact-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
-      @media(max-width:760px){#contact{padding-top:54px!important;padding-bottom:54px!important;}#contact .contact-band{padding:22px!important;border-radius:24px!important;}#contact .contact-list{grid-template-columns:1fr!important;}#contact .contact-title{font-size:30px!important;}}
-    `;
-    document.head.appendChild(style);
-  };
-
-  const addLinkedInLinks = () => {
-    const contactList = $('.contact-list');
-    if (contactList && !$('.contact-item.linkedin-contact', contactList)) {
-      const item = document.createElement('a');
-      item.className = 'contact-item linkedin-contact';
-      item.href = linkedInUrl;
-      item.target = '_blank';
-      item.rel = 'noopener noreferrer';
-      item.innerHTML = '<div><div class="contact-label">LinkedIn</div><div class="contact-value">Pramudya Duta Profile</div></div>';
-      contactList.appendChild(item);
-    }
-
-    const footerLinks = $('.footer-links');
-    if (footerLinks && !$('.footer-linkedin', footerLinks)) {
-      const link = document.createElement('a');
-      link.className = 'footer-linkedin';
-      link.href = linkedInUrl;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'LinkedIn';
-      footerLinks.appendChild(link);
+  const copy = {
+    id: {
+      skip: 'Lewati ke konten utama', navProfile: 'Profil', navExpertise: 'Keahlian', navExperience: 'Pengalaman', navEvidence: 'Evidence', navContact: 'Hubungi',
+      availability: 'Terbuka untuk peluang profesional yang relevan', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
+      heroIntro: 'Memimpin dari lapangan—menyatukan ketepatan operasional, kesiapan ternak, welfare, biosecurity, dan koordinasi tim menjadi eksekusi yang konsisten.',
+      downloadCv: 'Unduh CV', seeFieldwork: 'Lihat pekerjaan lapangan', proofYears: 'Tahun eksekusi lapangan', proofExposure: 'Paparan populasi puncak*', proofGpa: 'IPK Animal Science', portraitCaption: 'On-site leadership',
+      accuracyNote: 'Angka ±6.000 ekor merujuk pada paparan terhadap populasi puncak feedlot, bukan klaim populasi normal harian.',
+      sectionProfile: 'Profil', profileEyebrow: 'Operator praktis dengan fondasi ilmiah', profileTitle: 'Kepemimpinan yang hadir di lapangan, bukan hanya di laporan.',
+      profileLead: 'Saya percaya operasi yang kuat dibangun dari detail yang dilakukan benar—setiap hari.',
+      profileBody: 'Sebagai Feedlot Operations Supervisor, saya mengawal ritme unit melalui monitoring kondisi ternak, feeding routine, kontrol area, penerapan welfare dan biosecurity, serta koordinasi tim yang jelas. Fondasi Animal Science membantu saya menghubungkan keputusan lapangan dengan konteks produksi yang lebih luas.',
+      principle1Title: 'Observasi presisi', principle1Body: 'Membaca perubahan kecil pada ternak, area, pakan, dan ritme kerja sebelum menjadi masalah besar.',
+      principle2Title: 'Tindakan bertanggung jawab', principle2Body: 'Menempatkan welfare, keselamatan, biosecurity, dan akuntabilitas sebagai dasar setiap tindakan.',
+      principle3Title: 'Perbaikan berkelanjutan', principle3Body: 'Membangun kebiasaan evaluasi, koreksi cepat, dan komunikasi terbuka untuk menjaga stabilitas unit.',
+      sectionExpertise: 'Sistem operasi', expertiseEyebrow: 'Enam disiplin, satu operasi yang dapat diandalkan', expertiseTitle: 'Ruang kerja yang mengubah observasi menjadi kesiapan operasional.',
+      expertise1Title: 'Operasional Harian', expertise1Body: 'Mengawal ritme kerja, prioritas unit, kesiapan area, dan konsistensi SOP dari awal hingga akhir shift.',
+      expertise2Title: 'Feeding & Kualitas Pakan', expertise2Body: 'Menjaga disiplin delivery, alokasi, observasi kualitas pakan, dan respons terhadap kondisi konsumsi.',
+      expertise3Title: 'Monitoring Ternak', expertise3Body: 'Mendeteksi indikator kesehatan, perilaku, kondisi fisik, dan kebutuhan tindak lanjut secara terstruktur.',
+      expertise4Title: 'Animal Welfare', expertise4Body: 'Mengutamakan low-stress handling, perlakuan humanis, kebersihan, dan alur ternak yang aman.',
+      expertise5Title: 'Biosecurity', expertise5Body: 'Menjaga movement control, kebersihan area, pencegahan risiko penyakit, dan integritas lingkungan kerja.',
+      expertise6Title: 'Koordinasi Tim', expertise6Body: 'Memastikan handover, pembagian kerja, eskalasi, dan akuntabilitas berjalan jelas antar-shift.',
+      flow1: 'Observasi', flow2: 'Prioritaskan', flow3: 'Koordinasikan', flow4: 'Eksekusi', flow5: 'Perbaiki',
+      sectionExperience: 'Pengalaman', experienceEyebrow: 'Kemajuan yang dibangun melalui tanggung jawab langsung', experienceTitle: 'Dari fondasi akademik menuju kepemimpinan operasional.',
+      experienceAside: 'Perjalanan karier yang berkembang melalui keterlibatan langsung, penguasaan ritme unit, dan tanggung jawab yang terus bertambah.', careerStart: 'Awal exposure feedlot', currentLevel: 'Supervisor · posisi saat ini', currentTag: 'SAAT INI',
+      role1: 'Supervisor · PT Sumber Daya Multikarya · Cianjur', role1Body: 'Menjaga stabilitas operasional pada lingkungan feedlot dengan exposure terhadap populasi puncak ±6.000 ekor melalui monitoring ternak, feeding routine, koordinasi tim, welfare, biosecurity, dan konsistensi eksekusi lapangan.',
+      role2: 'Supervisor · PT Sumber Daya Multikarya · Banten · ±1.500 ekor', role2Body: 'Mengawasi aktivitas harian meliputi feeding routine, monitoring ternak, pencatatan data, sanitasi, kontrol fasilitas, handling, dan penerapan SOP.',
+      role3: 'Student Intern · PT Sumber Daya Multikarya · Banten', role3Body: 'Membangun fondasi melalui rutinitas feedlot, distribusi pakan, observasi kesehatan, sanitasi, handling ternak, dan disiplin operasional.',
+      sectionEvidence: 'Bukti lapangan', evidenceEyebrow: 'Pekerjaan didokumentasikan di tempat terjadinya', evidenceTitle: 'Bukti lapangan, bukan sekadar pernyataan.',
+      evidenceIntro: 'Dokumentasi yang menunjukkan konteks kerja nyata—fasilitas, cattle readiness, grading, handling, care, dan fondasi akademik.', filterAll: 'Semua', filterField: 'Lapangan', filterHandling: 'Handling', filterAcademic: 'Akademik', viewPhoto: 'Lihat foto',
+      evidence1Title: 'Lingkungan Operasional', evidence1Body: 'Konteks fasilitas, kebersihan area, alur ternak, dan kesiapan unit.', evidence2Title: 'Keterlibatan Langsung', evidence2Body: 'Keterlibatan langsung dalam supervisi, safety, dan disiplin kerja.',
+      evidence3Title: 'Grading Ternak', evidence3Body: 'Assessment dan klasifikasi untuk mendukung readiness control.', evidence4Title: 'Operasional Malam', evidence4Body: 'Kesiapan, koordinasi, dan handling di kondisi operasional malam.',
+      evidence5Title: 'Kesiapan Pasar', evidence5Body: 'Kondisi ternak dan konteks kesiapan sebagai hasil dari disiplin pengelolaan.', evidence6Title: 'Fondasi Ilmiah', evidence6Body: 'Fondasi Animal Science dari Universitas Brawijaya.',
+      videoIntro: 'Tiga fragmen kerja: receiving, market readiness, dan calf care.', video1: 'Proses unloading', video2: 'Ternak siap pasar', video3: 'Calf care & handling',
+      sectionEducation: 'Pendidikan', educationEyebrow: 'Ilmu di balik keputusan lapangan', educationTitle: 'Fondasi akademik yang tetap dekat dengan realitas produksi.', degreeTitle: 'Sarjana Peternakan', degreeBody: 'Animal Science · Manajemen peternakan · Produksi sapi potong · Kesehatan ternak',
+      researchTitle: 'Produksi Karkas Brahman Cross Steer & Heifer', researchBody: 'Analisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost pada 210 sampel.',
+      quickReview: 'Tinjauan 30 detik', recruiterEyebrow: 'Jika hanya mengingat tiga hal', recruiterTitle: 'Teruji di lapangan. Berbasis ilmu. Siap berkontribusi.',
+      review1: 'Pengalaman memimpin rutinitas operasional feedlot dan koordinasi tim lapangan.', review2: 'Paparan pada skala puncak ±6.000 ekor dengan fokus pada readiness, welfare, dan biosecurity.', review3: 'Fondasi Animal Science yang mendukung keputusan praktis dan perbaikan berkelanjutan.',
+      sectionContact: 'Kontak', contactEyebrow: 'Mari membangun operasi yang dapat diandalkan', contactTitle: 'Mari bicara tentang tantangan lapangan berikutnya.',
+      contactBody: 'Terbuka untuk peluang profesional, rekrutmen, dan diskusi yang relevan dengan feedlot operations, livestock supervision, animal welfare, biosecurity, atau pengembangan industri peternakan.',
+      whatsappText: 'Professional inquiry', downloadCvFull: 'Unduh CV — Bahasa Indonesia', backTop: 'Kembali ke atas', emailMe: 'Email saya'
+    },
+    en: {
+      skip: 'Skip to main content', navProfile: 'Profile', navExpertise: 'Expertise', navExperience: 'Experience', navEvidence: 'Evidence', navContact: 'Contact',
+      availability: 'Open to relevant professional opportunities', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
+      heroIntro: 'Leading from the field—bringing operational precision, cattle readiness, welfare, biosecurity, and team coordination into one consistent standard of execution.',
+      downloadCv: 'Download CV', seeFieldwork: 'Explore fieldwork', proofYears: 'Years of field execution', proofExposure: 'Peak population exposure*', proofGpa: 'Animal Science GPA', portraitCaption: 'On-site leadership',
+      accuracyNote: 'The ±6,000 head figure refers to exposure to the feedlot’s peak population, not a claim of its normal daily population.',
+      sectionProfile: 'Profile', profileEyebrow: 'A practical operator with a scientific foundation', profileTitle: 'Leadership that shows up in the field—not only in reports.',
+      profileLead: 'I believe strong operations are built from details done right—every day.',
+      profileBody: 'As a Feedlot Operations Supervisor, I maintain the unit’s rhythm through cattle monitoring, feeding routines, area control, welfare and biosecurity practices, and clear team coordination. My Animal Science foundation helps connect field decisions with the broader production context.',
+      principle1Title: 'Observe precisely', principle1Body: 'Reading small changes in cattle, areas, feed, and workflow before they become larger problems.',
+      principle2Title: 'Act responsibly', principle2Body: 'Keeping welfare, safety, biosecurity, and accountability at the foundation of every action.',
+      principle3Title: 'Improve continuously', principle3Body: 'Building habits of evaluation, rapid correction, and open communication to maintain unit stability.',
+      sectionExpertise: 'Operating system', expertiseEyebrow: 'Six disciplines, one dependable operation', expertiseTitle: 'The operating scope that turns observation into readiness.',
+      expertise1Title: 'Daily Operations', expertise1Body: 'Maintaining work rhythm, unit priorities, area readiness, and SOP consistency from the start to the end of every shift.',
+      expertise2Title: 'Feeding & Feed Quality', expertise2Body: 'Maintaining delivery discipline, allocation awareness, feed quality observation, and timely responses to intake conditions.',
+      expertise3Title: 'Cattle Monitoring', expertise3Body: 'Detecting health indicators, behavior, physical condition, and follow-up needs through a structured approach.',
+      expertise4Title: 'Animal Welfare', expertise4Body: 'Prioritizing low-stress handling, humane treatment, hygiene, and safe cattle movement.',
+      expertise5Title: 'Biosecurity', expertise5Body: 'Maintaining movement control, area cleanliness, disease-risk prevention, and operational environment integrity.',
+      expertise6Title: 'Team Coordination', expertise6Body: 'Keeping handovers, work allocation, escalation, and accountability clear across shifts.',
+      flow1: 'Observe', flow2: 'Prioritize', flow3: 'Coordinate', flow4: 'Execute', flow5: 'Improve',
+      sectionExperience: 'Experience', experienceEyebrow: 'Progress built through direct responsibility', experienceTitle: 'From academic foundation to operational leadership.',
+      experienceAside: 'A career journey shaped by direct involvement, command of the unit rhythm, and steadily increasing responsibility.', careerStart: 'First feedlot exposure', currentLevel: 'Supervisor · current role', currentTag: 'CURRENT',
+      role1: 'Supervisor · PT Sumber Daya Multikarya · Cianjur', role1Body: 'Maintaining operational stability in a feedlot environment with exposure to a peak population of approximately 6,000 head through cattle monitoring, feeding routines, team coordination, welfare, biosecurity, and consistent field execution.',
+      role2: 'Supervisor · PT Sumber Daya Multikarya · Banten · ±1,500 head', role2Body: 'Supervised daily activities covering feeding routines, cattle monitoring, records, sanitation, facility control, handling, and SOP implementation.',
+      role3: 'Student Intern · PT Sumber Daya Multikarya · Banten', role3Body: 'Built a practical foundation through feedlot routines, feed distribution, health observation, sanitation, cattle handling, and operational discipline.',
+      sectionEvidence: 'Field evidence', evidenceEyebrow: 'Work documented where it happens', evidenceTitle: 'Field evidence—not just a statement.',
+      evidenceIntro: 'Documentation showing real operating contexts—facilities, cattle readiness, grading, handling, care, and academic foundations.', filterAll: 'All', filterField: 'Field', filterHandling: 'Handling', filterAcademic: 'Academic', viewPhoto: 'View photo',
+      evidence1Title: 'Operational Environment', evidence1Body: 'Facility context, area hygiene, cattle movement, and unit readiness.', evidence2Title: 'Direct Involvement', evidence2Body: 'Direct involvement in supervision, safety, and workplace discipline.',
+      evidence3Title: 'Cattle Grading', evidence3Body: 'Assessment and classification supporting readiness control.', evidence4Title: 'Night Operations', evidence4Body: 'Readiness, coordination, and handling under real night operating conditions.',
+      evidence5Title: 'Market Readiness', evidence5Body: 'Cattle condition and readiness as outcomes of disciplined management.', evidence6Title: 'Scientific Foundation', evidence6Body: 'Animal Science foundation from Universitas Brawijaya.',
+      videoIntro: 'Three field fragments: receiving, market readiness, and calf care.', video1: 'Unloading process', video2: 'Market-ready cattle', video3: 'Calf care & handling',
+      sectionEducation: 'Education', educationEyebrow: 'Science behind the field decisions', educationTitle: 'An academic foundation kept close to production reality.', degreeTitle: 'Bachelor of Animal Science', degreeBody: 'Animal Science · Livestock Management · Beef Production · Animal Health',
+      researchTitle: 'Carcass Production of Brahman Cross Steer & Heifer', researchBody: 'Analysis of daily weight gain, slaughter weight, carcass weight, carcass percentage, and Income Over Feed Cost across 210 samples.',
+      quickReview: '30-second review', recruiterEyebrow: 'If you only remember three things', recruiterTitle: 'Field-tested. Science-grounded. Ready to contribute.',
+      review1: 'Experience leading feedlot operating routines and field-team coordination.', review2: 'Exposure to a peak scale of approximately 6,000 head with focus on readiness, welfare, and biosecurity.', review3: 'An Animal Science foundation supporting practical decisions and continuous improvement.',
+      sectionContact: 'Contact', contactEyebrow: 'Let’s build dependable operations', contactTitle: 'Let’s talk about the next field challenge.',
+      contactBody: 'Open to professional opportunities, recruitment, and relevant conversations around feedlot operations, livestock supervision, animal welfare, biosecurity, and livestock-industry development.',
+      whatsappText: 'Professional inquiry', downloadCvFull: 'Download CV — English', backTop: 'Back to top', emailMe: 'Email me'
     }
   };
 
-  const updateDynamicExperience = (lang) => { const years = getCompletedYears(); const value = $$('.quick-value[data-count]').find((el) => el.dataset.suffix === '+'); if (value) { value.dataset.count = String(years); value.textContent = `${years}+`; } const label = $$('[data-i18n="metric2"]')[0]; const note = $$('[data-i18n="metricNote2"]')[0]; if (label) label.textContent = lang === 'en' ? 'Years of feedlot field execution experience since joining PT Sumber Daya Multikarya in November 2023.' : 'Tahun pengalaman eksekusi lapangan feedlot sejak bergabung dengan PT Sumber Daya Multikarya pada November 2023.'; if (note) note.textContent = lang === 'en' ? 'Auto-updated experience' : 'Pengalaman otomatis'; };
+  const state = { language: localStorage.getItem('portfolio-language') || 'id', lastScroll: 0 };
+  const select = (query, root = document) => root.querySelector(query);
+  const selectAll = (query, root = document) => [...root.querySelectorAll(query)];
 
-  const updateDeckCopy = (lang) => { const deckKicker = $('.deck-kicker'); const deckTitle = $('.deck-title'); const deckLead = $('.deck-lead'); if (deckKicker) deckKicker.textContent = 'Executive Operating Overview'; if (deckTitle) deckTitle.textContent = 'A concise profile of field execution capacity.'; if (deckLead) deckLead.textContent = lang === 'en' ? 'A premium summary to help viewers understand role, work focus, exposure scale, and professional readiness without feeling excessive.' : 'Ringkasan premium untuk membantu viewer memahami peran, fokus kerja, skala exposure, dan kesiapan profesional secara cepat tanpa terasa berlebihan.'; };
+  function applyLanguage(language) {
+    state.language = language;
+    const dictionary = copy[language];
+    document.documentElement.lang = language;
+    selectAll('[data-copy]').forEach((node) => {
+      const value = dictionary[node.dataset.copy];
+      if (value) node.textContent = value;
+    });
+    selectAll('[data-language]').forEach((button) => button.classList.toggle('is-active', button.dataset.language === language));
+    selectAll('[data-cv-link]').forEach((link) => {
+      link.href = language === 'en' ? 'assets/CV-Pramudya-Duta-English.pdf' : 'assets/CV-Pramudya-Duta-Indonesia.pdf';
+    });
+    document.title = language === 'en'
+      ? 'Pramudya Duta — Feedlot Operations Supervisor'
+      : 'Pramudya Duta — Feedlot Operations Supervisor';
+    localStorage.setItem('portfolio-language', language);
+  }
 
-  const applyEvidenceStorytelling = (lang) => { const storySet = evidenceStories[lang] || evidenceStories.id; $$('.doc-card').forEach((card, index) => { const overlay = $('.doc-overlay', card); if (!overlay || !storySet[index]) return; $('.evidence-story', overlay)?.remove(); const [labelA, textA, labelB, textB] = storySet[index]; const story = document.createElement('div'); story.className = 'evidence-story'; story.innerHTML = `<div><strong>${labelA}</strong><span>${textA}</span></div><div><strong>${labelB}</strong><span>${textB}</span></div>`; story.style.cssText = 'display:grid;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,231,173,.16);font-size:11px;line-height:1.42;color:rgba(255,249,236,.74);'; $$('strong', story).forEach((strong) => strong.style.cssText = 'display:block;margin-bottom:3px;color:#ffe7ad;font-size:9px;letter-spacing:.12em;text-transform:uppercase;'); $$('span', story).forEach((span) => span.style.cssText = 'display:block;'); overlay.appendChild(story); }); };
+  function setupLanguage() {
+    selectAll('[data-language]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
+    applyLanguage(state.language);
+  }
 
-  const setupLanguage = () => { $$('[data-i18n]').forEach((el) => { if (!originalText.has(el.dataset.i18n)) originalText.set(el.dataset.i18n, el.textContent); }); const apply = (lang) => { document.documentElement.lang = lang; $$('[data-i18n]').forEach((el) => { const key = el.dataset.i18n; if (lang === 'en' && english[key]) el.textContent = english[key]; else el.textContent = idRefined[key] || originalText.get(key) || el.textContent; }); $$('.lang-btn').forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang)); updateDynamicExperience(lang); updateDeckCopy(lang); applyEvidenceStorytelling(lang); removeContactExtras(); addLinkedInLinks(); localStorage.setItem(langKey, lang); }; $$('.lang-btn').forEach((button) => button.addEventListener('click', () => apply(button.dataset.lang || 'id'))); apply(localStorage.getItem(langKey) || 'id'); };
+  function setupMenu() {
+    const toggle = select('#menuToggle');
+    const menu = select('#mobileMenu');
+    if (!toggle || !menu) return;
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+    };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('is-open', open);
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    });
+    selectAll('a', menu).forEach((link) => link.addEventListener('click', close));
+    window.addEventListener('keydown', (event) => { if (event.key === 'Escape') close(); });
+  }
 
-  const setupMenu = () => { const btn = $('#menuBtn'); const nav = $('#mobileNav'); if (!btn || !nav) return; btn.addEventListener('click', () => { const open = nav.classList.toggle('open'); document.body.classList.toggle('menu-open', open); btn.setAttribute('aria-expanded', String(open)); }); $$('a', nav).forEach((link) => link.addEventListener('click', () => { nav.classList.remove('open'); document.body.classList.remove('menu-open'); btn.setAttribute('aria-expanded', 'false'); })); };
+  function setupScrollUI() {
+    const header = select('#siteHeader');
+    const progress = select('#scrollProgress');
+    const sections = selectAll('main section[id]');
+    const navLinks = selectAll('.desktop-nav a');
+    let ticking = false;
 
-  const setupReveal = () => { const items = $$('.reveal'); if (!items.length) return; if (!('IntersectionObserver' in window)) { items.forEach((item) => item.classList.add('in')); return; } const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 }); items.forEach((item) => observer.observe(item)); };
+    const update = () => {
+      const y = window.scrollY;
+      const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      progress.style.width = `${Math.min(100, (y / max) * 100)}%`;
+      header.classList.toggle('is-scrolled', y > 20);
+      header.classList.toggle('is-hidden', y > state.lastScroll && y > 500 && !document.body.classList.contains('menu-open'));
+      state.lastScroll = Math.max(0, y);
 
-  const setupCounters = () => { const counters = $$('.quick-value[data-count]'); const format = (value, decimals) => Number(value).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }); const run = (el) => { const target = Number(el.dataset.count || 0); const decimals = Number(el.dataset.decimals || 0); const prefix = el.dataset.prefix || ''; const suffix = el.dataset.suffix || ''; const duration = 900; const start = performance.now(); const step = (time) => { const progress = Math.min((time - start) / duration, 1); const eased = 1 - Math.pow(1 - progress, 3); el.textContent = `${prefix}${format(target * eased, decimals)}${suffix}`; if (progress < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }; if (!('IntersectionObserver' in window)) { counters.forEach(run); return; } const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { run(entry.target); observer.unobserve(entry.target); } }); }, { threshold: 0.45 }); counters.forEach((counter) => observer.observe(counter)); };
+      let active = '';
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= 180) active = section.id;
+      });
+      navLinks.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === `#${active}`));
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  }
 
-  const setupSlider = () => { const slides = $$('.profile-slide'); if (slides.length < 2) return; let index = 0; const show = (next) => { slides[index].classList.remove('active'); index = (next + slides.length) % slides.length; slides[index].classList.add('active'); }; $('#slidePrev')?.addEventListener('click', () => show(index - 1)); $('#slideNext')?.addEventListener('click', () => show(index + 1)); setInterval(() => show(index + 1), 6000); };
+  function setupReveals() {
+    const elements = selectAll('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -50px' });
+    elements.forEach((element, index) => {
+      element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`;
+      observer.observe(element);
+    });
+  }
 
-  const setupEvidence = () => { const buttons = $$('.filter-btn'); const cards = $$('.doc-card'); if (!buttons.length || !cards.length) return; buttons.forEach((button) => button.addEventListener('click', () => { const filter = button.dataset.filter; buttons.forEach((btn) => btn.classList.toggle('active', btn === button)); cards.forEach((card) => { const categories = (card.dataset.category || '').split(' '); card.classList.toggle('hidden', filter !== 'all' && !categories.includes(filter)); }); })); };
+  function setupParallax() {
+    if (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    selectAll('[data-parallax-root]').forEach((root) => {
+      root.addEventListener('pointermove', (event) => {
+        const bounds = root.getBoundingClientRect();
+        const x = event.clientX - bounds.left - bounds.width / 2;
+        const y = event.clientY - bounds.top - bounds.height / 2;
+        selectAll('[data-parallax]', root).forEach((element) => {
+          const depth = Number(element.dataset.parallax || 0);
+          element.style.transform = `translate3d(${(x * depth).toFixed(1)}px, ${(y * depth).toFixed(1)}px, 0)`;
+        });
+      });
+      root.addEventListener('pointerleave', () => selectAll('[data-parallax]', root).forEach((element) => { element.style.transform = ''; }));
+    });
+  }
 
-  const setupLightbox = () => { const lightbox = $('#lightbox'); const image = $('#lightboxImage'); const caption = $('#lightboxCaption'); const close = $('#lightboxClose'); if (!lightbox || !image || !caption || !close) return; $$('.doc-media.is-image img').forEach((img) => img.addEventListener('click', () => { image.src = img.src; caption.textContent = img.dataset.caption || img.alt || ''; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false'); })); const closeLightbox = () => { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); image.src = ''; }; close.addEventListener('click', closeLightbox); lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); }); window.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); }); };
+  function setupFilters() {
+    const cards = selectAll('.archive-card');
+    selectAll('.filter-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        selectAll('.filter-btn').forEach((item) => item.classList.toggle('is-active', item === button));
+        cards.forEach((card) => {
+          const visible = filter === 'all' || card.dataset.category.split(' ').includes(filter);
+          card.classList.toggle('is-hidden', !visible);
+        });
+      });
+    });
+  }
 
-  const setupNavState = () => { const links = $$('.nav a[href^="#"]'); const sections = links.map((link) => $(link.getAttribute('href'))).filter(Boolean); if (!links.length || !sections.length || !('IntersectionObserver' in window)) return; const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (!entry.isIntersecting) return; links.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)); }); }, { rootMargin: '-35% 0px -55% 0px' }); sections.forEach((section) => observer.observe(section)); };
+  function setupLightbox() {
+    const lightbox = select('#lightbox');
+    const image = select('#lightboxImage');
+    const caption = select('#lightboxCaption');
+    const closeButton = select('#lightboxClose');
+    if (!lightbox || !image || !caption || !closeButton) return;
+    let previousFocus = null;
+    const close = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      image.src = '';
+      previousFocus?.focus();
+    };
+    selectAll('[data-lightbox]').forEach((button) => {
+      button.addEventListener('click', () => {
+        previousFocus = button;
+        image.src = button.dataset.lightbox;
+        image.alt = select('img', button)?.alt || '';
+        caption.textContent = copy[state.language][button.dataset.captionKey] || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        closeButton.focus();
+      });
+    });
+    closeButton.addEventListener('click', close);
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) close(); });
+    window.addEventListener('keydown', (event) => { if (event.key === 'Escape' && lightbox.classList.contains('is-open')) close(); });
+  }
 
-  const init = () => { removeAwkwardLayer(); removeContactExtras(); addContactCleanLayout(); addLinkedInLinks(); setupLanguage(); setupMenu(); setupReveal(); setupCounters(); setupSlider(); setupEvidence(); setupLightbox(); setupNavState(); const year = $('#siteYear'); if (year) year.textContent = String(new Date().getFullYear()); };
+  function setupVideos() {
+    const videos = selectAll('video');
+    videos.forEach((video) => video.addEventListener('play', () => videos.forEach((other) => { if (other !== video) other.pause(); })));
+  }
+
+  function init() {
+    select('#year').textContent = new Date().getFullYear();
+    setupLanguage();
+    setupMenu();
+    setupScrollUI();
+    setupReveals();
+    setupParallax();
+    setupFilters();
+    setupLightbox();
+    setupVideos();
+  }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
