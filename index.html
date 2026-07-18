@@ -110,7 +110,7 @@
             <a class="button button-quiet" href="#evidence"><span data-copy="seeFieldwork">Lihat pekerjaan lapangan</span><i aria-hidden="true">↓</i></a>
           </div>
           <div class="hero-proof" aria-label="Ringkasan profesional">
-            <div><strong>2+</strong><span data-copy="proofYears">Tahun eksekusi lapangan</span></div>
+            <div><strong id="experienceYears" data-start-year="2023" data-start-month="10">2+</strong><span data-copy="proofYears">Tahun eksekusi lapangan</span></div>
             <div><strong>±6K</strong><span data-copy="proofExposure">Paparan populasi puncak*</span></div>
             <div><strong>3.75</strong><span data-copy="proofGpa">IPK Animal Science</span></div>
           </div>
@@ -195,34 +195,48 @@
           </div>
         </div>
 
-        <div class="expertise-grid">
-          <article class="expertise-card expertise-card-featured reveal">
-            <span class="card-number">01</span>
-            <div class="card-mark">DO</div>
-            <div>
-              <h3 data-copy="expertise1Title">Daily Operations</h3>
-              <p data-copy="expertise1Body">Mengawal ritme kerja, prioritas unit, kesiapan area, dan konsistensi SOP dari awal hingga akhir shift.</p>
-            </div>
+        <div class="operations-matrix reveal" id="operationsMatrix" role="table" aria-label="Operating competency matrix">
+          <div class="matrix-header" role="row">
+            <span role="columnheader">ID</span>
+            <span role="columnheader" data-copy="matrixDiscipline">Disiplin</span>
+            <span role="columnheader" data-copy="matrixFocus">Fokus operasional</span>
+            <span role="columnheader" data-copy="matrixOutcome">Hasil utama</span>
+          </div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>01</span><b>DO</b></div>
+            <h3 role="cell" data-copy="expertise1Title">Daily Operations</h3>
+            <p role="cell" data-copy="expertise1Body">Mengawal ritme kerja, prioritas unit, kesiapan area, dan konsistensi SOP dari awal hingga akhir shift.</p>
+            <strong role="cell" data-copy="outcome1">Stabilitas unit</strong>
           </article>
-          <article class="expertise-card reveal">
-            <span class="card-number">02</span><div class="card-mark">FQ</div>
-            <div><h3 data-copy="expertise2Title">Feeding & Feed Quality</h3><p data-copy="expertise2Body">Menjaga disiplin delivery, alokasi, observasi kualitas pakan, dan respons terhadap kondisi konsumsi.</p></div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>02</span><b>FQ</b></div>
+            <h3 role="cell" data-copy="expertise2Title">Feeding & Feed Quality</h3>
+            <p role="cell" data-copy="expertise2Body">Menjaga disiplin delivery, alokasi, observasi kualitas pakan, dan respons terhadap kondisi konsumsi.</p>
+            <strong role="cell" data-copy="outcome2">Konsistensi konsumsi</strong>
           </article>
-          <article class="expertise-card reveal">
-            <span class="card-number">03</span><div class="card-mark">CM</div>
-            <div><h3 data-copy="expertise3Title">Cattle Monitoring</h3><p data-copy="expertise3Body">Mendeteksi indikator kesehatan, perilaku, kondisi fisik, dan kebutuhan tindak lanjut secara terstruktur.</p></div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>03</span><b>CM</b></div>
+            <h3 role="cell" data-copy="expertise3Title">Cattle Monitoring</h3>
+            <p role="cell" data-copy="expertise3Body">Mendeteksi indikator kesehatan, perilaku, kondisi fisik, dan kebutuhan tindak lanjut secara terstruktur.</p>
+            <strong role="cell" data-copy="outcome3">Deteksi dini</strong>
           </article>
-          <article class="expertise-card reveal">
-            <span class="card-number">04</span><div class="card-mark">AW</div>
-            <div><h3 data-copy="expertise4Title">Animal Welfare</h3><p data-copy="expertise4Body">Mengutamakan low-stress handling, perlakuan humanis, kebersihan, dan alur ternak yang aman.</p></div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>04</span><b>AW</b></div>
+            <h3 role="cell" data-copy="expertise4Title">Animal Welfare</h3>
+            <p role="cell" data-copy="expertise4Body">Mengutamakan low-stress handling, perlakuan humanis, kebersihan, dan alur ternak yang aman.</p>
+            <strong role="cell" data-copy="outcome4">Low-stress handling</strong>
           </article>
-          <article class="expertise-card reveal">
-            <span class="card-number">05</span><div class="card-mark">BS</div>
-            <div><h3 data-copy="expertise5Title">Biosecurity</h3><p data-copy="expertise5Body">Menjaga movement control, kebersihan area, pencegahan risiko penyakit, dan integritas lingkungan kerja.</p></div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>05</span><b>BS</b></div>
+            <h3 role="cell" data-copy="expertise5Title">Biosecurity</h3>
+            <p role="cell" data-copy="expertise5Body">Menjaga movement control, kebersihan area, pencegahan risiko penyakit, dan integritas lingkungan kerja.</p>
+            <strong role="cell" data-copy="outcome5">Kontrol risiko</strong>
           </article>
-          <article class="expertise-card reveal">
-            <span class="card-number">06</span><div class="card-mark">TC</div>
-            <div><h3 data-copy="expertise6Title">Team Coordination</h3><p data-copy="expertise6Body">Memastikan handover, pembagian kerja, eskalasi, dan akuntabilitas berjalan jelas antar-shift.</p></div>
+          <article class="matrix-row" role="row">
+            <div class="matrix-code" role="cell"><span>06</span><b>TC</b></div>
+            <h3 role="cell" data-copy="expertise6Title">Team Coordination</h3>
+            <p role="cell" data-copy="expertise6Body">Memastikan handover, pembagian kerja, eskalasi, dan akuntabilitas berjalan jelas antar-shift.</p>
+            <strong role="cell" data-copy="outcome6">Kejelasan eksekusi</strong>
           </article>
         </div>
 
