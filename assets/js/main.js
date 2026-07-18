@@ -4,12 +4,12 @@
   const copy = {
     id: {
       skip: 'Lewati ke konten utama', navProfile: 'Profil', navExpertise: 'Keahlian', navExperience: 'Pengalaman', navEvidence: 'Evidence', navContact: 'Hubungi',
-      availability: 'Terbuka untuk peluang profesional yang relevan', heroOverline: 'Field leadership Â· livestock operations Â· Indonesia', heroRole: 'Feedlot Operations Supervisor',
-      heroIntro: 'Memimpin dari lapanganâ€”menyatukan ketepatan operasional, kesiapan ternak, welfare, biosecurity, dan koordinasi tim menjadi eksekusi yang konsisten.',
+      availability: 'Terbuka untuk peluang profesional yang relevan', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
+      heroIntro: 'Memimpin dari lapangan—menyatukan ketepatan operasional, kesiapan ternak, welfare, biosecurity, dan koordinasi tim menjadi eksekusi yang konsisten.',
       downloadCv: 'Unduh CV', seeFieldwork: 'Lihat pekerjaan lapangan', proofYears: 'Tahun eksekusi lapangan', proofExposure: 'Paparan populasi puncak*', proofGpa: 'IPK Animal Science', portraitCaption: 'On-site leadership',
-      accuracyNote: 'Angka Â±6.000 ekor merujuk pada paparan terhadap populasi puncak feedlot, bukan klaim populasi normal harian.',
+      accuracyNote: 'Angka ±6.000 ekor merujuk pada paparan terhadap populasi puncak feedlot, bukan klaim populasi normal harian.',
       sectionProfile: 'Profil', profileEyebrow: 'Operator praktis dengan fondasi ilmiah', profileTitle: 'Kepemimpinan yang hadir di lapangan, bukan hanya di laporan.',
-      profileLead: 'Saya percaya operasi yang kuat dibangun dari detail yang dilakukan benarâ€”setiap hari.',
+      profileLead: 'Saya percaya operasi yang kuat dibangun dari detail yang dilakukan benar—setiap hari.',
       profileBody: 'Sebagai Feedlot Operations Supervisor, saya mengawal ritme unit melalui monitoring kondisi ternak, feeding routine, kontrol area, penerapan welfare dan biosecurity, serta koordinasi tim yang jelas. Fondasi Animal Science membantu saya menghubungkan keputusan lapangan dengan konteks produksi yang lebih luas.',
       principle1Title: 'Observasi presisi', principle1Body: 'Membaca perubahan kecil pada ternak, area, pakan, dan ritme kerja sebelum menjadi masalah besar.',
       principle2Title: 'Tindakan bertanggung jawab', principle2Body: 'Menempatkan welfare, keselamatan, biosecurity, dan akuntabilitas sebagai dasar setiap tindakan.',
@@ -23,33 +23,33 @@
       expertise6Title: 'Koordinasi Tim', expertise6Body: 'Memastikan handover, pembagian kerja, eskalasi, dan akuntabilitas berjalan jelas antar-shift.',
       flow1: 'Observasi', flow2: 'Prioritaskan', flow3: 'Koordinasikan', flow4: 'Eksekusi', flow5: 'Perbaiki',
       sectionExperience: 'Pengalaman', experienceEyebrow: 'Kemajuan yang dibangun melalui tanggung jawab langsung', experienceTitle: 'Dari fondasi akademik menuju kepemimpinan operasional.',
-      experienceAside: 'Perjalanan karier yang berkembang melalui keterlibatan langsung, penguasaan ritme unit, dan tanggung jawab yang terus bertambah.', careerStart: 'Awal exposure feedlot', currentLevel: 'Supervisor Â· posisi saat ini', currentTag: 'SAAT INI',
-      role1: 'Supervisor Â· PT Sumber Daya Multikarya Â· Cianjur', role1Body: 'Menjaga stabilitas operasional pada lingkungan feedlot dengan exposure terhadap populasi puncak Â±6.000 ekor melalui monitoring ternak, feeding routine, koordinasi tim, welfare, biosecurity, dan konsistensi eksekusi lapangan.',
-      role2: 'Supervisor Â· PT Sumber Daya Multikarya Â· Banten Â· Â±1.500 ekor', role2Body: 'Mengawasi aktivitas harian meliputi feeding routine, monitoring ternak, pencatatan data, sanitasi, kontrol fasilitas, handling, dan penerapan SOP.',
-      role3: 'Student Intern Â· PT Sumber Daya Multikarya Â· Banten', role3Body: 'Membangun fondasi melalui rutinitas feedlot, distribusi pakan, observasi kesehatan, sanitasi, handling ternak, dan disiplin operasional.',
+      experienceAside: 'Perjalanan karier yang berkembang melalui keterlibatan langsung, penguasaan ritme unit, dan tanggung jawab yang terus bertambah.', careerStart: 'Awal exposure feedlot', currentLevel: 'Supervisor · posisi saat ini', currentTag: 'SAAT INI',
+      role1: 'Supervisor · PT Sumber Daya Multikarya · Cianjur', role1Body: 'Menjaga stabilitas operasional pada lingkungan feedlot dengan exposure terhadap populasi puncak ±6.000 ekor melalui monitoring ternak, feeding routine, koordinasi tim, welfare, biosecurity, dan konsistensi eksekusi lapangan.',
+      role2: 'Supervisor · PT Sumber Daya Multikarya · Banten · ±1.500 ekor', role2Body: 'Mengawasi aktivitas harian meliputi feeding routine, monitoring ternak, pencatatan data, sanitasi, kontrol fasilitas, handling, dan penerapan SOP.',
+      role3: 'Student Intern · PT Sumber Daya Multikarya · Banten', role3Body: 'Membangun fondasi melalui rutinitas feedlot, distribusi pakan, observasi kesehatan, sanitasi, handling ternak, dan disiplin operasional.',
       sectionEvidence: 'Bukti lapangan', evidenceEyebrow: 'Pekerjaan didokumentasikan di tempat terjadinya', evidenceTitle: 'Bukti lapangan, bukan sekadar pernyataan.',
-      evidenceIntro: 'Dokumentasi yang menunjukkan konteks kerja nyataâ€”fasilitas, cattle readiness, grading, handling, care, dan fondasi akademik.', filterAll: 'Semua', filterField: 'Lapangan', filterHandling: 'Handling', filterAcademic: 'Akademik', viewPhoto: 'Lihat foto',
+      evidenceIntro: 'Dokumentasi yang menunjukkan konteks kerja nyata—fasilitas, cattle readiness, grading, handling, care, dan fondasi akademik.', filterAll: 'Semua', filterField: 'Lapangan', filterHandling: 'Handling', filterAcademic: 'Akademik', viewPhoto: 'Lihat foto',
       evidence1Title: 'Lingkungan Operasional', evidence1Body: 'Konteks fasilitas, kebersihan area, alur ternak, dan kesiapan unit.', evidence2Title: 'Keterlibatan Langsung', evidence2Body: 'Keterlibatan langsung dalam supervisi, safety, dan disiplin kerja.',
       evidence3Title: 'Grading Ternak', evidence3Body: 'Assessment dan klasifikasi untuk mendukung readiness control.', evidence4Title: 'Operasional Malam', evidence4Body: 'Kesiapan, koordinasi, dan handling di kondisi operasional malam.',
       evidence5Title: 'Kesiapan Pasar', evidence5Body: 'Kondisi ternak dan konteks kesiapan sebagai hasil dari disiplin pengelolaan.', evidence6Title: 'Fondasi Ilmiah', evidence6Body: 'Fondasi Animal Science dari Universitas Brawijaya.',
       videoIntro: 'Tiga fragmen kerja: receiving, market readiness, dan calf care.', video1: 'Proses unloading', video2: 'Ternak siap pasar', video3: 'Calf care & handling',
-      sectionEducation: 'Pendidikan', educationEyebrow: 'Ilmu di balik keputusan lapangan', educationTitle: 'Fondasi akademik yang tetap dekat dengan realitas produksi.', degreeTitle: 'Sarjana Peternakan', degreeBody: 'Animal Science Â· Manajemen peternakan Â· Produksi sapi potong Â· Kesehatan ternak',
+      sectionEducation: 'Pendidikan', educationEyebrow: 'Ilmu di balik keputusan lapangan', educationTitle: 'Fondasi akademik yang tetap dekat dengan realitas produksi.', degreeTitle: 'Sarjana Peternakan', degreeBody: 'Animal Science · Manajemen peternakan · Produksi sapi potong · Kesehatan ternak',
       researchTitle: 'Produksi Karkas Brahman Cross Steer & Heifer', researchBody: 'Analisis daily weight gain, slaughter weight, carcass weight, persentase karkas, dan Income Over Feed Cost pada 210 sampel.',
       quickReview: 'Tinjauan 30 detik', recruiterEyebrow: 'Jika hanya mengingat tiga hal', recruiterTitle: 'Teruji di lapangan. Berbasis ilmu. Siap berkontribusi.',
-      review1: 'Pengalaman memimpin rutinitas operasional feedlot dan koordinasi tim lapangan.', review2: 'Paparan pada skala puncak Â±6.000 ekor dengan fokus pada readiness, welfare, dan biosecurity.', review3: 'Fondasi Animal Science yang mendukung keputusan praktis dan perbaikan berkelanjutan.',
+      review1: 'Pengalaman memimpin rutinitas operasional feedlot dan koordinasi tim lapangan.', review2: 'Paparan pada skala puncak ±6.000 ekor dengan fokus pada readiness, welfare, dan biosecurity.', review3: 'Fondasi Animal Science yang mendukung keputusan praktis dan perbaikan berkelanjutan.',
       sectionContact: 'Kontak', contactEyebrow: 'Mari membangun operasi yang dapat diandalkan', contactTitle: 'Mari bicara tentang tantangan lapangan berikutnya.',
       contactBody: 'Terbuka untuk peluang profesional, rekrutmen, dan diskusi yang relevan dengan feedlot operations, livestock supervision, animal welfare, biosecurity, atau pengembangan industri peternakan.',
-      whatsappText: 'Professional inquiry', downloadCvFull: 'Unduh CV â€” Bahasa Indonesia', backTop: 'Kembali ke atas', emailMe: 'Email saya'
+      whatsappText: 'Professional inquiry', downloadCvFull: 'Unduh CV — Bahasa Indonesia', backTop: 'Kembali ke atas', emailMe: 'Email saya'
     },
     en: {
       skip: 'Skip to main content', navProfile: 'Profile', navExpertise: 'Expertise', navExperience: 'Experience', navEvidence: 'Evidence', navContact: 'Contact',
-      availability: 'Open to relevant professional opportunities', heroOverline: 'Field leadership Â· livestock operations Â· Indonesia', heroRole: 'Feedlot Operations Supervisor',
-      heroIntro: 'Leading from the fieldâ€”bringing operational precision, cattle readiness, welfare, biosecurity, and team coordination into one consistent standard of execution.',
+      availability: 'Open to relevant professional opportunities', heroOverline: 'Field leadership · livestock operations · Indonesia', heroRole: 'Feedlot Operations Supervisor',
+      heroIntro: 'Leading from the field—bringing operational precision, cattle readiness, welfare, biosecurity, and team coordination into one consistent standard of execution.',
       downloadCv: 'Download CV', seeFieldwork: 'Explore fieldwork', proofYears: 'Years of field execution', proofExposure: 'Peak population exposure*', proofGpa: 'Animal Science GPA', portraitCaption: 'On-site leadership',
-      accuracyNote: 'The Â±6,000 head figure refers to exposure to the feedlotâ€™s peak population, not a claim of its normal daily population.',
-      sectionProfile: 'Profile', profileEyebrow: 'A practical operator with a scientific foundation', profileTitle: 'Leadership that shows up in the fieldâ€”not only in reports.',
-      profileLead: 'I believe strong operations are built from details done rightâ€”every day.',
-      profileBody: 'As a Feedlot Operations Supervisor, I maintain the unitâ€™s rhythm through cattle monitoring, feeding routines, area control, welfare and biosecurity practices, and clear team coordination. My Animal Science foundation helps connect field decisions with the broader production context.',
+      accuracyNote: 'The ±6,000 head figure refers to exposure to the feedlot’s peak population, not a claim of its normal daily population.',
+      sectionProfile: 'Profile', profileEyebrow: 'A practical operator with a scientific foundation', profileTitle: 'Leadership that shows up in the field—not only in reports.',
+      profileLead: 'I believe strong operations are built from details done right—every day.',
+      profileBody: 'As a Feedlot Operations Supervisor, I maintain the unit’s rhythm through cattle monitoring, feeding routines, area control, welfare and biosecurity practices, and clear team coordination. My Animal Science foundation helps connect field decisions with the broader production context.',
       principle1Title: 'Observe precisely', principle1Body: 'Reading small changes in cattle, areas, feed, and workflow before they become larger problems.',
       principle2Title: 'Act responsibly', principle2Body: 'Keeping welfare, safety, biosecurity, and accountability at the foundation of every action.',
       principle3Title: 'Improve continuously', principle3Body: 'Building habits of evaluation, rapid correction, and open communication to maintain unit stability.',
@@ -62,23 +62,23 @@
       expertise6Title: 'Team Coordination', expertise6Body: 'Keeping handovers, work allocation, escalation, and accountability clear across shifts.',
       flow1: 'Observe', flow2: 'Prioritize', flow3: 'Coordinate', flow4: 'Execute', flow5: 'Improve',
       sectionExperience: 'Experience', experienceEyebrow: 'Progress built through direct responsibility', experienceTitle: 'From academic foundation to operational leadership.',
-      experienceAside: 'A career journey shaped by direct involvement, command of the unit rhythm, and steadily increasing responsibility.', careerStart: 'First feedlot exposure', currentLevel: 'Supervisor Â· current role', currentTag: 'CURRENT',
-      role1: 'Supervisor Â· PT Sumber Daya Multikarya Â· Cianjur', role1Body: 'Maintaining operational stability in a feedlot environment with exposure to a peak population of approximately 6,000 head through cattle monitoring, feeding routines, team coordination, welfare, biosecurity, and consistent field execution.',
-      role2: 'Supervisor Â· PT Sumber Daya Multikarya Â· Banten Â· Â±1,500 head', role2Body: 'Supervised daily activities covering feeding routines, cattle monitoring, records, sanitation, facility control, handling, and SOP implementation.',
-      role3: 'Student Intern Â· PT Sumber Daya Multikarya Â· Banten', role3Body: 'Built a practical foundation through feedlot routines, feed distribution, health observation, sanitation, cattle handling, and operational discipline.',
-      sectionEvidence: 'Field evidence', evidenceEyebrow: 'Work documented where it happens', evidenceTitle: 'Field evidenceâ€”not just a statement.',
-      evidenceIntro: 'Documentation showing real operating contextsâ€”facilities, cattle readiness, grading, handling, care, and academic foundations.', filterAll: 'All', filterField: 'Field', filterHandling: 'Handling', filterAcademic: 'Academic', viewPhoto: 'View photo',
+      experienceAside: 'A career journey shaped by direct involvement, command of the unit rhythm, and steadily increasing responsibility.', careerStart: 'First feedlot exposure', currentLevel: 'Supervisor · current role', currentTag: 'CURRENT',
+      role1: 'Supervisor · PT Sumber Daya Multikarya · Cianjur', role1Body: 'Maintaining operational stability in a feedlot environment with exposure to a peak population of approximately 6,000 head through cattle monitoring, feeding routines, team coordination, welfare, biosecurity, and consistent field execution.',
+      role2: 'Supervisor · PT Sumber Daya Multikarya · Banten · ±1,500 head', role2Body: 'Supervised daily activities covering feeding routines, cattle monitoring, records, sanitation, facility control, handling, and SOP implementation.',
+      role3: 'Student Intern · PT Sumber Daya Multikarya · Banten', role3Body: 'Built a practical foundation through feedlot routines, feed distribution, health observation, sanitation, cattle handling, and operational discipline.',
+      sectionEvidence: 'Field evidence', evidenceEyebrow: 'Work documented where it happens', evidenceTitle: 'Field evidence—not just a statement.',
+      evidenceIntro: 'Documentation showing real operating contexts—facilities, cattle readiness, grading, handling, care, and academic foundations.', filterAll: 'All', filterField: 'Field', filterHandling: 'Handling', filterAcademic: 'Academic', viewPhoto: 'View photo',
       evidence1Title: 'Operational Environment', evidence1Body: 'Facility context, area hygiene, cattle movement, and unit readiness.', evidence2Title: 'Direct Involvement', evidence2Body: 'Direct involvement in supervision, safety, and workplace discipline.',
       evidence3Title: 'Cattle Grading', evidence3Body: 'Assessment and classification supporting readiness control.', evidence4Title: 'Night Operations', evidence4Body: 'Readiness, coordination, and handling under real night operating conditions.',
       evidence5Title: 'Market Readiness', evidence5Body: 'Cattle condition and readiness as outcomes of disciplined management.', evidence6Title: 'Scientific Foundation', evidence6Body: 'Animal Science foundation from Universitas Brawijaya.',
       videoIntro: 'Three field fragments: receiving, market readiness, and calf care.', video1: 'Unloading process', video2: 'Market-ready cattle', video3: 'Calf care & handling',
-      sectionEducation: 'Education', educationEyebrow: 'Science behind the field decisions', educationTitle: 'An academic foundation kept close to production reality.', degreeTitle: 'Bachelor of Animal Science', degreeBody: 'Animal Science Â· Livestock Management Â· Beef Production Â· Animal Health',
+      sectionEducation: 'Education', educationEyebrow: 'Science behind the field decisions', educationTitle: 'An academic foundation kept close to production reality.', degreeTitle: 'Bachelor of Animal Science', degreeBody: 'Animal Science · Livestock Management · Beef Production · Animal Health',
       researchTitle: 'Carcass Production of Brahman Cross Steer & Heifer', researchBody: 'Analysis of daily weight gain, slaughter weight, carcass weight, carcass percentage, and Income Over Feed Cost across 210 samples.',
       quickReview: '30-second review', recruiterEyebrow: 'If you only remember three things', recruiterTitle: 'Field-tested. Science-grounded. Ready to contribute.',
       review1: 'Experience leading feedlot operating routines and field-team coordination.', review2: 'Exposure to a peak scale of approximately 6,000 head with focus on readiness, welfare, and biosecurity.', review3: 'An Animal Science foundation supporting practical decisions and continuous improvement.',
-      sectionContact: 'Contact', contactEyebrow: 'Letâ€™s build dependable operations', contactTitle: 'Letâ€™s talk about the next field challenge.',
+      sectionContact: 'Contact', contactEyebrow: 'Let’s build dependable operations', contactTitle: 'Let’s talk about the next field challenge.',
       contactBody: 'Open to professional opportunities, recruitment, and relevant conversations around feedlot operations, livestock supervision, animal welfare, biosecurity, and livestock-industry development.',
-      whatsappText: 'Professional inquiry', downloadCvFull: 'Download CV â€” English', backTop: 'Back to top', emailMe: 'Email me'
+      whatsappText: 'Professional inquiry', downloadCvFull: 'Download CV — English', backTop: 'Back to top', emailMe: 'Email me'
     }
   };
 
@@ -99,8 +99,8 @@
       link.href = language === 'en' ? 'assets/CV-Pramudya-Duta-English.pdf' : 'assets/CV-Pramudya-Duta-Indonesia.pdf';
     });
     document.title = language === 'en'
-      ? 'Pramudya Duta â€” Feedlot Operations Supervisor'
-      : 'Pramudya Duta â€” Feedlot Operations Supervisor';
+      ? 'Pramudya Duta — Feedlot Operations Supervisor'
+      : 'Pramudya Duta — Feedlot Operations Supervisor';
     localStorage.setItem('portfolio-language', language);
   }
 
