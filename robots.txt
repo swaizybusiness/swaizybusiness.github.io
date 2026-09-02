@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /feedlot/
+
+Sitemap: https://swaizybusiness.github.io/sitemap.xml
