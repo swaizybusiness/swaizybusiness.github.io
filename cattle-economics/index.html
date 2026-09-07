@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#08110e" />
+<title>Cattle Economic Intelligence System v0.1</title>
+<style>
+:root{--bg:#08110e;--panel:#0d1814;--card:#12201a;--line:#24372f;--text:#edf7f1;--muted:#99aca2;--accent:#9be15d;--good:#80d38d;--warn:#f5c66b;--bad:#ff8a80;--blue:#8ec5ff}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#08110e,#0b1411 45%,#08110e);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1500px;margin:auto;padding:24px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.hero h1{font-size:clamp(25px,4vw,42px);line-height:1.05;margin:7px 0 8px}.hero p{color:var(--muted);max-width:850px;margin:0}.badge{display:inline-flex;border:1px solid var(--line);background:#0d1814;border-radius:999px;padding:8px 12px;color:var(--muted);white-space:nowrap}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tab{border:1px solid var(--line);background:#0d1814;color:var(--muted);padding:10px 14px;border-radius:10px}.tab.active{background:var(--accent);border-color:var(--accent);color:#09110e;font-weight:800}.layout{display:grid;grid-template-columns:390px minmax(0,1fr);gap:16px}.panel{border:1px solid var(--line);background:rgba(13,24,20,.92);border-radius:16px;padding:16px}.panel h2,.panel h3{margin:0 0 12px}.inputs{max-height:75vh;overflow:auto;padding-right:5px}.section{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}.section:first-child{border-top:0;margin-top:0;padding-top:0}.section-title{font-size:13px;font-weight:800;margin-bottom:9px;color:#cfddd5}.field{display:grid;grid-template-columns:minmax(0,1fr) 145px;gap:10px;align-items:center;margin:8px 0}.field label{color:var(--muted);font-size:13px}.field input{width:100%;border:1px solid var(--line);background:#08110e;color:var(--text);border-radius:9px;padding:9px 10px;text-align:right;outline:none}.field input:focus{border-color:var(--accent)}.results{min-width:0}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.kpi{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:13px;min-width:0}.kpi span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.kpi strong{display:block;font-size:clamp(17px,2vw,24px);line-height:1.15;margin-top:7px;word-break:break-word}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.row{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.row span{color:var(--muted)}.row strong{text-align:right;font-variant-numeric:tabular-nums}.verdict{margin-top:12px;border:1px solid var(--line);border-left:4px solid var(--warn);background:var(--card);padding:14px;border-radius:12px}.verdict.good{border-left-color:var(--good)}.verdict.bad{border-left-color:var(--bad)}.verdict .big{font-size:18px;font-weight:900;margin:3px 0}.solver{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.mini{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card)}.mini span{display:block;color:var(--muted);font-size:11px}.mini strong{display:block;font-size:18px;margin-top:6px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:720px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-size:11px;background:#0b1511;position:sticky;top:0}td{font-variant-numeric:tabular-nums}.green{color:var(--good)}.red{color:var(--bad)}.orange{color:var(--warn)}.footer{color:var(--muted);font-size:12px;margin-top:18px}.hidden{display:none!important}.actionbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.actionbar button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 12px;border-radius:9px}.actionbar button.primary{background:var(--accent);color:#09110e;border-color:var(--accent);font-weight:800}@media(max-width:1000px){.layout{grid-template-columns:1fr}.inputs{max-height:none}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.solver{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.wrap{padding:14px}.hero{display:block}.badge{margin-top:12px}.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.solver{grid-template-columns:1fr}.field{grid-template-columns:1fr 125px}.kpi strong{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div><div class="eyebrow">Enterprise Cattle Economics</div><h1>Cattle Economic Intelligence System</h1><p>Interactive engine untuk procurement, feedlot, karkas, jagal/RPH, meat yield, reverse solver, break-even, bid ceiling, target profit, margin dan ROI.</p></div>
+    <div class="badge">v0.1 • Live Calculator</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-tab="integrated">Feedlot + Carcass</button>
+    <button class="tab" data-tab="jagal">Jagal / RPH</button>
+    <button class="tab" data-tab="solver">Reverse Solver</button>
+    <button class="tab" data-tab="sensitivity">Sensitivity</button>
+  </div>
+
+  <div id="integrated" class="tabview">
+    <div class="layout">
+      <aside class="panel inputs">
+        <div class="actionbar"><button class="primary" id="resetIntegrated">Reset Base</button></div>
+        <div class="section"><div class="section-title">Procurement & Receiving</div>
+          <div class="field"><label>Jumlah sapi / lot</label><input id="i_heads" type="number" value="1000"></div>
+          <div class="field"><label>Bobot beli (kg)</label><input id="i_purchaseWeight" type="number" value="320"></div>
+          <div class="field"><label>Harga beli (Rp/kg)</label><input id="i_purchasePrice" type="number" value="58000"></div>
+          <div class="field"><label>Arrival shrink (%)</label><input id="i_arrivalShrink" type="number" step="0.1" value="3.5"></div>
+          <div class="field"><label>Freight / head</label><input id="i_freight" type="number" value="450000"></div>
+          <div class="field"><label>Commission / head</label><input id="i_commission" type="number" value="150000"></div>
+          <div class="field"><label>Mortality (%)</label><input id="i_mortality" type="number" step="0.1" value="0.8"></div>
+          <div class="field"><label>Timing death (% DOF)</label><input id="i_deathTiming" type="number" value="50"></div>
+        </div>
+        <div class="section"><div class="section-title">Growth, Feed & Cost</div>
+          <div class="field"><label>Days on feed</label><input id="i_dof" type="number" value="120"></div>
+          <div class="field"><label>ADG (kg/day)</label><input id="i_adg" type="number" step="0.01" value="1.30"></div>
+          <div class="field"><label>As-fed intake (kg/day)</label><input id="i_asfed" type="number" step="0.1" value="22"></div>
+          <div class="field"><label>Dry matter (%)</label><input id="i_dm" type="number" step="0.1" value="48"></div>
+          <div class="field"><label>Feed wastage (%)</label><input id="i_waste" type="number" step="0.1" value="3"></div>
+          <div class="field"><label>Ration price (Rp/kg)</label><input id="i_feedPrice" type="number" value="4200"></div>
+          <div class="field"><label>Health / animal-day</label><input id="i_health" type="number" value="2500"></div>
+          <div class="field"><label>Labor / animal-day</label><input id="i_labor" type="number" value="3500"></div>
+          <div class="field"><label>Yardage / animal-day</label><input id="i_yardage" type="number" value="2500"></div>
+          <div class="field"><label>Fixed overhead / head</label><input id="i_fixed" type="number" value="450000"></div>
+          <div class="field"><label>Other production / head</label><input id="i_other" type="number" value="250000"></div>
+          <div class="field"><label>Interest (% p.a.)</label><input id="i_interest" type="number" step="0.1" value="10"></div>
+          <div class="field"><label>Operating exposure (%)</label><input id="i_exposure" type="number" value="50"></div>
+        </div>
+        <div class="section"><div class="section-title">Carcass, Slaughter & Meat</div>
+          <div class="field"><label>Pre-slaughter shrink (%)</label><input id="i_preShrink" type="number" step="0.1" value="2"></div>
+          <div class="field"><label>Gross dressing (%)</label><input id="i_dp" type="number" step="0.1" value="55.5"></div>
+          <div class="field"><label>Entry dressing est. (%)</label><input id="i_entryDp" type="number" step="0.1" value="49"></div>
+          <div class="field"><label>Trim / condemnation (%)</label><input id="i_trim" type="number" step="0.1" value="0.8"></div>
+          <div class="field"><label>Harga karkas net HCW (Rp/kg)</label><input id="i_carcassPrice" type="number" value="110000"></div>
+          <div class="field"><label>Slaughter/outbound / sold head</label><input id="i_slaughter" type="number" value="600000"></div>
+          <div class="field"><label>By-product / sold head</label><input id="i_byproduct" type="number" value="1400000"></div>
+          <div class="field"><label>Cooler shrink (%)</label><input id="i_cooler" type="number" step="0.1" value="2"></div>
+          <div class="field"><label>Boning yield (%)</label><input id="i_boning" type="number" step="0.1" value="70"></div>
+          <div class="field"><label>Blended meat price (Rp/kg)</label><input id="i_meatPrice" type="number" value="165000"></div>
+          <div class="field"><label>Processing / sold head</label><input id="i_processing" type="number" value="850000"></div>
+          <div class="field"><label>Target profit / initial head</label><input id="i_targetProfit" type="number" value="2000000"></div>
+          <div class="field"><label>Target margin (%)</label><input id="i_targetMargin" type="number" step="0.1" value="5"></div>
+          <div class="field"><label>Target ROI (%)</label><input id="i_targetRoi" type="number" step="0.1" value="8"></div>
+        </div>
+      </aside>
+      <main class="results">
+        <div class="kpis">
+          <div class="kpi"><span>Arrival BW</span><strong id="o_arrival">—</strong></div>
+          <div class="kpi"><span>Final Feedlot BW</span><strong id="o_final">—</strong></div>
+          <div class="kpi"><span>Net HCW</span><strong id="o_hcw">—</strong></div>
+          <div class="kpi"><span>Profit / initial head</span><strong id="o_profit">—</strong></div>
+          <div class="kpi"><span>FCR DM</span><strong id="o_fcr">—</strong></div>
+          <div class="kpi"><span>All-in COG</span><strong id="o_cog">—</strong></div>
+          <div class="kpi"><span>Cost / kg HCW</span><strong id="o_costHcw">—</strong></div>
+          <div class="kpi"><span>ROI / cycle</span><strong id="o_roi">—</strong></div>
+        </div>
+        <div class="grid2">
+          <section class="panel"><h3>Production Performance</h3><div id="productionRows"></div></section>
+          <section class="panel"><h3>Financial Performance</h3><div id="financialRows"></div></section>
+        </div>
+        <div id="integratedVerdict" class="verdict"><div class="eyebrow">Decision Engine</div><div class="big">—</div><div class="detail"></div></div>
+      </main>
+    </div>
+  </div>
+
+  <div id="jagal" class="tabview hidden">
+    <div class="layout">
+      <aside class="panel inputs">
+        <div class="actionbar"><button class="primary" id="resetJagal">Reset Base</button></div>
+        <div class="section"><div class="section-title">Pembelian Sapi</div>
+          <div class="field"><label>Jumlah ekor</label><input id="j_heads" type="number" value="100"></div>
+          <div class="field"><label>Bobot hidup (kg)</label><input id="j_liveWeight" type="number" value="480"></div>
+          <div class="field"><label>Harga beli hidup (Rp/kg)</label><input id="j_livePrice" type="number" value="60000"></div>
+          <div class="field"><label>Purchase-basis shrink (%)</label><input id="j_purchaseShrink" type="number" step="0.1" value="0"></div>
+          <div class="field"><label>Pre-slaughter shrink (%)</label><input id="j_preShrink" type="number" step="0.1" value="2"></div>
+          <div class="field"><label>Inbound / head</label><input id="j_inbound" type="number" value="350000"></div>
+          <div class="field"><label>Holding / head</label><input id="j_holding" type="number" value="150000"></div>
+        </div>
+        <div class="section"><div class="section-title">Jagal, Karkas & Meat</div>
+          <div class="field"><label>Gross dressing (%)</label><input id="j_dp" type="number" step="0.1" value="55"></div>
+          <div class="field"><label>Trim / condemnation (%)</label><input id="j_trim" type="number" step="0.1" value="0.8"></div>
+          <div class="field"><label>Harga karkas (Rp/kg)</label><input id="j_carcassPrice" type="number" value="112000"></div>
+          <div class="field"><label>Biaya potong / head</label><input id="j_slaughter" type="number" value="550000"></div>
+          <div class="field"><label>Labor + overhead / head</label><input id="j_overhead" type="number" value="300000"></div>
+          <div class="field"><label>By-product / head</label><input id="j_byproduct" type="number" value="1800000"></div>
+          <div class="field"><label>Cooler shrink (%)</label><input id="j_cooler" type="number" step="0.1" value="2"></div>
+          <div class="field"><label>Boning yield (%)</label><input id="j_boning" type="number" step="0.1" value="70"></div>
+          <div class="field"><label>Blended meat price (Rp/kg)</label><input id="j_meatPrice" type="number" value="168000"></div>
+          <div class="field"><label>Processing / head</label><input id="j_processing" type="number" value="900000"></div>
+          <div class="field"><label>Target profit / head</label><input id="j_targetProfit" type="number" value="1500000"></div>
+          <div class="field"><label>Target margin (%)</label><input id="j_targetMargin" type="number" step="0.1" value="5"></div>
+          <div class="field"><label>Target ROI (%)</label><input id="j_targetRoi" type="number" step="0.1" value="8"></div>
+        </div>
+      </aside>
+      <main class="results">
+        <div class="kpis"><div class="kpi"><span>Purchase Cost</span><strong id="j_purchase">—</strong></div><div class="kpi"><span>Net HCW</span><strong id="j_hcw">—</strong></div><div class="kpi"><span>Profit / Head</span><strong id="j_profit">—</strong></div><div class="kpi"><span>Margin</span><strong id="j_margin">—</strong></div></div>
+        <div class="grid2"><section class="panel"><h3>Jagal P&L / Head</h3><div id="j_pnlRows"></div></section><section class="panel"><h3>Yield & Conversion</h3><div id="j_yieldRows"></div></section></div>
+        <div id="jagalVerdict" class="verdict"><div class="eyebrow">Jagal Decision</div><div class="big">—</div><div class="detail"></div></div>
+      </main>
+    </div>
+  </div>
+
+  <div id="solver" class="tabview hidden">
+    <div class="panel"><h2>Reverse Solver — “Kalau X segini, Y harus berapa?”</h2><p style="color:var(--muted)">Menggunakan input aktif dari Feedlot + Carcass dan Jagal / RPH.</p><div id="solverCards" class="solver"></div></div>
+    <div class="grid2"><div class="panel"><h3>Marginal Economics</h3><div id="marginalRows"></div></div><div class="panel"><h3>Yield Value</h3><div id="yieldValueRows"></div></div></div>
+  </div>
+
+  <div id="sensitivity" class="tabview hidden">
+    <div class="panel"><h2>Jagal Profit Matrix — Harga Beli × Dressing</h2><div class="table-wrap"><table id="matrixBuyDp"></table></div></div>
+    <div class="panel" style="margin-top:12px"><h2>Feedlot Profit Matrix — Harga Karkas × Dressing</h2><div class="table-wrap"><table id="matrixCarcassDp"></table></div></div>
+  </div>
+
+  <div class="footer">Model v0.1. Dressing, shrink, trim, cooler loss, boning yield, ownership by-product, financing, dan weighing protocol harus disesuaikan dengan standard operasional perusahaan sebelum dipakai sebagai KPI resmi.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id), n=(id,d=0)=>{const v=Number($(id).value);return Number.isFinite(v)?v:d}, rp=v=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number.isFinite(v)?v:0), nf=(v,d=2)=>new Intl.NumberFormat('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d}).format(Number.isFinite(v)?v:0), pc=v=>nf(v,2)+'%', kg=(v,d=1)=>nf(v,d)+' kg';
+function row(a,b){return `<div class="row"><span>${a}</span><strong>${b}</strong></div>`}
+function integrated(){
+ const x={heads:n('i_heads'),purchaseWeight:n('i_purchaseWeight'),purchasePrice:n('i_purchasePrice'),arrivalShrink:n('i_arrivalShrink')/100,freight:n('i_freight'),commission:n('i_commission'),mortality:n('i_mortality')/100,deathTiming:n('i_deathTiming')/100,dof:n('i_dof'),adg:n('i_adg'),asfed:n('i_asfed'),dm:n('i_dm')/100,waste:n('i_waste')/100,feedPrice:n('i_feedPrice'),health:n('i_health'),labor:n('i_labor'),yardage:n('i_yardage'),fixed:n('i_fixed'),other:n('i_other'),interest:n('i_interest')/100,exposure:n('i_exposure')/100,preShrink:n('i_preShrink')/100,dp:n('i_dp')/100,entryDp:n('i_entryDp')/100,trim:n('i_trim')/100,carcassPrice:n('i_carcassPrice'),slaughter:n('i_slaughter'),byproduct:n('i_byproduct'),cooler:n('i_cooler')/100,boning:n('i_boning')/100,meatPrice:n('i_meatPrice'),processing:n('i_processing'),targetProfit:n('i_targetProfit'),targetMargin:n('i_targetMargin')/100,targetRoi:n('i_targetRoi')/100};
+ const surv=1-x.mortality,purchaseAnimal=x.purchaseWeight*x.purchasePrice,landed=purchaseAnimal+x.freight+x.commission,arrival=x.purchaseWeight*(1-x.arrivalShrink),gain=x.adg*x.dof,final=arrival+gain,slaughterBW=final*(1-x.preShrink),effectiveDays=x.dof*(surv+x.mortality*x.deathTiming),dmiDay=x.asfed*x.dm,feedPurchasedDay=x.asfed*(1+x.waste),feedCostDay=feedPurchasedDay*x.feedPrice,feedCost=feedCostDay*effectiveDays,ops=(x.health+x.labor+x.yardage)*effectiveDays+x.fixed+x.other+surv*x.slaughter,rate=x.interest*x.dof/365,finance=landed*rate+(feedCost+ops)*rate*x.exposure,allIn=landed+feedCost+ops+finance,grossHcw=slaughterBW*x.dp,netHcw=grossHcw*(1-x.trim),cold=netHcw*(1-x.cooler),saleable=cold*x.boning,revenueInitial=surv*(netHcw*x.carcassPrice+x.byproduct),profit=revenueInitial-allIn,roi=allIn?profit/allIn*100:0,margin=revenueInitial?profit/revenueInitial*100:0,totalGainEq=surv*gain,totalDm=effectiveDays*dmiDay,fcr=totalGainEq?totalDm/totalGainEq:0,finishing=feedCost+ops+finance,cog=totalGainEq?finishing/totalGainEq:0,costHcw=surv*netHcw?allIn/(surv*netHcw):0,entryCarcass=arrival*x.entryDp,carcassGain=netHcw-entryCarcass,carcassAdg=x.dof?carcassGain/x.dof:0,capture=gain?carcassGain/gain*100:0,avgBw=(arrival+final)/2,dmiPct=avgBw?dmiDay/avgBw*100:0,reqNetHcw=(surv*x.carcassPrice)?Math.max(0,(allIn+x.targetProfit-surv*x.byproduct)/(surv*x.carcassPrice)):0,reqGrossHcw=(1-x.trim)?reqNetHcw/(1-x.trim):0,reqDp=slaughterBW?reqGrossHcw/slaughterBW*100:0,reqPrice=surv*netHcw?Math.max(0,(allIn+x.targetProfit-surv*x.byproduct)/(surv*netHcw)):0,reqNetHcwBe=(surv*x.carcassPrice)?Math.max(0,(allIn-surv*x.byproduct)/(surv*x.carcassPrice)):0,reqDpBe=slaughterBW&&1-x.trim?reqNetHcwBe/(1-x.trim)/slaughterBW*100:0,reqFinalBW=x.dp&&1-x.trim?reqNetHcw/(x.dp*(1-x.trim)*(1-x.preShrink)):0,reqAdg=x.dof?Math.max(0,(reqFinalBW-arrival)/x.dof):0,value1Dp=surv*slaughterBW*.01*(1-x.trim)*x.carcassPrice,valueLive=surv*(1-x.preShrink)*x.dp*(1-x.trim)*x.carcassPrice,marginalRevenueDay=valueLive*x.adg,marginalCostDay=feedCostDay+x.health+x.labor+x.yardage,marginalSpread=marginalRevenueDay-marginalCostDay,meatRevenue=surv*(saleable*x.meatPrice+x.byproduct),meatCost=allIn+surv*x.processing,meatProfit=meatRevenue-meatCost,reqMeatPrice=surv*saleable?Math.max(0,(meatCost+x.targetProfit-surv*x.byproduct)/(surv*saleable)):0;
+ function profitAtBuyPrice(p){const lp=x.purchaseWeight*p+x.freight+x.commission,fin=lp*rate+(feedCost+ops)*rate*x.exposure,cost=lp+feedCost+ops+fin;return revenueInitial-cost}
+ let lo=0,hi=300000;for(let i=0;i<55;i++){const mid=(lo+hi)/2;if(profitAtBuyPrice(mid)>=x.targetProfit)lo=mid;else hi=mid}const maxBuy=lo;
+ function profitAtFeedPrice(p){const fc=feedPurchasedDay*p*effectiveDays,fin=landed*rate+(fc+ops)*rate*x.exposure,cost=landed+fc+ops+fin;return revenueInitial-cost}lo=0;hi=100000;for(let i=0;i<55;i++){const mid=(lo+hi)/2;if(profitAtFeedPrice(mid)>=x.targetProfit)lo=mid;else hi=mid}const maxFeed=lo;
+ const targetRevenueMargin=x.targetMargin<1?allIn/(1-x.targetMargin):Infinity,reqNetHcwMargin=surv*x.carcassPrice?Math.max(0,(targetRevenueMargin-surv*x.byproduct)/(surv*x.carcassPrice)):0,reqDpMargin=slaughterBW&&1-x.trim?reqNetHcwMargin/(1-x.trim)/slaughterBW*100:0,targetRevenueRoi=allIn*(1+x.targetRoi),reqNetHcwRoi=surv*x.carcassPrice?Math.max(0,(targetRevenueRoi-surv*x.byproduct)/(surv*x.carcassPrice)):0,reqDpRoi=slaughterBW&&1-x.trim?reqNetHcwRoi/(1-x.trim)/slaughterBW*100:0;
+ return {x,surv,purchaseAnimal,landed,arrival,gain,final,slaughterBW,effectiveDays,dmiDay,feedPurchasedDay,feedCostDay,feedCost,ops,finance,allIn,grossHcw,netHcw,cold,saleable,revenueInitial,profit,roi,margin,fcr,cog,costHcw,entryCarcass,carcassGain,carcassAdg,capture,dmiPct,reqNetHcw,reqDp,reqDpBe,reqPrice,reqFinalBW,reqAdg,value1Dp,valueLive,marginalRevenueDay,marginalCostDay,marginalSpread,meatRevenue,meatCost,meatProfit,reqMeatPrice,maxBuy,maxFeed,reqDpMargin,reqDpRoi};
+}
+function jagal(over={}){
+ const x={heads:n('j_heads'),liveWeight:n('j_liveWeight'),livePrice:n('j_livePrice'),purchaseShrink:n('j_purchaseShrink')/100,preShrink:n('j_preShrink')/100,inbound:n('j_inbound'),holding:n('j_holding'),dp:n('j_dp')/100,trim:n('j_trim')/100,carcassPrice:n('j_carcassPrice'),slaughter:n('j_slaughter'),overhead:n('j_overhead'),byproduct:n('j_byproduct'),cooler:n('j_cooler')/100,boning:n('j_boning')/100,meatPrice:n('j_meatPrice'),processing:n('j_processing'),targetProfit:n('j_targetProfit'),targetMargin:n('j_targetMargin')/100,targetRoi:n('j_targetRoi')/100,...over};
+ const payWeight=x.liveWeight*(1-x.purchaseShrink),purchase=payWeight*x.livePrice,slaughterBW=x.liveWeight*(1-x.preShrink),grossHcw=slaughterBW*x.dp,netHcw=grossHcw*(1-x.trim),cold=netHcw*(1-x.cooler),saleable=cold*x.boning,nonPurchase=x.inbound+x.holding+x.slaughter+x.overhead,cost=purchase+nonPurchase,revenue=netHcw*x.carcassPrice+x.byproduct,profit=revenue-cost,margin=revenue?profit/revenue*100:0,roi=cost?profit/cost*100:0,reqNetHcw=(x.carcassPrice)?Math.max(0,(cost+x.targetProfit-x.byproduct)/x.carcassPrice):0,reqDp=slaughterBW&&1-x.trim?reqNetHcw/(1-x.trim)/slaughterBW*100:0,reqNetBe=x.carcassPrice?Math.max(0,(cost-x.byproduct)/x.carcassPrice):0,reqDpBe=slaughterBW&&1-x.trim?reqNetBe/(1-x.trim)/slaughterBW*100:0,reqPrice=netHcw?Math.max(0,(cost+x.targetProfit-x.byproduct)/netHcw):0,maxPurchase=Math.max(0,revenue-nonPurchase-x.targetProfit),maxLive=payWeight?maxPurchase/payWeight:0,reqSlaughterBW=x.dp&&1-x.trim?reqNetHcw/(x.dp*(1-x.trim)):0,reqByproduct=Math.max(0,cost+x.targetProfit-netHcw*x.carcassPrice),meatCost=cost+x.processing,meatRevenue=saleable*x.meatPrice+x.byproduct,meatProfit=meatRevenue-meatCost,reqMeatPrice=saleable?Math.max(0,(meatCost+x.targetProfit-x.byproduct)/saleable):0,value1Dp=slaughterBW*.01*(1-x.trim)*x.carcassPrice,trimLoss=grossHcw*x.trim*x.carcassPrice,coolerLoss=(netHcw-cold)*x.boning*x.meatPrice,targetRevMargin=x.targetMargin<1?cost/(1-x.targetMargin):Infinity,reqDpMargin=slaughterBW&&1-x.trim&&x.carcassPrice?Math.max(0,(targetRevMargin-x.byproduct)/x.carcassPrice)/(1-x.trim)/slaughterBW*100:0,targetRevRoi=cost*(1+x.targetRoi),reqDpRoi=slaughterBW&&1-x.trim&&x.carcassPrice?Math.max(0,(targetRevRoi-x.byproduct)/x.carcassPrice)/(1-x.trim)/slaughterBW*100:0;
+ return {x,payWeight,purchase,slaughterBW,grossHcw,netHcw,cold,saleable,nonPurchase,cost,revenue,profit,margin,roi,reqNetHcw,reqDp,reqDpBe,reqPrice,maxPurchase,maxLive,reqSlaughterBW,reqByproduct,meatCost,meatRevenue,meatProfit,reqMeatPrice,value1Dp,trimLoss,coolerLoss,reqDpMargin,reqDpRoi};
+}
+function renderIntegrated(){const r=integrated();$('o_arrival').textContent=kg(r.arrival);$('o_final').textContent=kg(r.final);$('o_hcw').textContent=kg(r.netHcw);$('o_profit').textContent=rp(r.profit);$('o_fcr').textContent=nf(r.fcr);$('o_cog').textContent=rp(r.cog)+'/kg';$('o_costHcw').textContent=rp(r.costHcw)+'/kg';$('o_roi').textContent=pc(r.roi);
+ $('productionRows').innerHTML=[['Live gain',kg(r.gain)],['ADG',nf(r.x.adg,2)+' kg/day'],['DOF',nf(r.x.dof,0)+' hari'],['Survival rate',pc(r.surv*100)],['DMI/day',kg(r.dmiDay,2)+' DM'],['DMI % avg BW',pc(r.dmiPct)],['Feed purchased/day',kg(r.feedPurchasedDay,2)],['Feed cost/day',rp(r.feedCostDay)],['FCR DM',nf(r.fcr)],['Carcass ADG',nf(r.carcassAdg,3)+' kg/day'],['Carcass capture',pc(r.capture)]].map(x=>row(...x)).join('');
+ $('financialRows').innerHTML=[['Purchase animal',rp(r.purchaseAnimal)],['Landed purchase',rp(r.landed)],['Feed cost/head',rp(r.feedCost)],['Operating cost/head',rp(r.ops)],['Financing/head',rp(r.finance)],['All-in cost/head',rp(r.allIn)],['Revenue/head',rp(r.revenueInitial)],['Profit/head',rp(r.profit)],['Margin',pc(r.margin)],['ROI',pc(r.roi)],['Lot profit',rp(r.profit*r.x.heads)]].map(x=>row(...x)).join('');
+ const v=$('integratedVerdict');v.className='verdict '+(r.profit>=r.x.targetProfit?'good':r.profit<0?'bad':'');v.querySelector('.big').textContent=r.profit<0?'ECONOMIC LOSS':r.profit>=r.x.targetProfit?'TARGET PROFIT TERCAPAI':'PROFITABLE — BELOW TARGET';v.querySelector('.detail').textContent=`Target profit memerlukan dressing ${pc(r.reqDp)} atau harga karkas ${rp(r.reqPrice)}/kg. Max harga beli sapi ≈ ${rp(r.maxBuy)}/kg.`;renderSolver();renderMatrices()}
+function renderJagal(){const r=jagal();$('j_purchase').textContent=rp(r.purchase);$('j_hcw').textContent=kg(r.netHcw);$('j_profit').textContent=rp(r.profit);$('j_margin').textContent=pc(r.margin);$('j_pnlRows').innerHTML=[['Pay weight',kg(r.payWeight)],['Purchase cost',rp(r.purchase)],['Non-purchase cost',rp(r.nonPurchase)],['Total cost',rp(r.cost)],['Carcass revenue',rp(r.netHcw*r.x.carcassPrice)],['By-product',rp(r.x.byproduct)],['Total revenue',rp(r.revenue)],['Profit/head',rp(r.profit)],['ROI',pc(r.roi)],['Lot profit',rp(r.profit*r.x.heads)]].map(x=>row(...x)).join('');$('j_yieldRows').innerHTML=[['Slaughter live BW',kg(r.slaughterBW)],['Gross HCW',kg(r.grossHcw)],['Net HCW',kg(r.netHcw)],['Gross dressing',pc(r.x.dp*100)],['Net dressing',pc(r.netHcw/r.slaughterBW*100)],['Cold carcass',kg(r.cold)],['Saleable meat',kg(r.saleable)],['Live-to-meat yield',pc(r.saleable/r.slaughterBW*100)],['Meat-model profit',rp(r.meatProfit)]].map(x=>row(...x)).join('');const v=$('jagalVerdict');v.className='verdict '+(r.profit>=r.x.targetProfit?'good':r.profit<0?'bad':'');v.querySelector('.big').textContent=r.profit<0?'JANGAN BELI PADA KONDISI INI':r.profit>=r.x.targetProfit?'TARGET PROFIT TERCAPAI':'MASIH UNTUNG — DI BAWAH TARGET';v.querySelector('.detail').textContent=`Dengan harga karkas ${rp(r.x.carcassPrice)}/kg, target butuh dressing ${pc(r.reqDp)}. Bid ceiling sapi ≈ ${rp(r.maxLive)}/kg hidup.`;renderSolver();renderMatrices()}
+function renderSolver(){const i=integrated(),j=jagal();const cards=[['Feedlot DP Break-even',pc(i.reqDpBe)],['Feedlot DP Target Profit',pc(i.reqDp)],['Feedlot DP Target Margin',pc(i.reqDpMargin)],['Feedlot DP Target ROI',pc(i.reqDpRoi)],['Min Net HCW',kg(i.reqNetHcw)],['Min Harga Karkas',rp(i.reqPrice)+'/kg'],['Min Final BW',kg(i.reqFinalBW)],['Min ADG',nf(i.reqAdg,3)+' kg/day'],['Max Harga Beli Sapi',rp(i.maxBuy)+'/kg'],['Max Harga Pakan',rp(i.maxFeed)+'/kg'],['Min Blended Meat Price',rp(i.reqMeatPrice)+'/kg'],['Jagal DP Break-even',pc(j.reqDpBe)],['Jagal DP Target Profit',pc(j.reqDp)],['Jagal DP Target Margin',pc(j.reqDpMargin)],['Jagal DP Target ROI',pc(j.reqDpRoi)],['Jagal Max Harga Beli',rp(j.maxLive)+'/kg'],['Jagal Min HCW',kg(j.reqNetHcw)],['Jagal Min Harga Karkas',rp(j.reqPrice)+'/kg'],['Jagal Min Slaughter BW',kg(j.reqSlaughterBW)],['Min By-product',rp(j.reqByproduct)],['Min Meat Price Jagal',rp(j.reqMeatPrice)+'/kg']];$('solverCards').innerHTML=cards.map(x=>`<div class="mini"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join('');$('marginalRows').innerHTML=[['Value +1 kg live BW',rp(i.valueLive)],['Marginal revenue/day',rp(i.marginalRevenueDay)],['Marginal cost/day',rp(i.marginalCostDay)],['Marginal spread/day',rp(i.marginalSpread)],['All-in COG',rp(i.cog)+'/kg']].map(x=>row(...x)).join('');$('yieldValueRows').innerHTML=[['Value +1 point dressing',rp(i.value1Dp)],['Jagal +1 point dressing',rp(j.value1Dp)],['Trim loss value',rp(j.trimLoss)],['Cooler loss meat-value',rp(j.coolerLoss)],['Meat model profit/head',rp(j.meatProfit)]].map(x=>row(...x)).join('')}
+function renderMatrices(){const j0=jagal(),i0=integrated(),deltas=[-3,-2,-1,0,1,2,3],liveD=[-6000,-4000,-2000,0,2000,4000,6000];let h='<thead><tr><th>Live Price \\ DP</th>'+deltas.map(d=>`<th>${nf((j0.x.dp*100)+d,1)}%</th>`).join('')+'</tr></thead><tbody>';for(const ld of liveD){const lp=Math.max(0,j0.x.livePrice+ld);h+=`<tr><th>${rp(lp)}</th>`;for(const dd of deltas){const q=jagal({livePrice:lp,dp:Math.max(.2,Math.min(.8,j0.x.dp+dd/100))});h+=`<td class="${q.profit>=j0.x.targetProfit?'green':q.profit<0?'red':'orange'}">${rp(q.profit)}</td>`}h+='</tr>'}h+='</tbody>';$('matrixBuyDp').innerHTML=h;const priceD=[-15000,-10000,-5000,0,5000,10000,15000];h='<thead><tr><th>DP \\ Carcass Price</th>'+priceD.map(d=>`<th>${rp(Math.max(0,i0.x.carcassPrice+d))}</th>`).join('')+'</tr></thead><tbody>';for(const dd of deltas){const dp=i0.x.dp+dd/100;h+=`<tr><th>${pc(dp*100)}</th>`;for(const pd of priceD){const cp=Math.max(0,i0.x.carcassPrice+pd);const base={...i0.x,dp,carcassPrice:cp};const surv=i0.surv,net=i0.slaughterBW*dp*(1-i0.x.trim),rev=surv*(net*cp+i0.x.byproduct),p=rev-i0.allIn;h+=`<td class="${p>=i0.x.targetProfit?'green':p<0?'red':'orange'}">${rp(p)}</td>`}h+='</tr>'}h+='</tbody>';$('matrixCarcassDp').innerHTML=h}
+const iIds=[...document.querySelectorAll('#integrated input')],jIds=[...document.querySelectorAll('#jagal input')];iIds.forEach(el=>el.addEventListener('input',renderIntegrated));jIds.forEach(el=>el.addEventListener('input',renderJagal));document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tabview').forEach(x=>x.classList.add('hidden'));b.classList.add('active');$(b.dataset.tab).classList.remove('hidden')}));$('resetIntegrated').addEventListener('click',()=>location.reload());$('resetJagal').addEventListener('click',()=>location.reload());renderIntegrated();renderJagal();
+</script>
+</body>
+</html>
