@@ -62,4 +62,4 @@ jobs:
             git push
           fi
 
-# deploy trigger: reviewed quick-mode v0.3
+# deploy trigger: dynamic dressing scenarios v0.3.1
