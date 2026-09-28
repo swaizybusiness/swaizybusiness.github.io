@@ -58,8 +58,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No public build changes"
           else
-            git commit -m "deploy: update cattle economics reviewed v0.3 app"
+            git commit -m "deploy: publish Cattle OS v0.4"
             git push
           fi
 
-# deploy trigger: dynamic dressing scenarios v0.3.1
+# deploy trigger: Cattle OS v0.4\n
