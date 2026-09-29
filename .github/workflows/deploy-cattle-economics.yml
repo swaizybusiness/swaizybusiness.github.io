@@ -58,8 +58,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No public build changes"
           else
-            git commit -m "deploy: publish polished rough feedlot calculator"
+            git commit -m "deploy: publish rebuilt rough feedlot calculator"
             git push
           fi
 
-# deploy trigger: polished rough feedlot calculator v0.4.4
+# deploy trigger: rebuilt rough feedlot calculator v0.4.5
